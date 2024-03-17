@@ -8,8 +8,12 @@ export const expect = (fn, message) => (value) => {
 	}
 };
 
+export const lazy = (fn) => (v) => fn(v)(v);
+
 export const literal = (value) => () => value;
 export const any = (_) => {};
+
+export const length = (fn) => (v) => fn(v.length);
 
 // Type
 export const type = (type) => assert((v) => typeof v === type);
@@ -92,12 +96,24 @@ export const object = (schema) => {
 	};
 };
 
+export const _is = assert(Object.is);
+export const _in = (prop) => assert((v) => prop in v);
+export const hasOwn = (prop) => assert((v) => Object.hasOwn(v, prop));
+export const hasOwnProperty = (prop) => assert((v) => v.hasOwnProperty(prop));
+export const prototypeOf = (object) => assert((v) => v.prototype.isPrototypeOf(object));
+export const extensible = assert(Object.isExtensible);
+export const frozen = assert(Object.isFrozen);
+export const sealed = assert(Object.isSealed);
+export const propertyEnumerable = (prop) => assert((v) => v.propertyIsEnumerable(prop));
+
 // Array
 export const array = (fn) => (values) => {
 	for(let i = 0; i < items.length; ++i) {
 		fn(values[i]);
 	}
 };
+
+export const isArray = assert(Array.isArray);
 
 // Enum
 export const _enum = (options) => assert((v) => options.includes(v));
