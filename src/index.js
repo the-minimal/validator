@@ -11,7 +11,6 @@ export const expect = (fn, message) => (value) => {
 export const lazy = (fn) => (v) => fn(v)(v);
 
 export const literal = (value) => () => value;
-export const any = (_) => {};
 
 // TODO: think of better name
 export const _enum = (options) => assert((v) => options.includes(v));
@@ -22,6 +21,17 @@ export const gte = (right) => assert((left) => left >= right);
 export const gt = (right) => assert((left) => left > right);
 export const lte = (right) => assert((left) => left <= right);
 export const lt = (right) => assert((left) => left < right);
+
+export const memo = (fn) => {
+	let latest;
+
+	return (v) => {
+		if(latest !== v) {
+			fn(v);
+			latest = v;
+		}
+	};
+};
 
 // And
 export const and = (fns) => {

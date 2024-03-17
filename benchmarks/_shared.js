@@ -1,11 +1,17 @@
-import { object as validator_object, and, tString, tNumber, nInt, pLength, gte, lte } from "../src";
+import { object as validator_object, memo, and, tString, tNumber, nInt, pLength, gte, lte } from "../src";
 import { object as zod_object, string as zod_string, number as zod_number } from "zod";
 import { object as valibot_object, string as valibot_string, number as valibot_number, minLength, maxLength, minValue, maxValue, integer } from "valibot";
 
-export const validator = () => validator_object({
+export const validator_normal = () => validator_object({
 	name: and([tString, pLength(gte(2))]),
 	password: and([tString, pLength(and([gte(8), lte(16)]))]),
 	age: and([tNumber, nInt, gte(0), lte(150)])
+});
+
+export const validator_memo = () => validator_object({
+	name: memo(and([tString, pLength(gte(2))])),
+	password: memo(and([tString, pLength(and([gte(8), lte(16)]))])),
+	age: memo(and([tNumber, nInt, gte(0), lte(150)]))
 });
 
 export const zod = () => zod_object({
@@ -24,4 +30,10 @@ export const user = {
 	name: "Yamiteru",
 	password: "Test123456",
 	age: 26
+};
+
+export const user2 = {
+	name: "Joe",
+	password: "ReallyCool",
+	age: 13
 };
