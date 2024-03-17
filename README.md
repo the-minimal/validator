@@ -1,13 +1,13 @@
 # @the-minimal/validator
 
-Opinionated low-`level | size | overhead` data validation and transformation library.
+Opinionated low-`level | size | overhead` data validation library.
 
 ## Features
 
 - Data validation
-- Data transformation
 - [Opt-in error handling](./docs/error-handling.md)
 - [Opt-in schema modifications](./docs/schema-modifications.md)
+- No data transformation
 - [No high-level primitives](./docs/high-level-primitives.md)
 - No async
 - No runtime compilation
@@ -25,31 +25,14 @@ Opinionated low-`level | size | overhead` data validation and transformation lib
 ### Example
 
 ```js
-const vAdult = vPipe([
-    vNumber,
-    vInt,
-    vGte(18)
+const adult = and([
+    number,
+    int,
+    gte(18)
 ]);
 
-vAdult(24)              // 24
-vAdult(5)               // TypeError: 0 is not a function
-```
-
-## Data transformation
-
-- Transformation is any `throw`able `<I, O>(v: I) => O` function
-- Transformation can also be a validation since by (JS) design all functions are `throw`able
-
-```js
-const tDoubleInt = tPipe([
-    tNumber,
-    tRound,
-    tInt,
-    tTimes(2)
-]);
-
-tDoubleInt("3")         // 6
-tDoubleInt(1.6)         // 4
+adult(24);  // 24
+adult(5);   // TypeError: 0 is not a function
 ```
 
 ## No async
@@ -63,11 +46,11 @@ tDoubleInt(1.6)         // 4
 
 ```js
 export async function fetchUser(input) {
-    vFetchUserInput(input);
+    fetchUserInput(input);
 
     const output = fetch(\* ... *\);
 
-    vFetchUserOutput(output);
+    fetchUserOutput(output);
 
     return output;
 }

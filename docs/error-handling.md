@@ -34,9 +34,9 @@ Behold the smallest throw `0()`!
 
 Obviously custom errors are not a pure evil and sometimes they're even useful or desirable.
 
-We define custom errors by wrapping our validations/transformations with `Expect`.
+We define custom errors by wrapping our validations/transformations with `expect`.
 
-Internally `Expect` throws the error value (not the `Error` class with the value as `message`).
+Internally `expect` throws the error value (not the `Error` class with the value as `message`).
 
 Error value can be a primitive or a function (which takes the input value and an error as arguments) that returns a primitive.
 
@@ -44,29 +44,29 @@ Error value can be a primitive or a function (which takes the input value and an
 
 There are some cases where you don't control the environment inside which you validate data and you don't want to manually wrap everything in try/catch.
 
-In such cases you can use `Parse` which does the wrapping for you and throws `ValidationError` for you.
+In such cases you can use `parse` which does the wrapping for you and throws `ValidationError` for you.
 
 Just keep in mind that this makes your bundle slightly bigger and your validations slightly slower so use it only when absolutely necessary.
 
 ### What if I need to check if validation is valid?
 
-If you don't care about the returned value and only want to get `true` if validation is valid or `false` if it's invalid and it threw an error then you can use `Is`.
+If you don't care about the returned value and only want to get `true` if validation is valid or `false` if it's invalid and it threw an error then you can use `is`.
 
 ### Example
 
 ```js
-const user = Expect(
-    vStruct({
-        age: Expect(
-            vSequence([
-                Expect(vNumber, "should be number"),
-                Expect(vInt, "should be integer"),
-                Expect(vGte(18), "should be >= 18")
+const user = expect(
+    object({
+        age: expect(
+            and([
+                expect(number, literal("should be number")),
+                expect(int, literal("should be integer")),
+                expect(gte(18), literal("should be >= 18"))
             ])
-            (v, e) => `age ${e} [${v}]`
+            (e, v) => `age ${e} [${v}]`
         )
     }),
-    (_, e) => `User.${e}`
+    (e) => `User.${e}`
 );
 
 user({ age: "12.5" })   // User.age should be number [12.5]

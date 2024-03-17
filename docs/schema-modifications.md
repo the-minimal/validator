@@ -13,15 +13,15 @@
 
 ```js
 // file_one.ts
-export const vUserSchema = { \* ... *\ };   // this is exported so it can be extended
-export const vUser = vStruct(vUserSchema);
+export const userCoreSchema = { \* ... *\ };   // this is exported so it can be extended
+export const userCore = object(userCoreSchema);
 
 // file_two.ts
-import { vUserSchema } from "./file_one.ts";
+import { userCoreSchema } from "./file_one.ts";
 
-const vUserAuthSchema = {
-    ...vUserSchema,
+const userAuthSchema = {
+    ...userCoreSchema,
     \* ... *\
 };  // this is not exported so it cannot be extended
-const vUserAuth = vStruct(vUserAuthSchema);
+const userAuth = object(userAuthSchema);
 ```
