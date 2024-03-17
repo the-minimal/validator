@@ -22,7 +22,7 @@ const string = (v) => {
 };
 ```
 
-However this increases the size (+ we also don't need the message).
+However this increases the size (+ we don't need the message, remember?).
 
 We could instead just throw nothing like `throw null`.
 
@@ -44,13 +44,13 @@ Error value can be a primitive or a function (which takes the input value and an
 
 There are some cases where you don't control the environment inside which you validate data and you don't want to manually wrap everything in try/catch.
 
-In such cases you can use `parse` which does the wrapping for you and throws `ValidationError` for you.
+In such cases you can use `Parse` which does the wrapping for you and throws `ValidationError` for you.
 
 Just keep in mind that this makes your bundle slightly bigger and your validations slightly slower so use it only when absolutely necessary.
 
 ### What if I need to check if validation is valid?
 
-If you don't care about the returned value and only want to get `true` if validation is valid or `false` if it's invalid and it threw an error then you can use `is`.
+If you don't care about the returned value and only want to get `true` if validation is valid or `false` if it's invalid and it threw an error then you can use `Is`.
 
 ### Example
 
@@ -58,7 +58,7 @@ If you don't care about the returned value and only want to get `true` if valida
 const user = Expect(
     vStruct({
         age: Expect(
-            vPipe([
+            vSequence([
                 Expect(vNumber, "should be number"),
                 Expect(vInt, "should be integer"),
                 Expect(vGte(18), "should be >= 18")

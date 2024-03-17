@@ -1,10 +1,10 @@
 const vUser = vStruct({
 	name: vString,
-	email: vPipe([
+	email: vSequence([
 		vString,
 		vMatch(emailRegex)
 	]),
-	password: vPipe([
+	password: vSequence([
 		vString,
 		Tap(vPipe([
 			Length,
@@ -15,7 +15,7 @@ const vUser = vStruct({
 	]),
 	friends: Lazy(() => vArray(vUser)),
 	role: vEnum(["USER", "ADMIN"]),
-	age: vPipe([
+	age: vSequence([
 		vNumber,
 		vInt,
 		vGte(0),

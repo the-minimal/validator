@@ -1,14 +1,14 @@
 # @the-minimal/validator
 
-Opinionated `low-`{`level`|`size`|`overhead`} data validation and transformation library.
+Opinionated low-`level | size | overhead` data validation and transformation library.
 
 ## Features
 
 - Data validation
 - Data transformation
 - [Opt-in error handling](./docs/error-handling.md)
-- Opt-in schema modifications
-- No high-level primitives
+- [Opt-in schema modifications](./docs/schema-modifications.md)
+- [No high-level primitives](./docs/high-level-primitives.md)
 - No async
 - No runtime compilation
 - Very small
@@ -52,50 +52,6 @@ tDoubleInt("3")         // 6
 tDoubleInt(1.6)         // 4
 ```
 
-## Opt-in schema modifications
-
-- Other libraries let you modify schemas like this:
-    - `user_base.merge(user_authenticated)`
-    - `user_base.pick(["name", "email"])`
-    - `user_base.omit(["password"])`
-- To let you do this they have to make the schema accessible from outside
-- This complicates the design, adds size and makes the library slower
-- Sometimes other libraries allow you to lock/freeze the schema so it cannot be modified
-- This can be achieved by simply exporting or not exporting the schema
-
-### Example
-
-```js
-// file_one.ts
-export const vUserSchema = { \* ... *\ };   // this is exported so it can be extended
-export const vUser = vStruct(vUserSchema);
-
-// file_two.ts
-import { vUserSchema } from "./file_one.ts";
-
-const vUserAuthSchema = {
-    ...vUserSchema,
-    \* ... *\
-};  // this is not exported so it cannot be extended
-const vUserAuth = vStruct(vUserAuthSchema);
-```
-
-## No high-level primitives
-
-- High-level primitives are for example `Map`/`Set`/etc.
-- Validations should be used when we cannot control the input
-    1) When user types something on frontend
-    2) When we send data between clients/servers
-- In these cases it's impossible to natively send high-level primitives
-- If we generate unsafe high-level data we should validate the input instead of the high-level primitive itself
-
-### Example
-
-```js
-Map.set(key, user_base(input))
-Set.add(user_authenticated(input))
-```
-
 ## No async
 
 - "Do I put data fetching inside data validation or do I put it outside and then pass the output inside the data validation?"
@@ -106,7 +62,7 @@ Set.add(user_authenticated(input))
 ### Example
 
 ```js
-export async function fetch_user(input) {
+export async function fetchUser(input) {
     vFetchUserInput(input);
 
     const output = fetch(\* ... *\);
