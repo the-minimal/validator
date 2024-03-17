@@ -1,18 +1,20 @@
 # @the-minimal/validator
 
-Opinionated low-{level|size|overhead} data validation and transformation library.
+Opinionated `low-`{`level`|`size`|`overhead`} data validation and transformation library.
 
 ## Features
 
 - Data validation
 - Data transformation
-- Opt-in error handling
+- [Opt-in error handling](./docs/error-handling.md)
 - Opt-in schema modifications
 - No high-level primitives
 - No async
 - No runtime compilation
 - Very small
 - Very fast
+
+---
 
 ## Data validation
 
@@ -23,14 +25,14 @@ Opinionated low-{level|size|overhead} data validation and transformation library
 ### Example
 
 ```js
-const is_adult = validation([
-    is_number,
-    is_int,
-    gte(18)
+const vAdult = vPipe([
+    vNumber,
+    vInt,
+    vGte(18)
 ]);
 
-is_adult(24)            // 24
-is_adult(5)             // TypeError: 0 is not a function
+vAdult(24)              // 24
+vAdult(5)               // TypeError: 0 is not a function
 ```
 
 ## Data transformation
@@ -39,47 +41,15 @@ is_adult(5)             // TypeError: 0 is not a function
 - Transformation can also be a validation since by (JS) design all functions are `throw`able
 
 ```js
-const to_double_int = transformation([
-    to_number,
-    to_rounded,
-    to_int,
-    to_multiplied(2)
+const tDoubleInt = tPipe([
+    tNumber,
+    tRound,
+    tInt,
+    tTimes(2)
 ]);
 
-to_double_int("3")      // 6
-to_double_int(1.6)      // 4
-```
-
-## Opt-in error handling
-
-- By default any validation throws `TypeError: 0 is not a function`
-- By default there is no nice error stack
-- By default there is no nice error message
-- The primary reason is unnecessary use of resources
-- The secondary reason is unnecessary verbosity
-- It's completely up to the developer to define their errors
-
-### Example
-
-```js
-const user = expect(
-    object_validate({
-        age: expect(
-            validation([
-                expect(is_number, "should be number"),
-                expect(is_int, "should be integer"),
-                expect(gte(18), "should be >= 18")
-            ])
-            (v, e) => `age ${e} [${v}]`
-        )
-    }),
-    (_, e) => `User.${e}`
-);
-
-user({ age: "12.5" })   // User.age should be number [12.5]
-user({ age: 12.5 })     // User.age should be integer [12.5]
-user({ age: 12 })       // User.age should be >= 18 [12.5]
-user({ age: 26 })       // { age: 26 }
+tDoubleInt("3")         // 6
+tDoubleInt(1.6)         // 4
 ```
 
 ## Opt-in schema modifications
@@ -97,17 +67,17 @@ user({ age: 26 })       // { age: 26 }
 
 ```js
 // file_one.ts
-export const user_base_schema = { \* ... *\ };
-export const user_base = object_validate(user_base_schema);  // this is exported so it can be extended
+export const vUserSchema = { \* ... *\ };   // this is exported so it can be extended
+export const vUser = vStruct(vUserSchema);
 
 // file_two.ts
-import { user_base_schema } from "./file_one.ts";
+import { vUserSchema } from "./file_one.ts";
 
-const user_authenticated_schema = {
-    ...user_base_schema,
+const vUserAuthSchema = {
+    ...vUserSchema,
     \* ... *\
-};
-const user_authenticated = object_validate(user_authenticated_schema);   // this is not exported so it cannot be extended
+};  // this is not exported so it cannot be extended
+const vUserAuth = vStruct(vUserAuthSchema);
 ```
 
 ## No high-level primitives
@@ -137,11 +107,11 @@ Set.add(user_authenticated(input))
 
 ```js
 export async function fetch_user(input) {
-    validate_fetch_user_input(input);
+    vFetchUserInput(input);
 
     const output = fetch(\* ... *\);
 
-    validate_fetch_user_output(output);
+    vFetchUserOutput(output);
 
     return output;
 }
