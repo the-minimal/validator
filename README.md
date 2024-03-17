@@ -18,24 +18,24 @@ Opinionated low-`level | size | overhead` data validation library.
 
 ```js
 const user = object({
-	name: string,
+	name: tString,
 	email: and([
-		string,
-		match(emailRegex)
+		tString,
+		sMatch(emailRegex)
 	]),
 	password: and([
-		string,
-		length(and([
+		tString,
+		pLength(and([
 			gte(8),
 			lte(16)
 		])),
-		match(passwordRegex)
+		sMatch(passwordRegex)
 	]),
 	friends: lazy(() => array(user)),
 	role: enum(["USER", "ADMIN"]),
 	age: and([
-		number,
-		int,
+		tNumber,
+		nInt,
 		gte(0),
 		lte(150)
 	])

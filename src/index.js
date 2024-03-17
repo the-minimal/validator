@@ -13,27 +13,31 @@ export const lazy = (fn) => (v) => fn(v)(v);
 export const literal = (value) => () => value;
 export const any = (_) => {};
 
-export const length = (fn) => (v) => fn(v.length);
+// Prop
+export const prop = (prop) => (fn) => (v) => fn(v[prop]);
+
+export const pLength = prop("length");
 
 // Type
 export const type = (type) => assert((v) => typeof v === type);
 
-export const string = type("string");
-export const number = type("number");
-export const bigint = type("bigint");
-export const boolean = type("boolean");
-export const _object = type("object");
-export const _undefined = type("undefined");
-export const _function = type("function");
+export const tString = type("string");
+export const tNumber = type("number");
+export const tBigInt = type("bigint");
+export const tBoolean = type("boolean");
+export const tObject = type("object");
+export const tUndefined = type("undefined");
+export const tFunction = type("function");
+export const tArray = assert(Array.isArray);
 
 // Instance
 export const instance = (cls) => assert((v) => v instanceof cls);
 
-export const date = instance(Date);
-export const map = instance(Map);
-export const weakMap = instance(WeakMap);
-export const set = instance(Set);
-export const weakSet = instance(WeakSet);
+export const iDate = instance(Date);
+export const iMap = instance(Map);
+export const iWeakMap = instance(WeakMap);
+export const iSet = instance(Set);
+export const iWeakSet = instance(WeakSet);
 
 // Compare
 export const eq = (right) => assert((left) => left === right);
@@ -44,19 +48,19 @@ export const lte = (right) => assert((left) => left <= right);
 export const lt = (right) => assert((left) => left < right);
 
 // String
-export const wellFormed = assert(String.isWellFormed);
-export const startsWith = (searchString, endPosition) => assert((v) => v.startsWith(searchString, endPosition));
-export const endsWith = (searchString, endPosition) => assert((v) => v.endsWith(searchString, endPosition));
-export const includes = (searchString, position) => assert((v) => v.includes(searchString, position));
-export const localeCompare = (compareString, locales, options) => assert((v) => v.localeCompare(compareString, locales, options));
-export const match = (regexp) => assert(regexp.test);
+export const sWellFormed = assert(String.isWellFormed);
+export const sStartsWith = (searchString, endPosition) => assert((v) => v.startsWith(searchString, endPosition));
+export const sEndsWith = (searchString, endPosition) => assert((v) => v.endsWith(searchString, endPosition));
+export const sIncludes = (searchString, position) => assert((v) => v.includes(searchString, position));
+export const sLocaleCompare = (compareString, locales, options) => assert((v) => v.localeCompare(compareString, locales, options));
+export const sMatch = (regexp) => assert(regexp.test);
 
 // Number
-export const int = assert(Number.isInteger);
-export const finite = assert(Number.isFinite);
-export const nan = assert(Number.isNaN);
-export const safe = assert(Number.isSafeInteger);
-export const multipleOf = (n) => assert((v) => !(v % n));
+export const nInt = assert(Number.isInteger);
+export const nFinite = assert(Number.isFinite);
+export const nNan = assert(Number.isNaN);
+export const nSafe = assert(Number.isSafeInteger);
+export const nMultipleOf = (n) => assert((v) => !(v % n));
 
 // And
 export const and = (fns) => {
@@ -96,15 +100,15 @@ export const object = (schema) => {
 	};
 };
 
-export const _is = assert(Object.is);
-export const _in = (prop) => assert((v) => prop in v);
-export const hasOwn = (prop) => assert((v) => Object.hasOwn(v, prop));
-export const hasOwnProperty = (prop) => assert((v) => v.hasOwnProperty(prop));
-export const prototypeOf = (object) => assert((v) => v.prototype.isPrototypeOf(object));
-export const extensible = assert(Object.isExtensible);
-export const frozen = assert(Object.isFrozen);
-export const sealed = assert(Object.isSealed);
-export const propertyEnumerable = (prop) => assert((v) => v.propertyIsEnumerable(prop));
+export const oIs = assert(Object.is);
+export const oIn = (prop) => assert((v) => prop in v);
+export const oHasOwn = (prop) => assert((v) => Object.hasOwn(v, prop));
+export const oHasOwnProperty = (prop) => assert((v) => v.hasOwnProperty(prop));
+export const oPrototypeOf = (object) => assert((v) => v.prototype.isPrototypeOf(object));
+export const oExtensible = assert(Object.isExtensible);
+export const oFrozen = assert(Object.isFrozen);
+export const oSealed = assert(Object.isSealed);
+export const oPropertyEnumerable = (prop) => assert((v) => v.propertyIsEnumerable(prop));
 
 // Array
 export const array = (fn) => (values) => {
@@ -113,7 +117,5 @@ export const array = (fn) => (values) => {
 	}
 };
 
-export const isArray = assert(Array.isArray);
-
 // Enum
-export const _enum = (options) => assert((v) => options.includes(v));
+export const options = (options) => assert((v) => options.includes(v));

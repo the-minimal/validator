@@ -59,8 +59,8 @@ const user = expect(
     object({
         age: expect(
             and([
-                expect(number, literal("should be number")),
-                expect(int, literal("should be integer")),
+                expect(tNumber, literal("should be number")),
+                expect(nInt, literal("should be integer")),
                 expect(gte(18), literal("should be >= 18"))
             ])
             (e, v) => `age ${e} [${v}]`

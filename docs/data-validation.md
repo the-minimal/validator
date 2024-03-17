@@ -6,8 +6,8 @@
 
 ```js
 const adult = and([
-    number,
-    int,
+    tNumber,
+    nInt,
     gte(18)
 ]);
 
