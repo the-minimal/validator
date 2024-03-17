@@ -25,10 +25,7 @@ const user = object({
 	]),
 	password: and([
 		tString,
-		pLength(and([
-			gte(8),
-			lte(16)
-		])),
+		rangeLength(8, 16),
 		sMatch(passwordRegex)
 	]),
 	friends: lazy(() => array(user)),
@@ -36,8 +33,7 @@ const user = object({
 	age: and([
 		tNumber,
 		nInt,
-		gte(0),
-		lte(150)
+		rangeValue(0, 150)
 	])
 });
 ```
