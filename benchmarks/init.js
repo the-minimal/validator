@@ -1,13 +1,21 @@
-import { Suite } from "benchmark";
-import { validator, zod, valibot } from "./_shared.js";
+import benchmark from "benchmark";
+import { v2_normal, validator_normal, validator_memo, zod, valibot } from "./_shared.js";
 
-let validator_tmp = validator();
+let v2_normal_tmp = v2_normal();
+let validator_normal_tmp = validator_normal();
+let validator_memo_tmp = validator_memo();
 let zod_tmp = zod();
 let valibot_tmp = valibot();
 
-new Suite()
-	.add('validator', function() {
-		validator_tmp = validator();
+new benchmark.Suite()
+	.add('validator - v2', function() {
+		v2_normal_tmp = v2_normal();
+	})
+	.add('validator - normal', function() {
+		validator_normal_tmp = validator_normal();
+	})
+	.add('validator - memo', function() {
+		validator_memo_tmp = validator_memo();
 	})
 	.add('zod', function() {
 		zod_tmp = zod();

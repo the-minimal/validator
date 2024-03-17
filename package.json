@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@types/benchmark": "2.1.5",
+    "benchmark": "2.1.4",
+    "valibot": "0.30.0",
+    "zod": "3.22.4"
+  }
+}

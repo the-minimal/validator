@@ -1,3 +1,22 @@
+export class ValidationError extends Error {}
+
+export const parse = (fn, value) => {
+	try {
+		fn(value);
+	} catch (e) {
+		throw new ValidationError(e);
+	}
+};
+
+export const is = (fn, value) => {
+	try {
+		fn(value);
+		return true;
+	} catch {
+		return false;
+	}
+};
+
 export const assert = (predicate) => (value) => void (predicate(value) || 0());
 
 export const expect = (fn, message) => (value) => {
@@ -21,6 +40,8 @@ export const gte = (right) => assert((left) => left >= right);
 export const gt = (right) => assert((left) => left > right);
 export const lte = (right) => assert((left) => left <= right);
 export const lt = (right) => assert((left) => left < right);
+export const minLength = (right) => assert((v) => v.length >= right);
+export const maxLength = (right) => assert((v) => v.length <= right);
 
 export const memo = (fn) => {
 	let latest;
@@ -58,11 +79,6 @@ export const or = (fns) => {
 		}
 	};
 };
-
-// [p]rop
-export const prop = (prop) => (fn) => (v) => fn(v[prop]);
-
-export const pLength = prop("length");
 
 // [t]ype
 export const type = (type) => assert((v) => typeof v === type);
@@ -106,6 +122,8 @@ export const object = (schema) => {
 	const length = keys.length;
 
 	return (value) => {
+		tObject(value);
+
 		for(let i = 0; i < length; ++i) {
 			schema[keys[i]](value[keys[i]]);
 		}
@@ -123,9 +141,11 @@ export const oSealed = assert(Object.isSealed);
 export const oPropertyEnumerable = (prop) => assert((v) => v.propertyIsEnumerable(prop));
 
 // [a]rray
-export const array = (fn) => (values) => {
+export const array = (fn) => (value) => {
+	tArray(value);
+
 	for(let i = 0; i < items.length; ++i) {
-		fn(values[i]);
+		fn(value[i]);
 	}
 };
 
