@@ -1,6 +1,15 @@
 {
   "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "bun build src/index.js --outdir build --minify --target bun",
+    "compare:string": "bun build compare/string.js --outdir build --minify --target node && wc -c build/string.js && cat build/string.js",
+    "compare:object": "bun build compare/object.js --outdir build --minify --target node && wc -c build/object.js && cat build/object.js",
+    "benchmark:exec": "bun benchmarks/exec.js",
+    "benchmark:init": "bun benchmarks/init.js"
+  },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/benchmark": "2.1.5",
     "benchmark": "2.1.4",
     "valibot": "0.30.0",
