@@ -6,11 +6,11 @@
 
 ```js
 const adult = and([
-    tNumber,
-    nInt,
+    number,
+    int,
     gte(18)
 ]);
 
 adult(24);  // undefined
-adult(5);   // TypeError: 0 is not a function
+adult(5);   // { message: "< 18" }
 ```

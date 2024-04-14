@@ -1,0 +1,14 @@
+{
+  "compileroptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext", "webworker"],
+    "moduleresolution": "node",
+    "forceconsistentcasinginfilenames": true,
+    "esmoduleinterop": true,
+    "isolatedmodules": true,
+    "strict": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
