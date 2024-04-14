@@ -38,7 +38,7 @@
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --skipLibCheck --declarationDir build",
     "build:stats": "bun run stats.ts",
     "build:clean": "rm -rf build",
-    "test": "bun test --coverage",
+    "test": "bun test --coverage ./src/**/test.ts",
     "check": "bunx @biomejs/biome check --apply ./"
   },
   "devDependencies": {
