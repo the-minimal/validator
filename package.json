@@ -34,7 +34,7 @@
     "prepublishOnly": "bun run test && bun run build",
     "release": "release-it",
     "build": "bun run build:clean && bun run build:code && bun run build:types && bun run build:stats",
-    "build:code": "bun run build.ts && tsc src/index.ts --declaration --emitDeclarationOnly --skipLibCheck --declarationDir build",
+    "build:code": "bun run build.ts",
     "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --skipLibCheck --declarationDir build",
     "build:stats": "bun run stats.ts",
     "build:clean": "rm -rf build",
