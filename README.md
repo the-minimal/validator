@@ -1,4 +1,4 @@
-![Validator image](./docs/the-minimal-validator.jpg)
+![Validator image](https://github.com/the-minimal/validator/blob/main/docs/the-minimal-validator.jpg?raw=true)
 
 # @the-minimal/validator
 
