@@ -9,7 +9,11 @@
 		"ignore": ["node_modules/**/*.js"],
 		"rules": {
 			"suspicious": {
-				"useValidTypeof": "off"
+				"useValidTypeof": "off",
+				"noExplicitAny": "off"
+			},
+			"complexity": {
+				"useArrowFunction": "off"
 			}
 		}
 	},

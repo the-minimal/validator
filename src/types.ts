@@ -1,3 +1,9 @@
+export type Nullable<$Type> = $Type | null;
+
+export type Optional<$Type> = $Type | undefined;
+
+export type Nullish<$Type> = $Type | null | undefined;
+
 export type Assertion<$Value = unknown> = (
 	value: unknown,
 ) => asserts value is $Value;
@@ -25,3 +31,5 @@ export type InferAssertionValues<$Assertions extends Array<Assertion>> = {
 		? $Value
 		: never;
 };
+
+export type Class<$Type = unknown> = { new (): $Type };

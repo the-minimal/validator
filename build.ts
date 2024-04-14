@@ -7,6 +7,5 @@ await build({
 	splitting: false,
 	target: "browser",
 	format: "esm",
-  sourcemap: "external"
+	sourcemap: "external",
 });
-
