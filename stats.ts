@@ -2,11 +2,11 @@ import { readdir } from "node:fs/promises";
 import { file, gzipSync } from "bun";
 
 (async () => {
-  const outdir ="./build";
+  const outdir ="./dist";
   const outFiles = await readdir(outdir);
-  const filesLegth = outFiles.length;
+  const filesLength = outFiles.length;
 
-  for (let i = 0; i < filesLegth; ++i) {
+  for (let i = 0; i < filesLength; ++i) {
     const fileName = outFiles[i];
 
     if(fileName.endsWith(".js")) {

@@ -2,7 +2,7 @@ import { build } from "bun";
 
 await build({
 	entrypoints: ["src/index.ts"],
-	outdir: "./build",
+	outdir: "./dist",
 	minify: true,
 	splitting: false,
 	target: "browser",

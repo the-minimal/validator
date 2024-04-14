@@ -1,7 +1,7 @@
 .DS_Store
 .idea
 
-build
+dist
 node_modules
 
 bun.lockb

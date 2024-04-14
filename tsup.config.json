@@ -1,0 +1,10 @@
+{
+  "entry": ["src/index.ts"],
+  "format": "esm",
+  "outDir": "./dist",
+  "clean": false,
+  "dts": {
+    "only": true
+  },
+  "platform": "browser"
+}

@@ -6,12 +6,12 @@
   "author": "Miroslav Vršecký <yamiteru@icloud.com>",
   "description": "Minimal validation library in TypeScript",
   "source": "src/index.ts",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "build/*.js",
-    "build/*.map",
-    "build/*.ts"
+    "dist/*.js",
+    "dist/*.map",
+    "dist/*.ts"
   ],
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "release": "release-it",
     "build": "bun run build:clean && bun run build:code && bun run build:types && bun run build:stats",
     "build:code": "bun run build.ts",
-    "build:types": "tsc src/index.ts --declaration --emitDeclarationOnly --skipLibCheck --declarationDir build",
+    "build:types": "tsup",
     "build:stats": "bun run stats.ts",
     "build:clean": "rm -rf build",
     "test": "bun test --coverage ./src/**/test.ts",
@@ -44,7 +44,8 @@
   "devDependencies": {
     "@biomejs/biome": "1.6.4",
     "@types/bun": "latest",
-    "release-it": "17.2.0"
+    "release-it": "17.2.0",
+    "tsup": "8.0.2"
   },
   "peerDependencies": {
     "typescript": "5.4.5"
