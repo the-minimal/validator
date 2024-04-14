@@ -20,13 +20,13 @@ Compared to most other data validation libraries @the-minimal/validator doesn't 
 
 It has one focus and that is data validation.
 
-The reasoning is that in most cases we control both the sender and receiver so validations such as `age: number().or(coerce.number())` are simply not necessary since we can make sure we send only one type (`number`) to the receiver.
+The reasoning is that in most cases we control both the sender and receiver so validations such as `count: number().or(coerce.number()).transform((v) => v * 2)` are simply not necessary since we can make sure we send only one type (`number`) to the receiver.
 
 In other words we rely on the third party to normalize data before it gets send.
 
 Once the data is validated it can then be manually mapped into a different shape if needed.
 
-However this is generally frowned upon because if we immediately map input data into a different shape then the sended could have just send the data in the desired shape instead.
+However, this is generally frowned upon because if we immediately map input data into a different shape then the sended could have just send the data in the desired shape instead.
 
 ## Example
 
