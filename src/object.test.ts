@@ -1,19 +1,21 @@
-import { it, expect } from "bun:test";
-import { boolean, number, string } from "./type";
+import { expect, it } from "bun:test";
 import { object } from "./object";
+import { boolean, number, string } from "./type";
 
 const validation = object({
 	name: string,
 	age: number,
-	admin: boolean
+	admin: boolean,
 });
 
 it("should not throw if value is valid", () => {
-	expect(() => validation({
-		name: "yamiteru",
-		age: 26,
-		admin: true
-	})).not.toThrow();
+	expect(() =>
+		validation({
+			name: "yamiteru",
+			age: 26,
+			admin: true,
+		}),
+	).not.toThrow();
 });
 
 it("should throw if value is null", () => {
@@ -25,16 +27,20 @@ it("should throw if value is not object", () => {
 });
 
 it("should throw if some keys are missing", () => {
-	expect(() => validation({
-		name: "yamiteru",
-		age: 26,
-	})).toThrow();
+	expect(() =>
+		validation({
+			name: "yamiteru",
+			age: 26,
+		}),
+	).toThrow();
 });
 
 it("should throw if some values are invalid", () => {
-	expect(() => validation({
-		name: "yamiteru",
-		age: 26,
-		admin: "yes"
-	})).toThrow();
+	expect(() =>
+		validation({
+			name: "yamiteru",
+			age: 26,
+			admin: "yes",
+		}),
+	).toThrow();
 });

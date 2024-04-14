@@ -1,7 +1,7 @@
 import { error } from "./error";
 
 const type = <$Type>(type: string) => {
-	return function (value: unknown): asserts value is $Type { 
+	return (value: unknown): asserts value is $Type => {
 		typeof value !== type && error(`Not a ${type}`);
 	};
 };

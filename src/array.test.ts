@@ -1,4 +1,4 @@
-import { it, expect } from "bun:test";
+import { expect, it } from "bun:test";
 import { array } from "./array";
 import { number } from "./type";
 

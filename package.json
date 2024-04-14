@@ -1,13 +1,46 @@
 {
   "name": "@the-minimal/validator",
-  "sideEffects": false,
   "type": "module",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Miroslav Vršecký <yamiteru@icloud.com>",
+  "description": "Minimal validation library in TypeScript",
+  "source": "src/index.ts",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*.js",
+    "dist/*.map",
+    "dist/*.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-minimal/validator.git",
+    "directory": "src"
+  },
+  "keywords": [
+    "data-validation",
+    "data-validator",
+    "validation",
+    "validator",
+    "javascript",
+    "typescript"
+  ],
+  "homepage": "https://github.com/the-minimal/validator",
+  "bugs": {
+    "url": "https://github.com/the-minimal/validator/issues"
+  },
   "scripts": {
-    "build": "bun run build.ts",
-    "test": "bun test --coverage"
+    "prepublishOnly": "bun run test && bun run build",
+    "release": "release-it",
+    "build": "bun run build.ts && tsc --emitDeclarationOnly",
+    "test": "bun test --coverage",
+    "check": "bunx @biomejs/biome check --apply ./"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@biomejs/biome": "1.6.4",
+    "release-it": "17.2.0"
   },
   "peerDependencies": {
     "typescript": "5.4.5"

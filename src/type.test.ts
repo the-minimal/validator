@@ -1,4 +1,4 @@
-import { it, expect } from "bun:test";
+import { expect, it } from "bun:test";
 import { boolean, number, string } from "./type";
 
 it("should not throw on valid types", () => {

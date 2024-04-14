@@ -7,8 +7,9 @@
     "forceconsistentcasinginfilenames": true,
     "esmoduleinterop": true,
     "isolatedmodules": true,
-    "strict": true
+    "strict": true,
+    "outdir": "./build"
   },
-  "include": ["src"],
+  "include": ["src", "examples"],
   "exclude": ["node_modules"]
 }

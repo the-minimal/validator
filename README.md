@@ -1,54 +1,26 @@
-# @the-minimal/validator
+Minimal validation library in TypeScript.
 
-Opinionated low-`level | size | overhead` data validation library.
+# Install
 
-## Features
-
-- [Data validation](./docs/data-validation.md)
-- [Opt-in error handling](./docs/error-handling.md)
-- [Opt-in schema modifications](./docs/schema-modifications.md)
-- [No data transformation](./docs/data-transformation.md)
-- [No high-level primitives](./docs/high-level-primitives.md)
-- [No async](./docs/async.md)
-- [No runtime compilation](./docs/runtime-compilation.md)
-- Very small
-- Very fast
-
-## Example
-
-```js
-const user = object({
-	name: string,
-	email: and([
-		string,
-		match(emailRegex)
-	]),
-	password: and([
-		string,
-		rangeLength(8, 16),
-		match(passwordRegex)
-	]),
-	friends: lazy(() => array(user)),
-	role: enum(["USER", "ADMIN"]),
-	age: and([
-		number,
-		int,
-		rangeValue(0, 150)
-	])
-});
+```bash
+yarn add @the-minimal/validator
 ```
 
----
+# Features
 
-## Very small
-
-- The whole library is 500 bytes
-- No classes so download only what you need
-- See more in [size comparison](./size-comparison.md)
-
-## Very fast
-
-- No classes so JS parses only what you need
-- Validations return simple JS functions (no special object with schema attributes)
-- No unnecessary try/catch and error stack/message building
-- See more in [speed comparison](./speed-comparison.md)
+- **Simple**
+	- Validation only
+- **Small**
+	- 500 bytes bundle
+	- Three-shakeable
+- **Fast**
+    - Parsing
+    - Initialization
+    - Runtime execution
+    - Type checking
+- **No stack traces by default**
+- **No nested error messages by default**
+- **No schema modifications**
+- **No async**
+- **No code generation**
+- **No dependencies**
