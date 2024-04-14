@@ -1,9 +1,9 @@
 import { expect, it } from "bun:test";
 import { number } from "@assertions/number";
 import { string } from "@assertions/string";
-import { either } from "./index";
+import { or2 } from "./index";
 
-const validation = either(number, string);
+const validation = or2(number, string);
 
 it("should not throw if one of validations is valid", () => {
 	expect(() => validation(1)).not.toThrow();

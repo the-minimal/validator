@@ -1,7 +1,7 @@
 import { expect, it } from "bun:test";
 import { assert } from "@assertions/assert";
 import { number } from "@assertions/number";
-import { both } from "./index";
+import { and2 } from "./index";
 
 const gte = (max: number) =>
 	assert(
@@ -9,7 +9,7 @@ const gte = (max: number) =>
 		() => `Not greater than or equal to ${max}`,
 	);
 
-const validation = both(number, gte(2));
+const validation = and2(number, gte(2));
 
 it("should not throw if both validations are valid", () => {
 	expect(() => validation(2)).not.toThrow();

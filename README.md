@@ -7,7 +7,8 @@ Minimalist TypeScript data validation library with great focus on size and perfo
 ## Highlights
 
 - Fully type safe
-- 500 bytes bundle
+- Fully tree-shakable
+- 1.3 KB bundle
 - Minimal overhead
 - Validation only
 - No dependencies
@@ -30,12 +31,12 @@ However this is generally frowned upon because if we immediately map input data 
 ## Example
 
 ```ts
-import { object, and, string, email, minLength } from "@the-minimal/validator"; // 350 bytes
+import { object, and2, string, email, minLength } from "@the-minimal/validator"; // 350 bytes
 
 // Creates login schema with email and password
 const login = object({
-  email: and([string, email]),
-  password: and([string, minLength(8)]),
+  email: and2(string, email),
+  password: and2(string, minLength(8)),
 });
 
 // Throws error for `email`

@@ -8,6 +8,8 @@ import { file, gzipSync, write } from "bun";
       const path = `./src/${dir}`;
       const list = await readdir(path, { withFileTypes: true });
 
+      list.sort((a, b) => a.name.localeCompare(b.name));
+
       let content = "";
       for (const file of list) {
           if (file.isDirectory()) {
