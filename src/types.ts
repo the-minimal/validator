@@ -4,7 +4,7 @@ export type Assertion<$Value = unknown> = (
 
 export type FakeAssertion = (value: unknown) => unknown;
 
-export type Message = (error: unknown, value: unknown) => unknown;
+export type Message = (error: any, value: unknown) => unknown;
 
 export type Schema = Record<string, Assertion>;
 

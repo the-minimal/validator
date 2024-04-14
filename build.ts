@@ -1,29 +1,12 @@
-import { readdir } from "node:fs/promises";
-import { build, deflateSync, file, gzipSync } from "bun";
-
-const outdir = "./build";
+import { build } from "bun";
 
 await build({
 	entrypoints: ["src/index.ts"],
-	outdir,
+	outdir: "./build",
 	minify: true,
 	splitting: false,
 	target: "browser",
 	format: "esm",
+  sourcemap: "external"
 });
 
-const outFiles = await readdir(outdir);
-const filesLegth = outFiles.length;
-
-for (let i = 0; i < filesLegth; ++i) {
-	const fileName = outFiles[i];
-	const fileHandler = file(`${outdir}/${fileName}`);
-	const arrBuffer = await fileHandler.arrayBuffer();
-	const raw = new Uint8Array(arrBuffer);
-	const gzip = gzipSync(raw);
-	const deflate = deflateSync(raw);
-
-	console.log(
-		`${fileName} - ${raw.byteLength} | ${gzip.byteLength} | ${deflate.byteLength}`,
-	);
-}

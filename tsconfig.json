@@ -4,11 +4,11 @@
     "module": "esnext",
     "lib": ["esnext", "webworker"],
     "moduleresolution": "node",
+    "skipLibCheck": true,
     "forceconsistentcasinginfilenames": true,
     "esmoduleinterop": true,
     "isolatedmodules": true,
-    "strict": true,
-    "outdir": "./build"
+    "strict": true
   },
   "include": ["src", "examples"],
   "exclude": ["node_modules"]
