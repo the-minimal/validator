@@ -33,11 +33,12 @@
   "scripts": {
     "prepublishOnly": "bun run check && bun run build && bun run test",
     "release": "release-it",
-    "build": "bun run build:clean && bun run build:code && bun run build:types && bun run build:stats",
-    "build:code": "bun run build.ts",
+    "build": "bun run build:imports && bun run build:clean && bun run build:code && bun run build:types && bun run build:stats",
+    "build:code": "bun run scripts/build.ts",
     "build:types": "tsup",
-    "build:stats": "bun run stats.ts",
+    "build:stats": "bun run scripts/stats.ts",
     "build:clean": "rm -rf build",
+    "build:imports": "bun run scripts/imports.ts",
     "test": "bun test --coverage ./src/**/test.ts",
     "check": "bunx @biomejs/biome check --apply ./"
   },
