@@ -1,5 +1,5 @@
 import { assert } from "@assertions/assert";
-import type { Assertion } from "@types";
+import type { Assertion } from "@the-minimal/types";
 
 export const length = (value: number): Assertion<string | unknown[]> =>
 	assert((v) => (v as string | unknown[]).length === value, "length", value);

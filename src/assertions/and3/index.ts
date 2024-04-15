@@ -1,4 +1,4 @@
-import type { Assertion } from "@types";
+import type { Assertion } from "@the-minimal/types";
 
 export const and3 = <$Value1, $Value2, $Value3>(
 	fn1: Assertion<$Value1>,

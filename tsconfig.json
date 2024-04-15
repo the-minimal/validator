@@ -14,13 +14,9 @@
       "@assertions/*": [
         "assertions/*"
       ],
-      "@utils/*": ["utils/*"],
+      "@constants": ["constants.ts"],
       "@types": ["types.ts"]
-    },
-    "plugins": [
-      { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
-    ]
+    }
   },
   "include": ["src", "examples"],
   "exclude": ["node_modules"]

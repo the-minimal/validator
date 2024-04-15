@@ -4,14 +4,22 @@
 
 Minimalist TypeScript data validation library with great focus on size and performance.
 
+## Install
+
+```bash
+yarn add @the-minimal/validator
+```
+
 ## Highlights
 
 - Fully type safe
 - Fully tree-shakable
-- 1.2 KB bundle
+- 1.3 KB bundle
 - Minimal overhead
 - Validation only
-- No dependencies
+- 2 in-house dependencies
+  - @the-minimal/types
+  - @the-minimal/error
 - No compilation
 
 ## Concept

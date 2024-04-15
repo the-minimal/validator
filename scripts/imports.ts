@@ -1,8 +1,8 @@
 import { readdir } from "node:fs/promises";
-import { file, gzipSync, write } from "bun";
+import { write } from "bun";
 
 (async () => {
-  const dirs = ["assertions", "utils"];
+  const dirs = ["assertions"];
 
   for(const dir of dirs) {
       const path = `./src/${dir}`;

@@ -1,5 +1,6 @@
-import type { Assertion, Optional } from "@types";
-import { error } from "@utils/error";
+import { ERROR_PREFIX } from "@constants";
+import { error } from "@the-minimal/error";
+import type { Assertion, Optional } from "@the-minimal/types";
 
 export const optional = <$Value>(
 	assertion: Assertion<$Value>,
@@ -8,7 +9,7 @@ export const optional = <$Value>(
 		try {
 			assertion(value);
 		} catch {
-			value !== undefined && error("optional", value);
+			value !== undefined && error(`${ERROR_PREFIX}:optional`, value);
 		}
 	};
 };

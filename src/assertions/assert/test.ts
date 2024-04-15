@@ -1,10 +1,7 @@
 import { expect, it } from "bun:test";
 import { assert } from "./index";
 
-const validation = assert(
-	(value) => value === 1,
-	() => "Not equal to 1",
-);
+const validation = assert((value) => value === 1, "test");
 
 it("should not throw if predicate is true", () => {
 	expect(() => validation(1)).not.toThrow();

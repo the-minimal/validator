@@ -1,12 +1,13 @@
 import { isArray } from "@assertions/isArray";
 import { length } from "@assertions/length";
-import type { Assertion, FakeAssertion, InferAssertionValues } from "@types";
+import type { Assertion } from "@the-minimal/types";
+import type { FakeAssertion, InferAssertionValues } from "@types";
 
-export const tuple = <$Tuple extends Assertion[]>(
+export const tuple = <$Tuple extends Array<Assertion<unknown>>>(
 	tuple: $Tuple,
 ): Assertion<InferAssertionValues<$Tuple>> => {
 	const l = tuple.length;
-	const tupleLength: Assertion = length(l);
+	const tupleLength: Assertion<unknown> = length(l);
 
 	return (value) => {
 		isArray(value);

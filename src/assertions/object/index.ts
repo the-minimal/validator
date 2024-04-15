@@ -1,6 +1,6 @@
 import { isObject } from "@assertions/isObject";
-import type { Assertion, FakeAssertion, InferSchema, Schema } from "@types";
-import { error } from "@utils/error";
+import type { Assertion } from "@the-minimal/types";
+import type { FakeAssertion, InferSchema, Schema } from "@types";
 
 export const object = <$Schema extends Schema>(
 	schema: $Schema,
