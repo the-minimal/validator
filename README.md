@@ -8,7 +8,7 @@ Minimalist TypeScript data validation library with great focus on size and perfo
 
 - Fully type safe
 - Fully tree-shakable
-- 1.3 KB bundle
+- 1.4 KB bundle
 - Minimal overhead
 - Validation only
 - No dependencies

@@ -8,7 +8,7 @@ export const nullish = <$Value>(
 		try {
 			assertion(value);
 		} catch {
-			value !== null && value !== undefined && error("Not nullish");
+			value !== null && value !== undefined && error("nullish", value);
 		}
 	};
 };

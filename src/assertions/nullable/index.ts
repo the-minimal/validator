@@ -8,7 +8,7 @@ export const nullable = <$Value>(
 		try {
 			assertion(value);
 		} catch {
-			value !== null && error("Not null");
+			value !== null && error("nullable", value);
 		}
 	};
 };

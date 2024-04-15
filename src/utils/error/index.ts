@@ -1,3 +1,3 @@
-export const error = (message: string) => {
-	throw { message };
+export const error = (reason: string, value: unknown, props?: unknown) => {
+	throw { reason, value, props };
 };

@@ -1,15 +1,18 @@
+import { isArray } from "@assertions/isArray";
+import { length } from "@assertions/length";
 import type { Assertion, FakeAssertion, InferAssertionValues } from "@types";
-import { error } from "@utils/error";
 
 export const tuple = <$Tuple extends Assertion[]>(
 	tuple: $Tuple,
 ): Assertion<InferAssertionValues<$Tuple>> => {
-	const length = tuple.length;
+	const l = tuple.length;
+	const tupleLength: Assertion = length(l);
 
 	return (value) => {
-		!Array.isArray(value) && error("Not an array");
+		isArray(value);
+		tupleLength(value);
 
-		for (let i = 0; i < length; ++i) {
+		for (let i = 0; i < l; ++i) {
 			(tuple[i] as FakeAssertion)((value as unknown[])[i]);
 		}
 	};

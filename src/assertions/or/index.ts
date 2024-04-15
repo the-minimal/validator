@@ -14,6 +14,6 @@ export const or = <$Assertions extends Array<Assertion>>(
 			} catch {}
 		}
 
-		error("No assertion satisfied");
+		error("or", value);
 	};
 };

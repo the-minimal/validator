@@ -8,7 +8,7 @@ export const optional = <$Value>(
 		try {
 			assertion(value);
 		} catch {
-			value !== undefined && error("Not undefined");
+			value !== undefined && error("optional", value);
 		}
 	};
 };

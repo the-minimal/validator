@@ -3,5 +3,5 @@ import type { Assertion, ObjectUnknown } from "@types";
 
 export const isObject: Assertion<ObjectUnknown> = assert(
 	(v) => v !== null && typeof v === "object",
-	() => "Not an object",
+	"isObject",
 );
