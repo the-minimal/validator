@@ -8,6 +8,8 @@ type Pretty<T> = {
 	[K in keyof T]: T[K];
 } & {};
 
+export type Predicate<$Value = unknown> = (value: $Value) => boolean;
+
 export type ObjectUnknown = Record<string | number | symbol, unknown>;
 
 export type FunctionUnknown = (...args: unknown[]) => unknown;
@@ -18,7 +20,7 @@ export type Assertion<$Value = unknown> = (
 
 export type FakeAssertion = (value: unknown) => unknown;
 
-export type Message = (error: any, value: unknown) => unknown;
+export type Message = (error: any, value: unknown) => string;
 
 export type Schema = Record<string, Assertion>;
 

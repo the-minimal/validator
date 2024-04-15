@@ -8,7 +8,7 @@ Minimalist TypeScript data validation library with great focus on size and perfo
 
 - Fully type safe
 - Fully tree-shakable
-- 1.4 KB bundle
+- 1.2 KB bundle
 - Minimal overhead
 - Validation only
 - No dependencies
@@ -45,3 +45,7 @@ login({ email: '', password: '' });
 // Asserts data as { email: string; password: string }
 login({ email: 'jane@example.com', password: '12345678' });
 ```
+
+## Validators
+
+TODO: automatically generate
