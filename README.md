@@ -12,29 +12,25 @@ yarn add @the-minimal/validator
 
 ## Highlights
 
-- Fully type safe
-- Fully tree-shakable
-- 1.3 KB bundle
-- Minimal overhead
-- Validation only
-- 2 in-house dependencies
-  - @the-minimal/types
-  - @the-minimal/error
-- No compilation
+- Fully type safe with static type inference
+- 1.3 KB bundle and fully tree-shakeable
+- Minimal runtime and type overhead
+- Validation only with no compilation
+- Only 2 minimal in-house dependencies
+  - [@the-minimal/types](https://github.com/the-minimal/types)
+  - [@the-minimal/error](https://github.com/the-minimal/error)
 
-## Concept
+## Philosophy
 
-Compared to most other data validation libraries @the-minimal/validator doesn't support data transformations or coercions.
+Validator doesn't support data transformations or coercions.
 
-It has one focus and that is data validation.
+We assume that data is already transformed by the sender.
 
-The reasoning is that in most cases we control both the sender and receiver so validations such as `count: number().or(coerce.number()).transform((v) => v * 2)` are simply not necessary since we can make sure we send only one type (`number`) to the receiver.
+We assume that you control both the sender and receiver.
 
-In other words we rely on the third party to normalize data before it gets send.
+This allows us to make the library much smaller and faster.
 
-Once the data is validated it can then be manually mapped into a different shape if needed.
-
-However, this is generally frowned upon because if we immediately map input data into a different shape then the sended could have just send the data in the desired shape instead.
+> If you want to transform data during or right after validation then you should make sure that the sender sends already transformed data instead
 
 ## Example
 
@@ -53,7 +49,3 @@ login({ email: '', password: '' });
 // Asserts data as { email: string; password: string }
 login({ email: 'jane@example.com', password: '12345678' });
 ```
-
-## Validators
-
-TODO: automatically generate
