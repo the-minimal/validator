@@ -1,4 +1,4 @@
-import { assert } from "@validators/assert";
+import { validate } from "@validators/validate";
 
 export const regex = (pattern: RegExp) =>
-	assert((v) => pattern.test(v as any), "regex", pattern);
+	validate<string>((v) => pattern.test(v as any), "regex", pattern);

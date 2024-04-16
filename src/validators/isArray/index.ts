@@ -1,7 +1,4 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const isArray: Assertion<Array<unknown>> = assert(
-	Array.isArray,
-	"isArray",
-);
+export const isArray = validate<Array<unknown>>(Array.isArray, "isArray");

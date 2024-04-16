@@ -1,5 +1,5 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const startsWith = (value: string): Assertion<string> =>
-	assert((v) => (v as string).startsWith(value), "startsWith", value);
+export const startsWith = (value: string) =>
+	validate<string>((v) => (v as string).startsWith(value), "startsWith", value);

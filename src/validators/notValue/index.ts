@@ -1,5 +1,5 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const notValue = (value: number): Assertion<any> =>
-	assert((v) => (v as any) !== value, "notValue", value);
+export const notValue = (value: number) =>
+	validate<unknown>((v) => (v as any) !== value, "notValue", value);

@@ -1,17 +1,14 @@
 import { ERROR_PREFIX } from "@constants";
 import { error } from "@the-minimal/error";
-import type { Assertion, Nullish } from "@the-minimal/types";
+import type { Nullish, Validation } from "@the-minimal/types";
 
-export const nullish = <$Value>(
-	assertion: Assertion<$Value>,
-): Assertion<Nullish<$Value>> => {
-	return (value) => {
+export const nullish = <$Value>(validation: Validation<$Value>) =>
+	((value) => {
 		try {
-			assertion(value);
+			validation(value);
 		} catch {
 			value !== null &&
 				value !== undefined &&
 				error(`${ERROR_PREFIX}:nullish`, value);
 		}
-	};
-};
+	}) as Validation<Nullish<$Value>>;

@@ -1,4 +1,4 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const nan: Assertion<number> = assert(Number.isNaN, "nan");
+export const nan = validate<number>(Number.isNaN, "nan");

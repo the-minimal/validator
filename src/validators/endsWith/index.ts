@@ -1,5 +1,4 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import { validate } from "@validators/validate";
 
-export const endsWith = (value: string): Assertion<string> =>
-	assert((v) => (v as string).endsWith(value), "endsWith", value);
+export const endsWith = (value: string) =>
+	validate<string>((v) => (v as string).endsWith(value), "endsWith", value);

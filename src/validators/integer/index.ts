@@ -1,4 +1,4 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const integer: Assertion<number> = assert(Number.isInteger, "integer");
+export const integer = validate<number>(Number.isInteger, "integer");

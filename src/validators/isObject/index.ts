@@ -1,8 +1,7 @@
-import type { Assertion } from "@the-minimal/types";
 import type { ObjectUnknown } from "@types";
-import { assert } from "@validators/assert";
+import { validate } from "@validators/validate";
 
-export const isObject: Assertion<ObjectUnknown> = assert(
+export const isObject = validate<ObjectUnknown>(
 	(v) => v !== null && typeof v === "object",
 	"isObject",
 );

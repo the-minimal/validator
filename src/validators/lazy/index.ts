@@ -1,9 +1,9 @@
-import type { Assertion } from "@the-minimal/types";
-import type { FakeAssertion } from "@types";
+import type { Validation } from "@the-minimal/types";
+import type { FakeValidation } from "@types";
 
-export const lazy = <$Assertion extends Assertion<unknown>>(
-	fn: (value: unknown) => $Assertion,
+export const lazy = <$Validation extends Validation<unknown>>(
+	fn: (value: unknown) => $Validation,
 ) =>
 	((value: unknown) => {
-		(fn(value) as FakeAssertion)(value);
-	}) as $Assertion;
+		(fn(value) as FakeValidation)(value);
+	}) as $Validation;

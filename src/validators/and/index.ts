@@ -1,14 +1,18 @@
-import type { Assertion } from "@the-minimal/types";
-import type { FakeAssertion, InferAssertionValues, Intersection } from "@types";
+import type { Validation } from "@the-minimal/types";
+import type {
+	FakeValidation,
+	InferValidationValues,
+	Intersection,
+} from "@types";
 
-export const and = <$Assertions extends Array<Assertion<unknown>>>(
-	fns: $Assertions,
-): Assertion<Intersection<InferAssertionValues<$Assertions>>> => {
+export const and = <$Validations extends Array<Validation<unknown>>>(
+	fns: $Validations,
+) => {
 	const length = fns.length;
 
-	return (value) => {
+	return ((value) => {
 		for (let i = 0; i < length; ++i) {
-			(fns[i] as FakeAssertion)(value);
+			(fns[i] as FakeValidation)(value);
 		}
-	};
+	}) as Validation<Intersection<InferValidationValues<$Validations>>>;
 };

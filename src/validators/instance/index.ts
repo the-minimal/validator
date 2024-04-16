@@ -1,5 +1,5 @@
-import type { Assertion, Class } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Class, Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const instance = <$Type>(cls: Class<$Type>): Assertion<$Type> =>
-	assert((value) => value instanceof cls, "instance", cls);
+export const instance = <$Type>(cls: Class<$Type>) =>
+	validate<$Type>((value) => value instanceof cls, "instance", cls);

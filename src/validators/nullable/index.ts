@@ -1,15 +1,12 @@
 import { ERROR_PREFIX } from "@constants";
 import { error } from "@the-minimal/error";
-import type { Assertion, Nullable } from "@the-minimal/types";
+import type { Nullable, Validation } from "@the-minimal/types";
 
-export const nullable = <$Value>(
-	assertion: Assertion<$Value>,
-): Assertion<Nullable<$Value>> => {
-	return (value: unknown) => {
+export const nullable = <$Value>(validation: Validation<$Value>) =>
+	((value: unknown) => {
 		try {
-			assertion(value);
+			validation(value);
 		} catch {
 			value !== null && error(`${ERROR_PREFIX}:nullable`, value);
 		}
-	};
-};
+	}) as Validation<Nullable<$Value>>;

@@ -11,9 +11,6 @@
 			"suspicious": {
 				"useValidTypeof": "off",
 				"noExplicitAny": "off"
-			},
-			"complexity": {
-				"useArrowFunction": "off"
 			}
 		}
 	},

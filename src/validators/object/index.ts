@@ -1,18 +1,18 @@
-import type { Assertion } from "@the-minimal/types";
-import type { FakeAssertion, InferSchema, Schema } from "@types";
+import type { Validation } from "@the-minimal/types";
+import type { FakeValidation, InferSchema, Schema } from "@types";
 import { isObject } from "@validators/isObject";
 
-export const object = <$Schema extends Schema>(
-	schema: $Schema,
-): Assertion<InferSchema<$Schema>> => {
+export const object = <$Schema extends Schema>(schema: $Schema) => {
 	const keys = Object.keys(schema);
 	const length = keys.length;
 
-	return (value) => {
+	return ((value) => {
 		isObject(value);
 
 		for (let i = 0; i < length; ++i) {
-			(schema as Record<string, FakeAssertion>)[keys[i]](value[keys[i] as any]);
+			(schema as Record<string, FakeValidation>)[keys[i]](
+				(value as any)[keys[i] as any],
+			);
 		}
-	};
+	}) as Validation<InferSchema<$Schema>>;
 };

@@ -1,5 +1,9 @@
-import type { Assertion } from "@the-minimal/types";
-import { assert } from "@validators/assert";
+import type { Validation } from "@the-minimal/types";
+import { validate } from "@validators/validate";
 
-export const includes = (value: string): Assertion<string | unknown[]> =>
-	assert((v) => (v as string | unknown[]).includes(value), "includes", value);
+export const includes = (value: string) =>
+	validate<string | unknown[]>(
+		(v) => (v as string | unknown[]).includes(value),
+		"includes",
+		value,
+	);

@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
-import { assert } from "./index";
+import { validate } from "./index";
 
-const validator = assert((value) => value === 1, "test");
+const validator = validate((value) => value === 1, "test");
 
 it("should not throw", () => {
 	expect(() => validator(1)).not.toThrow();

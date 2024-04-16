@@ -1,4 +1,4 @@
-import { assert } from "@validators/assert";
+import { validate } from "@validators/validate";
 
 export const options = <$Options extends unknown[]>(options: $Options) =>
-	assert((v) => options.includes(v), "options", options);
+	validate<$Options[number]>((v) => options.includes(v), "options", options);

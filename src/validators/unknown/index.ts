@@ -1,4 +1,4 @@
-import type { Assertion } from "@the-minimal/types";
+import type { Validation } from "@the-minimal/types";
 import { any } from "@validators/any";
 
-export const unknown: Assertion<unknown> = any;
+export const unknown = any as Validation<unknown>;

@@ -1,20 +1,20 @@
-import type { Assertion } from "@the-minimal/types";
-import type { FakeAssertion, InferAssertionValues } from "@types";
+import type { Validation } from "@the-minimal/types";
+import type { FakeValidation, InferValidationValues } from "@types";
 import { isArray } from "@validators/isArray";
 import { length } from "@validators/length";
 
-export const tuple = <$Tuple extends Array<Assertion<unknown>>>(
+export const tuple = <$Tuple extends Array<Validation<unknown>>>(
 	tuple: $Tuple,
-): Assertion<InferAssertionValues<$Tuple>> => {
+) => {
 	const l = tuple.length;
-	const tupleLength: Assertion<unknown> = length(l);
+	const tupleLength = length(l);
 
-	return (value) => {
+	return ((value) => {
 		isArray(value);
 		tupleLength(value);
 
 		for (let i = 0; i < l; ++i) {
-			(tuple[i] as FakeAssertion)((value as unknown[])[i]);
+			(tuple[i] as FakeValidation)((value as unknown[])[i]);
 		}
-	};
+	}) as Validation<InferValidationValues<$Tuple>>;
 };
