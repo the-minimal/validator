@@ -2,6 +2,7 @@ import type { InferValidation, Validation } from "@the-minimal/types";
 
 export type UnknownValidation = Validation<unknown>;
 
+// TODO: Fix the types
 export type Infer<
 	$SomeValidation extends
 		| UnknownValidation
