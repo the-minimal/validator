@@ -6,7 +6,10 @@ export default defineConfig({
   test: {
     isolate: true,
     coverage: {
-      provider: "v8"
+      provider: "v8",
+      include: ["src/**/index.ts"],
+      exclude: ["src/index.ts", "src/validators/index.ts"],
+      reporter: "json-summary"
     }
   },
 });

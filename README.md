@@ -12,10 +12,11 @@ yarn add @the-minimal/validator
 
 ## Highlights
 
-- Fully type safe with static type inference
-- 1.2 KB bundle and fully tree-shakeable
+- Basic synchronous validations
+- No compilation or code evaluation
+- Fully type safe with type inference
+- Fully tree-shakeable 1.2 KB bundle
 - Minimal runtime and type overhead
-- Validation only with no compilation
 - Only 2 minimal in-house dependencies
   - [@the-minimal/types](https://github.com/the-minimal/types)
   - [@the-minimal/error](https://github.com/the-minimal/error)
@@ -43,9 +44,9 @@ const login = object({
   password: and2(string, minLength(8)),
 });
 
-// Throws error for `email`
+// Throws error for email
 login({ email: '', password: '' });
 
-// Asserts data as { email: string; password: string }
+// Validates data as { email: string; password: string }
 login({ email: 'jane@example.com', password: '12345678' });
 ```
