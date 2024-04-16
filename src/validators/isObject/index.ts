@@ -1,4 +1,4 @@
-import type { ObjectUnknown } from "@types";
+import type { ObjectUnknown } from "@validators/isObject/types";
 import { validate } from "@validators/validate";
 
 export const isObject = validate<ObjectUnknown>(

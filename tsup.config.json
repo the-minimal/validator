@@ -1,10 +1,8 @@
 {
   "entry": ["src/index.ts"],
-  "format": "esm",
+  "format": ["esm", "cjs"],
   "outDir": "./dist",
-  "clean": false,
-  "dts": {
-    "only": true
-  },
-  "platform": "browser"
+  "clean": true,
+  "dts": true,
+  "minify": true
 }

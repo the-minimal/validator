@@ -1,6 +1,6 @@
 import { error, isError } from "@the-minimal/error";
 import type { Validation } from "@the-minimal/types";
-import type { Message } from "@types";
+import type { Message } from "@validators/expect/types";
 
 export const expect = <$Value>(fn: Validation<$Value>, message: Message) =>
 	((value: unknown) => {

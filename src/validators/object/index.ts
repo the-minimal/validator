@@ -1,6 +1,7 @@
 import type { Validation } from "@the-minimal/types";
-import type { FakeValidation, InferSchema, Schema } from "@types";
+import type { UnknownValidation } from "@types";
 import { isObject } from "@validators/isObject";
+import type { InferSchema, Schema } from "@validators/object/types";
 
 export const object = <$Schema extends Schema>(schema: $Schema) => {
 	const keys = Object.keys(schema);
@@ -10,7 +11,7 @@ export const object = <$Schema extends Schema>(schema: $Schema) => {
 		isObject(value);
 
 		for (let i = 0; i < length; ++i) {
-			(schema as Record<string, FakeValidation>)[keys[i]](
+			(schema as Record<string, UnknownValidation>)[keys[i]](
 				(value as any)[keys[i] as any],
 			);
 		}

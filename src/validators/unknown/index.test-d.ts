@@ -1,5 +1,5 @@
-import type { Validation } from "@the-minimal/types";
+import type { UnknownValidation } from "@types";
 import { unknown } from "@validators/unknown";
 import { assertType } from "vitest";
 
-assertType<Validation<unknown>>(unknown);
+assertType<UnknownValidation>(unknown);

@@ -1,33 +1,22 @@
-import type { Pretty, Validation } from "@the-minimal/types";
+import type { InferValidation, Validation } from "@the-minimal/types";
 
-export type ObjectUnknown = Record<string | number | symbol, unknown>;
+export type UnknownValidation = Validation<unknown>;
 
-export type FunctionUnknown = (...args: unknown[]) => unknown;
-
-export type FakeValidation = (value: unknown) => unknown;
-
-export type Message = (error: any, value: unknown) => string;
-
-export type Schema = Record<string, Validation<unknown>>;
-
-export type InferSchema<$Schema extends Schema> = Pretty<{
-	[$Key in keyof $Schema]: $Schema[$Key] extends Validation<infer $Value>
-		? $Value
-		: never;
-}>;
-
-export type Intersection<R extends unknown[]> = R extends [infer H, ...infer S]
-	? H & Intersection<S>
-	: R extends (infer T)[]
-		? T
-		: R;
-
-export type InferValidationValues<
-	$Validations extends Array<Validation<unknown>>,
-> = {
-	[$Key in keyof $Validations]: $Validations[$Key] extends Validation<
-		infer $Value
-	>
-		? $Value
-		: never;
-};
+export type Infer<
+	$SomeValidation extends
+		| UnknownValidation
+		| Array<UnknownValidation>
+		| Record<string, UnknownValidation>,
+> = $SomeValidation extends Validation<infer $Type>
+	? $Type
+	: $SomeValidation extends Array<infer $Validation>
+		? $Validation extends Validation<infer $Type>
+			? $Type
+			: never
+		: $SomeValidation extends Record<string, UnknownValidation>
+			? {
+					[$Key in keyof $SomeValidation]: InferValidation<
+						$SomeValidation[$Key]
+					>;
+				}
+			: never;

@@ -1,9 +1,12 @@
 import type { Validation } from "@the-minimal/types";
-import type { FakeValidation, InferValidationValues } from "@types";
+import type { Infer, UnknownValidation } from "@types";
 import { isArray } from "@validators/isArray";
 import { length } from "@validators/length";
 
-export const tuple = <const $Tuple extends Array<Validation<unknown>>>(
+export const tuple = <
+	const $Tuple extends Array<UnknownValidation>,
+	$Infered = Infer<$Tuple>,
+>(
 	tuple: $Tuple,
 ) => {
 	const l = tuple.length;
@@ -14,7 +17,7 @@ export const tuple = <const $Tuple extends Array<Validation<unknown>>>(
 		tupleLength(value);
 
 		for (let i = 0; i < l; ++i) {
-			(tuple[i] as FakeValidation)((value as unknown[])[i]);
+			(tuple[i] as UnknownValidation)((value as unknown[])[i]);
 		}
-	}) as Validation<InferValidationValues<$Tuple>>;
+	}) as Validation<$Infered extends Array<unknown> ? $Infered[number] : never>;
 };

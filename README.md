@@ -13,7 +13,7 @@ yarn add @the-minimal/validator
 ## Highlights
 
 - Fully type safe with static type inference
-- 1.3 KB bundle and fully tree-shakeable
+- 1.2 KB bundle and fully tree-shakeable
 - Minimal runtime and type overhead
 - Validation only with no compilation
 - Only 2 minimal in-house dependencies
@@ -35,7 +35,7 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-import { object, and2, string, email, minLength } from "@the-minimal/validator"; // 350 bytes
+import { object, and2, string, email, minLength } from "@the-minimal/validator";
 
 // Creates login schema with email and password
 const login = object({

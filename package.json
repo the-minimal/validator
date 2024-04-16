@@ -5,13 +5,23 @@
   "license": "MIT",
   "author": "Miroslav Vršecký <yamiteru@icloud.com>",
   "description": "Minimalist TypeScript data validation library with great focus on size and performance",
-  "source": "src/index.ts",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "sideEffects": false,
   "files": [
-    "dist/*.js",
-    "dist/*.map",
-    "dist/*.ts"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -33,11 +43,8 @@
   "scripts": {
     "prepublishOnly": "bun run check && bun run build && bun run test:run",
     "release": "release-it",
-    "build": "bun run build:imports && bun run build:clean && bun run build:code && bun run build:types && bun run build:stats",
-    "build:code": "bun run scripts/build.ts",
-    "build:types": "tsup",
+    "build": "bun run build:imports && tsup && bun run build:stats",
     "build:stats": "bun run scripts/stats.ts",
-    "build:clean": "rm -rf build",
     "build:imports": "bun run scripts/imports.ts",
     "test:run": "vitest run --typecheck",
     "test:watch": "vitest",
