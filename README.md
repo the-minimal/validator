@@ -57,7 +57,7 @@ login({ email: 'jane@example.com', password: '12345678' });
 ## API
 
 | Function                                             | Description                                                       |
-|------------------------------------------------------|-------------------------------------------------------------------|
+|:-----------------------------------------------------|:------------------------------------------------------------------|
 | [`and`](./src/validators/and/index.ts)               | Checks if value passes all validators                             |
 | [`and2`](./src/validators/and2/index.ts)             | Checks if value passes 2 validators                               |
 | [`and3`](./src/validators/and3/index.ts)             | Checks if value passes 3 validators                               |
