@@ -1,9 +1,8 @@
-import type { Validation } from "@the-minimal/types";
 import { validate } from "@validators/validate";
 
-export const includes = (value: string) =>
-	validate<string | unknown[]>(
-		(v) => (v as string | unknown[]).includes(value),
+export const includes = <$Type extends string | Array<unknown>>(value: $Type) =>
+	validate<$Type | Array<$Type>>(
+		(v) => (v as $Type | Array<$Type>).includes(value as any),
 		"includes",
 		value,
 	);

@@ -1,7 +1,7 @@
 import { ERROR_PREFIX } from "@constants";
 import { error } from "@the-minimal/error";
 import type { Validation } from "@the-minimal/types";
-import type { FakeValidation } from "@types";
+import type { FakeValidation, InferValidationValues } from "@types";
 
 export const or = <$Validations extends Array<Validation<unknown>>>(
 	fns: $Validations,
@@ -17,5 +17,5 @@ export const or = <$Validations extends Array<Validation<unknown>>>(
 		}
 
 		error(`${ERROR_PREFIX}:or`, value);
-	}) as Validation<$Validations[number]>;
+	}) as Validation<InferValidationValues<$Validations>[number]>;
 };

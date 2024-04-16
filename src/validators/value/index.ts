@@ -1,4 +1,4 @@
 import { validate } from "@validators/validate";
 
-export const value = (value: number) =>
-	validate<unknown>((v) => (v as any) === value, "value", value);
+export const value = <$Type>(value: $Type) =>
+	validate<$Type>((v) => (v as $Type) === value, "value", value);

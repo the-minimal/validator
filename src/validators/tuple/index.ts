@@ -3,7 +3,7 @@ import type { FakeValidation, InferValidationValues } from "@types";
 import { isArray } from "@validators/isArray";
 import { length } from "@validators/length";
 
-export const tuple = <$Tuple extends Array<Validation<unknown>>>(
+export const tuple = <const $Tuple extends Array<Validation<unknown>>>(
 	tuple: $Tuple,
 ) => {
 	const l = tuple.length;

@@ -1,10 +1,7 @@
 import { email } from "@validators/email";
-import { expect, it } from "vitest";
+import { expect, it, test } from "vitest";
 
-it("should not throw", () => {
+test(() => {
 	expect(() => email("yamiteru@icloud.com")).not.toThrow();
-});
-
-it("should throw", () => {
 	expect(() => email("yamiteru")).toThrow();
 });
