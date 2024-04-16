@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { bigint } from "@validators/bigint/index";
+import { bigint } from "@validators/bigint";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => bigint(BigInt(2))).not.toThrow();

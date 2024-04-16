@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
 import { string } from "@validators/string";
+import { expect, it } from "vitest";
 import { expect as _expect } from "./index";
 
 const validator = _expect(string, (e) => `Error: ${e.message}`);

@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
 import { string } from "@validators/string";
+import { expect, it } from "vitest";
 import { optional } from "./index";
 
 const validator = optional(string);

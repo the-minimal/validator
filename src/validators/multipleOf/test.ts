@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { multipleOf } from "@validators/multipleOf/index";
+import { multipleOf } from "@validators/multipleOf";
+import { expect, it } from "vitest";
 
 const validator = multipleOf(2);
 

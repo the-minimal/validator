@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { value } from "@validators/value/index";
+import { value } from "@validators/value";
+import { expect, it } from "vitest";
 
 const validator = value(2);
 

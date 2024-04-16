@@ -1,4 +1,4 @@
 import { assert } from "@validators/assert";
 
 export const regex = (pattern: RegExp) =>
-	assert(pattern.test as any, "regex", pattern);
+	assert((v) => pattern.test(v as any), "regex", pattern);

@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { symbol } from "@validators/symbol/index";
+import { symbol } from "@validators/symbol";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => symbol(Symbol())).not.toThrow();

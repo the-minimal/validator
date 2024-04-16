@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { minValue } from "@validators/minValue/index";
+import { minValue } from "@validators/minValue";
+import { expect, it } from "vitest";
 
 const validator = minValue(1);
 

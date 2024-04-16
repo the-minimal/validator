@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { unknown } from "@validators/unknown/index";
+import { unknown } from "@validators/unknown";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => unknown(1)).not.toThrow();

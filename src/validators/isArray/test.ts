@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { isArray } from "@validators/isArray/index";
+import { isArray } from "@validators/isArray";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => isArray([])).not.toThrow();

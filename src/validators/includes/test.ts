@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { includes } from "@validators/includes/index";
+import { includes } from "@validators/includes";
+import { expect, it } from "vitest";
 
 const validator = includes("el");
 

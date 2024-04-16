@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { startsWith } from "@validators/startsWith/index";
+import { startsWith } from "@validators/startsWith";
+import { expect, it } from "vitest";
 
 const validator = startsWith("he");
 

@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { endsWith } from "@validators/endsWith/index";
+import { endsWith } from "@validators/endsWith";
+import { expect, it } from "vitest";
 
 const validator = endsWith("lo");
 

@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { nan } from "@validators/nan/index";
+import { nan } from "@validators/nan";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => nan(Number.NaN)).not.toThrow();

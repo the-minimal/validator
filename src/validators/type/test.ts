@@ -1,16 +1,10 @@
-import { expect, it } from "bun:test";
-import { boolean } from "@validators/boolean";
-import { number } from "@validators/number";
-import { string } from "@validators/string";
+import { type } from "@validators/type";
+import { expect, it } from "vitest";
 
 it("should not throw on valid types", () => {
-	expect(() => string("a")).not.toThrow();
-	expect(() => number(1)).not.toThrow();
-	expect(() => boolean(true)).not.toThrow();
+	expect(() => type("string")("a")).not.toThrow();
 });
 
 it("should throw on invalid types", () => {
-	expect(() => string({})).toThrow();
-	expect(() => number({})).toThrow();
-	expect(() => boolean({})).toThrow();
+	expect(() => type("string")({})).toThrow();
 });

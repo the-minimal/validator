@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
 import { boolean } from "@validators/boolean";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => boolean(true)).not.toThrow();

@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { regex } from "@validators/regex/index";
+import { regex } from "@validators/regex";
+import { expect, it } from "vitest";
 
 const validator = regex(/^\d+$/);
 

@@ -1,7 +1,7 @@
-import { expect, it } from "bun:test";
 import { boolean } from "@validators/boolean";
 import { number } from "@validators/number";
 import { string } from "@validators/string";
+import { expect, it } from "vitest";
 import { object } from "./index";
 
 const validator = object({

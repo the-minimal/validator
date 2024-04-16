@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
 import { date } from "@validators/date";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => date(new Date())).not.toThrow();

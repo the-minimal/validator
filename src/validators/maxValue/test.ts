@@ -1,7 +1,7 @@
-import { expect, it } from "bun:test";
-import { maxValue } from "@validators/maxValue/index";
+import { maxValue } from "@validators/maxValue";
+import { expect, it } from "vitest";
 
-const validator = (value: unknown) => maxValue(1);
+const validator = maxValue(1);
 
 it("should not throw", () => {
 	expect(() => validator(0)).not.toThrow();

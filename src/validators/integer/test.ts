@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { integer } from "@validators/integer/index";
+import { integer } from "@validators/integer";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => integer(1)).not.toThrow();

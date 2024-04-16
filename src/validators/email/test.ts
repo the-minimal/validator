@@ -1,5 +1,5 @@
-import { expect, it } from "bun:test";
-import { email } from "@validators/email/index";
+import { email } from "@validators/email";
+import { expect, it } from "vitest";
 
 it("should not throw", () => {
 	expect(() => email("yamiteru@icloud.com")).not.toThrow();

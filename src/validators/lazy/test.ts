@@ -1,9 +1,9 @@
-import { expect, it } from "bun:test";
 import type { Assertion } from "@the-minimal/types";
 import { lazy } from "@validators/lazy";
 import { object } from "@validators/object";
 import { optional } from "@validators/optional";
 import { string } from "@validators/string";
+import { expect, it } from "vitest";
 
 type User = {
 	name: string;
