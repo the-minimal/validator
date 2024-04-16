@@ -36,7 +36,7 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-import { object, and2, string, email, minLength } from "@the-minimal/validator";
+import { object, and2, string, email, minLength } from "@the-minimal/validator"; // 380 bytes
 
 // Creates login schema with email and password
 const login = object({
