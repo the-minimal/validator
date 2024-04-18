@@ -67,7 +67,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@the-minimal/error": "0.0.3",
+    "@the-minimal/error": "0.0.4",
     "@the-minimal/types": "0.2.0"
   }
 }
