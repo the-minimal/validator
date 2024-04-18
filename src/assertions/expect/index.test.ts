@@ -4,22 +4,51 @@ import type { Assertion } from "@the-minimal/types";
 import { expect } from "vitest";
 import { expect as _expect } from "./index";
 
-const assertion: Assertion<string> = _expect(
+const assertionValidator: Assertion<string> = _expect(
 	string,
+	(_, value) => `Expected string, got ${typeof value}`,
+);
+
+const assertionError: Assertion<unknown> = _expect(
+	() => {
+		throw new Error("testing");
+	},
+	(_, value) => `Expected string, got ${typeof value}`,
+);
+
+const assertionUnknown: Assertion<unknown> = _expect(
+	() => {
+		throw "testing";
+	},
 	(_, value) => `Expected string, got ${typeof value}`,
 );
 
 test.prop([fc.string()])(
 	"should not throw if value passes assertion",
 	(value) => {
-		expect(() => assertion(value)).not.toThrow();
+		expect(() => assertionValidator(value)).not.toThrow();
 	},
 );
 
 test.prop([fc.integer()])("should throw if value fails assertion", (value) => {
 	try {
-		assertion(value);
+		assertionValidator(value);
 	} catch (e: any) {
+		expect(e.reason).toBe("@the-minimal/validator:type");
+		expect(e.message).toBe("Expected string, got number");
+	}
+
+	try {
+		assertionError(value);
+	} catch (e: any) {
+		expect(e.reason).toBe("unknown:Error");
+		expect(e.message).toBe("Expected string, got number");
+	}
+
+	try {
+		assertionUnknown(value);
+	} catch (e: any) {
+		expect(e.reason).toBe("unknown:unknown");
 		expect(e.message).toBe("Expected string, got number");
 	}
 });
