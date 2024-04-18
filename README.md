@@ -12,10 +12,10 @@ yarn add @the-minimal/validator
 
 ## Highlights
 
-- Basic synchronous validations
+- Synchronous JSON validations
 - No compilation or code evaluation
 - Fully type safe with type inference
-- Fully tree-shakeable 1.2 KB bundle
+- Fully tree-shakeable 1.1 KB bundle
 - Minimal runtime and type overhead
 - Only 2 minimal in-house dependencies
   - [@the-minimal/types](https://github.com/the-minimal/types)
@@ -29,6 +29,8 @@ We assume that data is already transformed by the sender.
 
 We assume that you control both the sender and receiver.
 
+We assume that Validator is used only for validating JSON.
+
 This allows us to make the library much smaller and faster.
 
 > If you want to transform data during or right after validation then you should make sure that the sender sends already transformed data instead
@@ -36,12 +38,13 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-import { type Infer, object, and2, string, email, minLength } from "@the-minimal/validator"; // 380 bytes
+// 380 bytes
+import { type Infer, object, and2, string, email, lGte } from "@the-minimal/validator";
 
 // Creates login schema with email and password
 const login = object({
   email: and2(string, email),
-  password: and2(string, minLength(8)),
+  password: and2(string, lGte(8)),
 });
 
 // Infer TypeScript type of login schema
@@ -63,7 +66,6 @@ login({ email: 'jane@example.com', password: '12345678' });
 | [`validate`](./src/validators/validate/index.ts) | Checks if predicate is `false`                            |
 | [`expect`](./src/validators/expect/index.ts)     | Sets error message in case validator throws               |
 | [`type`](./src/validators/type/index.ts)         | Checks if value type matches provided type                |
-| [`instance`](./src/validators/instance/index.ts) | Checks if value is instance of provided class             |
 | [`lazy`](./src/validators/lazy/index.ts)         | Runs validator lazily                                     |
 | [`and`](./src/validators/and/index.ts)           | Checks if value passes all validators                     |
 | [`and2`](./src/validators/and2/index.ts)         | Checks if value passes 2 validators                       |
@@ -75,10 +77,6 @@ login({ email: 'jane@example.com', password: '12345678' });
 | [`object`](./src/validators/object/index.ts)     | Checks value against object schema                        |
 | [`tuple`](./src/validators/tuple/index.ts)       | Checks value against tuple schema                         |
 | [`options`](./src/validators/options/index.ts)   | Checks if value is one of provided values                 |
-| [`value`](./src/validators/value/index.ts)       | Checks if value is equal to another value                 |
-| [`notValue`](./src/validators/notValue/index.ts) | Checks if value is not another value                      |
-| [`minValue`](./src/validators/minValue/index.ts) | Checks if value is greater than or equal to another value |
-| [`maxValue`](./src/validators/maxValue/index.ts) | Checks if value is less than or equal to another value    |
 
 ### Types
 
@@ -87,14 +85,6 @@ login({ email: 'jane@example.com', password: '12345678' });
 | [`number`](./src/validators/number/index.ts)         | Checks if value type is `number`                                  |
 | [`string`](./src/validators/string/index.ts)         | Checks if value type is `string`                                  |
 | [`boolean`](./src/validators/boolean/index.ts)       | Checks if value type is `boolean`                                 |
-| [`bigint`](./src/validators/bigint/index.ts)         | Checks if value type is `bigint`                                  |
-| [`symbol`](./src/validators/symbol/index.ts)         | Checks if value type is `symbol`                                  |
-
-### Instances
-
-| Function                                             | Description                                                       |
-|:-----------------------------------------------------|:------------------------------------------------------------------|
-| [`date`](./src/validators/date/index.ts)             | Checks if instance is `Date`                                      |
 
 ### String
 
@@ -111,17 +101,30 @@ login({ email: 'jane@example.com', password: '12345678' });
 |:-----------------------------------------------------|:------------------------------------------------------------------|
 | [`multipleOf`](./src/validators/multipleOf/index.ts) | Checks if value is multiple of another value                      |
 | [`integer`](./src/validators/integer/index.ts)       | Checks if number is integer                                       |
-| [`nan`](./src/validators/nan/index.ts)               | Checks if value is `NaN`                                          |
 
 ### List
 
 | Function                                             | Description                                                       |
 |:-----------------------------------------------------|:------------------------------------------------------------------|
-| [`length`](./src/validators/length/index.ts)         | Checks if string/array `length` is value                          |
-| [`notLength`](./src/validators/notLength/index.ts)   | Checks if string/array `length` is not value                      |
-| [`minLength`](./src/validators/minLength/index.ts)   | Checks if string/array `length` is greater than or equal to value |
-| [`maxLength`](./src/validators/maxLength/index.ts)   | Checks if string/array `length` is less than or equal to value    |
 | [`includes`](./src/validators/includes/index.ts)     | Checks if string/array includes value                             |
+
+### Length comparison
+
+| Function                                 | Description                                                       |
+|:-----------------------------------------|:------------------------------------------------------------------|
+| [`lEq`](./src/validators/lEq/index.ts)   | Checks if string/array `length` is value                          |
+| [`lNe`](./src/validators/lNe/index.ts)   | Checks if string/array `length` is not value                      |
+| [`lGte`](./src/validators/lGte/index.ts) | Checks if string/array `length` is greater than or equal to value |
+| [`lLte`](./src/validators/lLte/index.ts) | Checks if string/array `length` is less than or equal to value    |
+
+### Value comparison
+
+| Function                                 | Description                                               |
+|:-----------------------------------------|:----------------------------------------------------------|
+| [`vEq`](./src/validators/vEq/index.ts)   | Checks if value is equal to another value                 |
+| [`vNe`](./src/validators/vNe/index.ts)   | Checks if value is not another value                      |
+| [`vGte`](./src/validators/vGte/index.ts) | Checks if value is greater than or equal to another value |
+| [`vLte`](./src/validators/vLte/index.ts) | Checks if value is less than or equal to another value    |
 
 ### Maybe
 
@@ -135,10 +138,69 @@ login({ email: 'jane@example.com', password: '12345678' });
 
 | Function                                             | Description                                                       |
 |:-----------------------------------------------------|:------------------------------------------------------------------|
-| [`any`](./src/validators/any/index.ts)               | Never throws, returns `Validator<any>`                            |
-| [`unknown`](./src/validators/unknown/index.ts)       | Never throws, returns `Validator<unknown>`                        |
 | [`isArray`](./src/validators/isArray/index.ts)       | Checks if value is `Array`                                        |
 | [`isObject`](./src/validators/isObject/index.ts)     | Checks if value is `Object`                                       |
+
+## FAQ
+
+<details>
+  <summary><b>How do I validate <code>map</code>/<code>set</code>/<code>date</code>/etc.?</b></summary>
+  The main focus of this library is data validation of JSON.
+
+  JSON doesn't support these data types, so it makes no sense to include them in this library.
+</details>
+
+<details>
+  <summary><b>How do I <code>extend</code>/<code>omit</code>/<code>pick</code> objects?</b></summary>
+  In order to allow such functions we'd have to make the schema accessible from the outside.
+
+  This would change the design from using individual callable assertions to using objects with properties where one of those properties is the assertion.
+
+  Additionally, this would make it possible to for example extend any object even if we don't want users to extend such an object.
+
+  To fix this issue we would have to introduce some form of object schema freezing on top of that.
+
+  All of that complicates the API, makes the library slower and inflates the bundle size.
+
+  You can make object extendable by exporting its schema separately and then spreading it inside another schema.
+</details>
+
+<details>
+  <summary><b>How do I run async validation?</b></summary>
+  None of the JSON data types need to be validated asynchronously.
+
+  Validating side effects inside the validations is not a good idea and should be done after the validation is done.
+
+  Don't do this:
+
+  ```ts
+  // definition
+  const validate = and([
+    string,
+    validate(
+      (fileName) => File.exists(fileName), // Promise<boolean>
+      "fileExists"
+    )
+  ]);
+
+  // endpoint
+  await validate(body);
+  ```
+
+  Do this instead:
+
+  ```ts
+  // definition
+  const validate = string;
+
+  // endpoint
+  validate(body);
+
+  if(!(await File.exists(body))) {
+    throw Error("File does not exist");
+  }
+  ```
+</details>
 
 ## Roadmap to v1
 
