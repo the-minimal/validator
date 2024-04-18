@@ -38,7 +38,7 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 380 bytes
+// 275 bytes
 import { type Infer, object, string } from "@the-minimal/validator";
 
 // Creates login schema with email and password

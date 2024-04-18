@@ -1,5 +1,5 @@
 import { options } from "@validators/options";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 
 const validator = options(["one", "two"]);
 

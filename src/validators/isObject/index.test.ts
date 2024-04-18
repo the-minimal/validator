@@ -1,5 +1,5 @@
 import { isObject } from "@validators/isObject";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 
 test(() => {
 	expect(() => isObject({})).not.toThrow();

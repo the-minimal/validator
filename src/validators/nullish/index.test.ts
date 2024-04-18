@@ -1,5 +1,5 @@
 import { string } from "@validators/string";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 import { nullish } from "./index";
 
 const validator = nullish(string);

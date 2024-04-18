@@ -1,5 +1,5 @@
 import { isArray } from "@validators/isArray";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 
 test(() => {
 	expect(() => isArray([])).not.toThrow();

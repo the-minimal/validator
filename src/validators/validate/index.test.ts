@@ -1,4 +1,4 @@
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 import { validate } from "./index";
 
 const validator = validate((value) => value === 1, "test");

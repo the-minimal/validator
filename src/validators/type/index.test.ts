@@ -1,5 +1,5 @@
 import { type } from "@validators/type";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 
 test(() => {
 	expect(() => type<string>("string")("a")).not.toThrow();

@@ -3,7 +3,7 @@ import { lazy } from "@validators/lazy";
 import { object } from "@validators/object";
 import { optional } from "@validators/optional";
 import { string } from "@validators/string";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 
 type User = {
 	name: string;

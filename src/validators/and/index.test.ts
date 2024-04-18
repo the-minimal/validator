@@ -1,6 +1,6 @@
 import { number } from "@validators/number";
 import { validate } from "@validators/validate";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 import { and } from "./index";
 
 const lte = (value: number) =>

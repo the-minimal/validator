@@ -1,5 +1,5 @@
 import { number } from "@validators/number";
-import { expect, it, test } from "vitest";
+import { expect, test } from "vitest";
 import { array } from "./index";
 
 const validator = array(number);
