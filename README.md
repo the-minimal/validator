@@ -138,5 +138,3 @@ login({ email: 'jane@example.com', password: '12345678' });
 - String validations
 - Boolean validations
 - Property based tests
-- Fix and test `Infer` utility type
-- Write (js)docs for every exported function and type

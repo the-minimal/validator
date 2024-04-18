@@ -1,14 +1,22 @@
-import { ERROR_PREFIX } from "@constants";
-import { error } from "@error";
 import type { Assertion, Nullish } from "@the-minimal/types";
 
-export const nullish = <$Value>(validation: Assertion<$Value>) =>
-	((value) => {
-		try {
-			validation(value);
-		} catch {
-			value !== null &&
-				value !== undefined &&
-				error(`${ERROR_PREFIX}:nullish`, value);
-		}
-	}) as Assertion<Nullish<$Value>>;
+/**
+ * Checks if the assertion passes or if the value is null or undefined.
+ *
+ * @param assertion - Assertion to be checked.
+ *
+ * @example
+ * ```ts
+ * const maybeString = nullish(string);
+ *
+ * maybeString(1); // Error: type
+ * maybeString("hello"); // passes
+ * maybeString(null); // passes
+ * maybeString(undefined); // passes
+ * ```
+ */
+export const nullish =
+	<$Value>(assertion: Assertion<$Value>): Assertion<Nullish<$Value>> =>
+	(value) => {
+		value !== null && value !== undefined && assertion(value);
+	};

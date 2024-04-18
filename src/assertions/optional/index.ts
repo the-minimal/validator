@@ -1,11 +1,21 @@
-import { error } from "@error";
 import type { Assertion, Optional } from "@the-minimal/types";
 
-export const optional = <$Value>(validation: Assertion<$Value>) =>
-	((value) => {
-		try {
-			validation(value);
-		} catch {
-			value !== undefined && error("optional", value);
-		}
-	}) as Assertion<Optional<$Value>>;
+/**
+ * Checks if the assertion passes or if the value is undefined.
+ *
+ * @param assertion - Assertion to be checked.
+ *
+ * @example
+ * ```ts
+ * const maybeString = optional(string);
+ *
+ * maybeString(1); // Error: type
+ * maybeString("hello"); // passes
+ * maybeString(undefined); // passes
+ * ```
+ */
+export const optional =
+	<$Value>(assertion: Assertion<$Value>): Assertion<Optional<$Value>> =>
+	(value) => {
+		value !== undefined && assertion(value);
+	};

@@ -1,11 +1,21 @@
-import { error } from "@error";
 import type { Assertion, Nullable } from "@the-minimal/types";
 
-export const nullable = <$Value>(validation: Assertion<$Value>) =>
-	((value: unknown) => {
-		try {
-			validation(value);
-		} catch {
-			value !== null && error("nullable", value);
-		}
-	}) as Assertion<Nullable<$Value>>;
+/**
+ * Checks if the assertion passes or if the value is null.
+ *
+ * @param assertion - Assertion to be checked.
+ *
+ * @example
+ * ```ts
+ * const maybeString = nullable(string);
+ *
+ * maybeString(1); // Error: type
+ * maybeString("hello"); // passes
+ * maybeString(null); // passes
+ * ```
+ */
+export const nullable =
+	<$Value>(assertion: Assertion<$Value>): Assertion<Nullable<$Value>> =>
+	(value) => {
+		value !== null && assertion(value);
+	};

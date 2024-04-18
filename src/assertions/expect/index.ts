@@ -2,10 +2,25 @@ import type { Message } from "@assertions/expect/types";
 import { error, isError } from "@the-minimal/error";
 import type { Assertion } from "@the-minimal/types";
 
-export const expect = <$Value>(fn: Assertion<$Value>, message: Message) =>
-	((value: unknown) => {
+/**
+ * Wraps assertion and throws an error with message if assertion fails.
+ *
+ * @param assertion - Assertion to be checked.
+ * @param message - Message to be used in error.
+ *
+ * @example
+ * ```ts
+ * const stringWithMessage = expect(
+ *    string,
+ *    (_, v) => `Expected string, got ${typeof v}`
+ * );
+ * ```
+ */
+export const expect =
+	<$Type>(assertion: Assertion<$Type>, message: Message): Assertion<$Type> =>
+	(value: unknown) => {
 		try {
-			fn(value);
+			assertion(value);
 		} catch (e) {
 			const msg = message(e, value);
 
@@ -17,4 +32,4 @@ export const expect = <$Value>(fn: Assertion<$Value>, message: Message) =>
 				error("unknown:unknown", value, e, msg);
 			}
 		}
-	}) as Assertion<$Value>;
+	};

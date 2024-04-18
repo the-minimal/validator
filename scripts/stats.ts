@@ -9,7 +9,7 @@ import { file, gzipSync } from "bun";
   for (let i = 0; i < filesLength; ++i) {
     const fileName = outFiles[i];
 
-    if(fileName.endsWith(".js")) {
+    if(fileName.endsWith("js")) {
       const fileHandler = file(`${outdir}/${fileName}`);
       const arrBuffer = await fileHandler.arrayBuffer();
       const gzip = gzipSync(arrBuffer);
