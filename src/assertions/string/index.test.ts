@@ -1,7 +1,17 @@
 import { string } from "@assertions/string";
-import { expect, test } from "vitest";
+import { fc, test } from "@fast-check/vitest";
+import { expect } from "vitest";
 
-test(() => {
-	expect(() => string("hello")).not.toThrow();
-	expect(() => string(1)).toThrow();
-});
+test.prop([fc.string()])(
+	"should not throw if value is of type string",
+	(value) => {
+		expect(() => string(value)).not.toThrow();
+	},
+);
+
+test.prop([fc.integer()])(
+	"should throw if value is not of type string",
+	(value) => {
+		expect(() => string(value)).toThrow();
+	},
+);

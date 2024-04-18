@@ -2,8 +2,9 @@ import { lazy } from "@assertions/lazy";
 import { object } from "@assertions/object";
 import { optional } from "@assertions/optional";
 import { string } from "@assertions/string";
+import { fc, test } from "@fast-check/vitest";
 import type { Assertion } from "@the-minimal/types";
-import { expect, test } from "vitest";
+import { expect } from "vitest";
 
 type User = {
 	name: string;
@@ -15,20 +16,20 @@ const assertion: Assertion<User> = object({
 	friend: optional(lazy(() => assertion)),
 });
 
-test(() => {
-	expect(() =>
-		assertion({
-			name: "yamiteru",
-			friend: {
-				name: "myself",
-			},
-		}),
-	).not.toThrow();
+test.prop([
+	fc.record({
+		name: fc.string(),
+		friend: fc.oneof(
+			fc.record({
+				name: fc.string(),
+			}),
+			fc.constant(undefined),
+		),
+	}),
+])("should not throw if value passes assertion", (value) => {
+	expect(() => assertion(value)).not.toThrow();
+});
 
-	expect(() =>
-		assertion({
-			name: "yamiteru",
-			friend: 1,
-		}),
-	).toThrow();
+test.prop([fc.integer()])("should throw if value throws", (value) => {
+	expect(() => assertion(value)).toThrow();
 });

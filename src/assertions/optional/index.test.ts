@@ -1,11 +1,20 @@
 import { string } from "@assertions/string";
-import { expect, test } from "vitest";
+import { fc, test } from "@fast-check/vitest";
+import { expect } from "vitest";
 import { optional } from "./index";
 
 const assertion = optional(string);
 
-test(() => {
-	expect(() => assertion("1")).not.toThrow();
-	expect(() => assertion(undefined)).not.toThrow();
-	expect(() => assertion(1)).toThrow();
-});
+test.prop([fc.oneof(fc.string(), fc.constant(undefined))])(
+	"should not throw if value is of type string/undefined",
+	(value) => {
+		expect(() => assertion(value)).not.toThrow();
+	},
+);
+
+test.prop([fc.integer()])(
+	"should throw if value is not of type string/undefined",
+	(value) => {
+		expect(() => assertion(value)).toThrow();
+	},
+);

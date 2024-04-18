@@ -1,11 +1,24 @@
 import { number } from "@assertions/number";
-import { expect, test } from "vitest";
+import { fc, test } from "@fast-check/vitest";
+import { expect } from "vitest";
 import { array } from "./index";
 
 const assertion = array(number);
 
-test(() => {
-	expect(() => assertion([1, 2, 3])).not.toThrow();
-	expect(() => assertion(1)).toThrow();
-	expect(() => assertion([1, "2", 3])).toThrow();
+test.prop([fc.array(fc.integer())])(
+	"should not throw if values do not throw",
+	(value) => {
+		expect(() => assertion(value)).not.toThrow();
+	},
+);
+
+test.prop([fc.array(fc.string(), { minLength: 1 })])(
+	"should throw if any of the values throws",
+	(value) => {
+		expect(() => assertion(value)).toThrow();
+	},
+);
+
+test.prop([fc.integer()])("should throw if not of type array", (value) => {
+	expect(() => assertion(value)).toThrow();
 });

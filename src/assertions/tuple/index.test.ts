@@ -1,7 +1,8 @@
 import { boolean } from "@assertions/boolean";
 import { number } from "@assertions/number";
 import { string } from "@assertions/string";
-import { expect, test } from "vitest";
+import { test } from "@fast-check/vitest";
+import { expect } from "vitest";
 import { tuple } from "./index";
 
 const assertion = tuple([string, number, boolean]);

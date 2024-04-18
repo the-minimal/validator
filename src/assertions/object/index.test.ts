@@ -1,7 +1,8 @@
 import { boolean } from "@assertions/boolean";
 import { number } from "@assertions/number";
 import { string } from "@assertions/string";
-import { expect, test } from "vitest";
+import { fc, test } from "@fast-check/vitest";
+import { expect } from "vitest";
 import { object } from "./index";
 
 const assertion = object({
@@ -10,30 +11,28 @@ const assertion = object({
 	admin: boolean,
 });
 
-test(() => {
-	expect(() =>
-		assertion({
-			name: "yamiteru",
-			age: 26,
-			admin: true,
-		}),
-	).not.toThrow();
-
-	expect(() => assertion(null)).toThrow();
-	expect(() => assertion([])).toThrow();
-
-	expect(() =>
-		assertion({
-			name: "yamiteru",
-			age: 26,
-		}),
-	).toThrow();
-
-	expect(() =>
-		assertion({
-			name: "yamiteru",
-			age: 26,
-			admin: "yes",
-		}),
-	).toThrow();
+test.prop([
+	fc.record({
+		name: fc.string(),
+		age: fc.integer(),
+		admin: fc.boolean(),
+	}),
+])("should not throw if value matches object schema", (value) => {
+	expect(() => assertion(value)).not.toThrow();
 });
+
+test.prop([
+	fc.record({
+		name: fc.string(),
+		age: fc.integer(),
+	}),
+])("should throw if value is missing a (non-optional) key", (value) => {
+	expect(() => assertion(value)).toThrow();
+});
+
+test.prop([fc.oneof(fc.array(fc.anything()), fc.constant(null))])(
+	"should throw if value is not an object",
+	(value) => {
+		expect(() => assertion(value)).toThrow();
+	},
+);

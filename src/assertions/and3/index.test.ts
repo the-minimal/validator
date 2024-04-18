@@ -1,6 +1,7 @@
 import { number } from "@assertions/number";
 import { validate } from "@assertions/validate";
-import { expect, test } from "vitest";
+import { fc, test } from "@fast-check/vitest";
+import { expect } from "vitest";
 import { and3 } from "./index";
 
 const lte = (value: number) =>
@@ -10,9 +11,15 @@ const gte = (value: number) =>
 
 const assertion = and3(number, gte(0), lte(2));
 
-test(() => {
-	expect(() => assertion(2)).not.toThrow();
-	expect(() => assertion("")).toThrow();
-	expect(() => assertion(-1)).toThrow();
-	expect(() => assertion(3)).toThrow();
+test.prop([fc.integer({ min: 0, max: 2 })])(
+	"should not throw if value passes all three assertions",
+	(value) => {
+		expect(() => assertion(value)).not.toThrow();
+	},
+);
+
+test.prop([
+	fc.oneof(fc.integer({ max: -1 }), fc.integer({ min: 3 }), fc.string()),
+])("should throw if value does not pass all three assertions", (value) => {
+	expect(() => assertion(value)).toThrow();
 });

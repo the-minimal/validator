@@ -1,10 +1,19 @@
 import { options } from "@assertions/options";
-import { expect, test } from "vitest";
+import { fc, test } from "@fast-check/vitest";
+import { expect } from "vitest";
 
 const assertion = options(["one", "two"]);
 
-test(() => {
-	expect(() => assertion("one")).not.toThrow();
-	expect(() => assertion("two")).not.toThrow();
-	expect(() => assertion("three")).toThrow();
-});
+test.prop([fc.oneof(fc.constant("one"), fc.constant("two"))])(
+	"should not throw if value is one of options",
+	(value) => {
+		expect(() => assertion(value)).not.toThrow();
+	},
+);
+
+test.prop([fc.oneof(fc.constant("three"), fc.constant("four"))])(
+	"should throw if value is not one of options",
+	(value) => {
+		expect(() => assertion(value)).toThrow();
+	},
+);
