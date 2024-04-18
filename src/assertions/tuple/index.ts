@@ -28,7 +28,7 @@ export const tuple = <
 		isArray(value);
 
 		for (let i = 0; i < l; ++i) {
-			(assertions[i] as any)(value)[i];
+			(assertions[i] as any)(value[i]);
 		}
 	};
 };
