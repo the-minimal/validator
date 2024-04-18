@@ -1,8 +1,8 @@
-import type { UnknownValidation } from "@types";
+import type { UnknownAssertion } from "@the-minimal/types";
 
-export const lazy = <$Validation extends UnknownValidation>(
+export const lazy = <$Validation extends UnknownAssertion>(
 	fn: (value: unknown) => $Validation,
 ) =>
 	((value: unknown) => {
-		(fn(value) as UnknownValidation)(value);
+		(fn(value) as any)(value);
 	}) as $Validation;

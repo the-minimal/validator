@@ -1,4 +1,4 @@
-import type { Validation } from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 import { lazy } from "@validators/lazy/index";
 import { object } from "@validators/object";
 import { optional } from "@validators/optional";
@@ -10,9 +10,9 @@ type User = {
 	friend?: User;
 };
 
-const user: Validation<User> = object({
+const user: Assertion<User> = object({
 	name: string,
 	friend: optional(lazy(() => user)),
 });
 
-assertType<Validation<User>>(user);
+assertType<Assertion<User>>(user);

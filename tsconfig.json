@@ -14,8 +14,9 @@
       "@validators/*": [
         "validators/*"
       ],
-      "@constants": ["constants.ts"],
-      "@types": ["types.ts"]
+      "@constants": [
+        "constants.ts"
+      ]
     }
   },
   "include": ["src", "examples"],

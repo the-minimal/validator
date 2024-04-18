@@ -1,10 +1,10 @@
-import type { Validation } from "@the-minimal/types";
-import type { UnknownValidation } from "@types";
-import type { Intersection } from "@validators/and/types";
+import type { Assertion } from "@the-minimal/types";
+import type { UnknownAssertion } from "@the-minimal/types";
+import type { AndSchema, InferAndSchema } from "@validators/and/types";
 
 export const and = <
-	const $Validations extends Array<UnknownValidation>,
-	$Infered = Intersection<$Validations>,
+	const $Validations extends AndSchema,
+	$Infered = InferAndSchema<$Validations>,
 >(
 	fns: $Validations,
 ) => {
@@ -12,7 +12,7 @@ export const and = <
 
 	return ((value) => {
 		for (let i = 0; i < length; ++i) {
-			(fns[i] as UnknownValidation)(value);
+			(fns[i] as any)(value);
 		}
-	}) as Validation<$Infered>;
+	}) as Assertion<$Infered>;
 };

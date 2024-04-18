@@ -1,3 +1,4 @@
+import type { Assertion } from "@the-minimal/types";
 import { type } from "@validators/type";
 
-export const number = type<number>("number");
+export const number: Assertion<number> = type<number>("number");

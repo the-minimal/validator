@@ -1,8 +1,11 @@
-import type { Infer, UnknownValidation } from "@types";
+import type { UnknownAssertion } from "@the-minimal/types";
+import type { Infer } from "@types";
 
-export type Intersection<$Validations extends Array<UnknownValidation>> =
+export type AndSchema = Array<UnknownAssertion>;
+
+export type InferAndSchema<$Validations extends AndSchema> =
 	$Validations extends [infer $Head, ...infer $Tail]
 		? $Tail extends [infer $1, ...infer $2]
-			? Infer<$Head> & Intersection<$Tail>
+			? Infer<$Head> & InferAndSchema<$Tail>
 			: Infer<$Head>
 		: never;

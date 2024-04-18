@@ -1,11 +1,11 @@
 import { ERROR_PREFIX } from "@constants";
 import { error } from "@the-minimal/error";
-import type { Validation } from "@the-minimal/types";
-import type { Infer, UnknownValidation } from "@types";
+import type { Assertion } from "@the-minimal/types";
+import type { InferOrSchema, OrSchema } from "@validators/or/types";
 
 export const or = <
-	const $Validations extends Array<UnknownValidation>,
-	$Infered = Infer<$Validations>,
+	const $Validations extends OrSchema,
+	$Infered = InferOrSchema<$Validations>,
 >(
 	fns: $Validations,
 ) => {
@@ -14,11 +14,11 @@ export const or = <
 	return ((value) => {
 		for (let i = 0; i < length; ++i) {
 			try {
-				(fns[i] as UnknownValidation)(value);
+				(fns[i] as any)(value);
 				return;
 			} catch {}
 		}
 
 		error(`${ERROR_PREFIX}:or`, value);
-	}) as Validation<$Infered>;
+	}) as Assertion<$Infered>;
 };

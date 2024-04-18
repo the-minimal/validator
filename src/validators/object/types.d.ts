@@ -1,9 +1,11 @@
-import type { Pretty, Validation } from "@the-minimal/types";
+import type {
+	InferAssertion,
+	Pretty,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
-export type Schema = Record<string, UnknownValidation>;
+export type ObjectSchema = Record<string, UnknownAssertion>;
 
-export type InferSchema<$Schema extends Schema> = Pretty<{
-	[$Key in keyof $Schema]: $Schema[$Key] extends Validation<infer $Value>
-		? $Value
-		: never;
+export type InferObjectSchema<$Schema extends ObjectSchema> = Pretty<{
+	[$Key in keyof $Schema]: InferAssertion<$Schema[$Key]>;
 }>;

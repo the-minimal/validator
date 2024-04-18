@@ -1,5 +1,5 @@
-import type { Validation } from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 import { options } from "@validators/options/index";
 import { assertType } from "vitest";
 
-assertType<Validation<"one" | "two">>(options(["one", "two"]));
+assertType<Assertion<"one" | "two">>(options(["one", "two"]));

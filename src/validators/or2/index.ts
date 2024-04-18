@@ -1,8 +1,8 @@
-import type { Validation } from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 export const or2 = <$Value1, $Value2>(
-	fn1: Validation<$Value1>,
-	fn2: Validation<$Value2>,
+	fn1: Assertion<$Value1>,
+	fn2: Assertion<$Value2>,
 ) =>
 	((value: unknown) => {
 		try {
@@ -10,4 +10,4 @@ export const or2 = <$Value1, $Value2>(
 		} catch {
 			fn2(value);
 		}
-	}) as Validation<$Value1 | $Value2>;
+	}) as Assertion<$Value1 | $Value2>;

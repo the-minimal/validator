@@ -1,5 +1,5 @@
-import type { Validation } from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 import { number } from "@validators/number";
 import { assertType } from "vitest";
 
-assertType<Validation<number>>(number);
+assertType<Assertion<number>>(number);
