@@ -166,7 +166,21 @@ login({ email: 'jane@example.com', password: '12345678' });
 </details>
 
 <details>
-  <summary><b>How do I run async validation?</b></summary>
+  <summary><b>Why is there no <code>null</code>/<code>undefined</code>?</b></summary>
+  Strictly checking only for `null` or `undefined` makes no sense.
+
+  You always want to know if something can be `something` **OR** `nothing`.
+
+  So you should always use `nullable`/`optional`/`nullish` instead.
+</details>
+
+<details>
+  <summary><b>Why is there no <code>any</code>/<code>unknown</code>?</b></summary>
+  You should always define your types otherwise what's the point of using TypeScript and this library?
+</details>
+
+<details>
+  <summary><b>How do I run validations in <code>async</code>?</b></summary>
   None of the JSON data types need to be validated asynchronously.
 
   Validating side effects inside the validations is not a good idea and should be done after the validation is done.
