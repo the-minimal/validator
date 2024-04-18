@@ -1,5 +1,4 @@
-import { ERROR_PREFIX } from "@constants";
-import { error } from "@the-minimal/error";
+import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 import type { InferOrSchema, OrSchema } from "@validators/or/types";
 
@@ -19,6 +18,6 @@ export const or = <
 			} catch {}
 		}
 
-		error(`${ERROR_PREFIX}:or`, value);
+		error("or", value);
 	}) as Assertion<$Infered>;
 };

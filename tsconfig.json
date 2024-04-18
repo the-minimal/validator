@@ -16,6 +16,9 @@
       ],
       "@constants": [
         "constants.ts"
+      ],
+      "@error": [
+        "error.ts"
       ]
     }
   },
