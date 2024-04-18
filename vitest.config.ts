@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from "vitest/config";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [tsconfigPaths()],
@@ -8,8 +8,8 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       include: ["src/**/index.ts"],
-      exclude: ["src/index.ts", "src/validators/index.ts"],
-      reporter: "json-summary"
+      exclude: ["src/index.ts", "src/assertions/index.ts"],
+      reporter: ["text", "html", "clover", "json", "json-summary"]
     }
   },
 });
