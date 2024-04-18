@@ -2,7 +2,7 @@ import { readdir } from "node:fs/promises";
 import { write } from "bun";
 
 (async () => {
-  const dirs = ["validators"];
+  const dirs = ["assertions"];
 
   for(const dir of dirs) {
       const path = `./src/${dir}`;

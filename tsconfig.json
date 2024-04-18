@@ -11,8 +11,8 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
-      "@validators/*": [
-        "validators/*"
+      "@assertions/*": [
+        "assertions/*"
       ],
       "@constants": [
         "constants.ts"
