@@ -1,4 +1,4 @@
-import type { CustomError } from "types";
+import type { CustomError } from "@the-minimal/types";
 
 export type Message = (
 	error: CustomError<"validator">,

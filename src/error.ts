@@ -1,5 +1,4 @@
-import type { Optional } from "@the-minimal/types";
-import type { CustomError } from "types";
+import type { CustomError, Optional } from "@the-minimal/types";
 
 const type = "validator";
 
