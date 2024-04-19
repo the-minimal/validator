@@ -10,7 +10,7 @@ test.prop([
 		fc.array(fc.anything(), { maxLength: 2 }),
 	),
 ])(
-	"should not throw if value is less than or equal to the provided value",
+	"should not throw if length of value is less than or equal to the provided value",
 	(value) => {
 		expect(() => assertion(value)).not.toThrow();
 	},
@@ -21,6 +21,9 @@ test.prop([
 		fc.string({ minLength: 3 }),
 		fc.array(fc.anything(), { minLength: 3 }),
 	),
-])("should throw if value is greater than the provided value", (value) => {
-	expect(() => assertion(value)).toThrow();
-});
+])(
+	"should throw if length of value is greater than the provided value",
+	(value) => {
+		expect(() => assertion(value)).toThrow();
+	},
+);
