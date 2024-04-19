@@ -27,6 +27,8 @@ export * from "./options";
 export * from "./or";
 export * from "./or2";
 export * from "./or3";
+export * from "./rangeLength";
+export * from "./rangeValue";
 export * from "./regex";
 export * from "./startsWith";
 export * from "./string";
