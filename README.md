@@ -12,11 +12,12 @@ yarn add @the-minimal/validator
 
 ## Highlights
 
-- Synchronous JSON validations
+- Synchronous JSON-oriented validations
 - No compilation or code evaluation
 - Fully type safe with type inference
-- Fully tree-shakeable 0.85 KB bundle
-- Minimal runtime and type overhead
+- Fully tree-shakeable < 1 KB bundle
+- Minimal runtime and type-checking overhead
+- Fully tested with 100% coverage
 - Zero runtime dependencies
 
 ## Philosophy
@@ -144,7 +145,7 @@ login({ email: 'jane@example.com', password: '12345678' });
 ## Roadmap to v1
 
 - Number validations
-- String validations
 - Boolean validations
-- Return brands
+- Return brands for sub-assertions
 - Add info about error types to all assertions
+- Rename `options` and use `includes` for the implementation
