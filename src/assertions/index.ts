@@ -24,6 +24,7 @@ export * from "./options";
 export * from "./or";
 export * from "./or2";
 export * from "./or3";
+export * from "./regex";
 export * from "./string";
 export * from "./tuple";
 export * from "./type";
