@@ -41,7 +41,7 @@ import { type Infer, object, string, and, minLength, maxLength, email } from "@t
 
 // Creates login schema with email and password
 const login = object({
-  email: and([string, minLength(), maxLength(), email()]),
+  email: and([string, minLength(5), maxLength(35), email]),
   password: and([string, minLength(8), maxLength(16)]),
 });
 
