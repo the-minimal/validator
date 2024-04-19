@@ -4,6 +4,7 @@ export * from "./and3";
 export * from "./array";
 export * from "./boolean";
 export * from "./expect";
+export * from "./integer";
 export * from "./isArray";
 export * from "./isObject";
 export * from "./lazy";
