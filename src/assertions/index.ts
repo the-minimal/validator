@@ -7,6 +7,8 @@ export * from "./expect";
 export * from "./isArray";
 export * from "./isObject";
 export * from "./lazy";
+export * from "./maxLength";
+export * from "./minLength";
 export * from "./nullable";
 export * from "./nullish";
 export * from "./number";
