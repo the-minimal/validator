@@ -8,7 +8,7 @@ import type { Assertion } from "@the-minimal/types";
  *
  * @example
  * ```ts
- * const userRole = options("admin", "user");
+ * const userRole = options(["admin", "user"]);
  *
  * userRole("super-admin"); // Error: options
  * userRole("admin"); // passes
