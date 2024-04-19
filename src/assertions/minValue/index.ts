@@ -3,7 +3,7 @@ import { validate } from "@assertions/validate";
 /**
  * Checks if value is greater than or equal to the provided length.
  *
- * @param length - Length used in the comparison.
+ * @param value - Value used in the comparison.
  *
  * @example
  * ```ts
@@ -13,5 +13,5 @@ import { validate } from "@assertions/validate";
  * adultAge(26); // passes
  * ```
  */
-export const minValue = (length: number) =>
-	validate<unknown>((v) => (v as any) >= length, "minValue", length);
+export const minValue = <$Type>(value: $Type) =>
+	validate<$Type>((v) => (v as any) >= value, "minValue", value);

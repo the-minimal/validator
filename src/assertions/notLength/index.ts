@@ -1,7 +1,7 @@
 import { validate } from "@assertions/validate";
 
 /**
- * Checks if value is not equal to the provided length.
+ * Checks if length of value is not equal to the provided length.
  *
  * @param length - Length used in the comparison.
  *
