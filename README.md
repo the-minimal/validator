@@ -15,7 +15,7 @@ yarn add @the-minimal/validator
 - Synchronous JSON validations
 - No compilation or code evaluation
 - Fully type safe with type inference
-- Fully tree-shakeable 0.8 KB bundle
+- Fully tree-shakeable 1 KB bundle
 - Minimal runtime and type overhead
 - Only 2 minimal in-house dependencies
   - [@the-minimal/types](https://github.com/the-minimal/types)
@@ -38,13 +38,13 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 275 bytes
-import { type Infer, object, string } from "@the-minimal/validator";
+// 415 bytes
+import { type Infer, object, string, and, minLength, maxLength, email } from "@the-minimal/validator";
 
 // Creates login schema with email and password
 const login = object({
-  email: string,
-  password: string,
+  email: and([string, minLength(), maxLength(), email()]),
+  password: and([string, minLength(8), maxLength(16)]),
 });
 
 // Infer TypeScript type of login schema
@@ -137,4 +137,6 @@ login({ email: 'jane@example.com', password: '12345678' });
 - Number validations
 - String validations
 - Boolean validations
-- Property based tests
+- Optimize size
+- Optimize performance
+- Return brands
