@@ -6,6 +6,7 @@ export * from "./boolean";
 export * from "./email";
 export * from "./endsWith";
 export * from "./expect";
+export * from "./includes";
 export * from "./integer";
 export * from "./isArray";
 export * from "./isObject";
