@@ -59,13 +59,16 @@ login({ email: 'jane@example.com', password: '12345678' });
 
 <details>
   <summary><b>How do I validate <code>map</code>/<code>set</code>/<code>date</code>/etc.?</b></summary>
+
   The main focus of this library is data validation of JSON.
 
   JSON doesn't support these data types, so it makes no sense to include them in this library.
+
 </details>
 
 <details>
   <summary><b>How do I <code>extend</code>/<code>omit</code>/<code>pick</code> objects?</b></summary>
+
   In order to allow such functions we'd have to make the schema accessible from the outside.
 
   This would change the design from using individual callable assertions to using objects with properties where one of those properties is the assertion.
@@ -77,24 +80,30 @@ login({ email: 'jane@example.com', password: '12345678' });
   All of that complicates the API, makes the library slower and inflates the bundle size.
 
   You can make object extendable by exporting its schema separately and then spreading it inside another schema.
+
 </details>
 
 <details>
   <summary><b>Why is there no <code>null</code>/<code>undefined</code>?</b></summary>
+
   Strictly checking only for `null` or `undefined` makes no sense.
 
   You always want to know if something can be `something` **OR** `nothing`.
 
   So you should always use `nullable`/`optional`/`nullish` instead.
+
 </details>
 
 <details>
   <summary><b>Why is there no <code>any</code>/<code>unknown</code>?</b></summary>
+
   You should always define your types otherwise what's the point of using TypeScript and this library?
+
 </details>
 
 <details>
   <summary><b>How do I run validations in <code>async</code>?</b></summary>
+
   None of the JSON data types need to be validated asynchronously.
 
   Validating side effects inside the validations is not a good idea and should be done after the validation is done.
@@ -129,6 +138,7 @@ login({ email: 'jane@example.com', password: '12345678' });
     throw Error("File does not exist");
   }
   ```
+
 </details>
 
 ## Roadmap to v1
