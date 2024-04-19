@@ -3,6 +3,7 @@ export * from "./and2";
 export * from "./and3";
 export * from "./array";
 export * from "./boolean";
+export * from "./email";
 export * from "./expect";
 export * from "./integer";
 export * from "./isArray";

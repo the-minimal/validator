@@ -14,8 +14,4 @@ import { validate } from "@assertions/validate";
  * ```
  */
 export const regex = (pattern: RegExp) =>
-	validate<string>(
-		(v) => pattern.test(v as string),
-		"regex",
-		pattern,
-	);
+	validate<string>((v) => pattern.test(v as string), "regex", pattern);
