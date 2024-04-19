@@ -43,7 +43,8 @@
   "scripts": {
     "prepublishOnly": "bun run check && bun run build && bun run test",
     "release": "release-it",
-    "build": "bun run build:imports && tsup && bun run build:stats",
+    "build": "bun run build:imports && bun run build:tsup && bun run build:stats",
+    "build:tsup": "tsup",
     "build:stats": "bun run scripts/stats.ts",
     "build:imports": "bun run scripts/imports.ts",
     "test": "vitest run --typecheck",
