@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if length of value is greater than or equal to the provided length.
@@ -13,9 +14,7 @@ import { validate } from "@assertions/validate";
  * passwordMinLength("Test123456"); // passes
  * ```
  */
-export const minLength = (length: number) =>
-	validate<{ length: number }>(
-		(v) => (v as any).length >= length,
-		"minLength",
-		length,
-	);
+export const minLength =
+	(length: number): Assertion<{ length: number }> =>
+	(v) =>
+		(v as any).length >= length || error("minLength", v, length);

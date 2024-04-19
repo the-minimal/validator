@@ -1,4 +1,4 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -10,7 +10,5 @@ import type { Assertion } from "@the-minimal/types";
  * isArray([]); // passes
  * ```
  */
-export const isArray: Assertion<Array<unknown>> = validate<Array<unknown>>(
-	Array.isArray,
-	"isArray",
-);
+export const isArray: Assertion<Array<unknown>> = (v) =>
+	Array.isArray(v) || error("isArray", v);

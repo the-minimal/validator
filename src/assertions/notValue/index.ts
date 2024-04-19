@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is not equal to the provided value.
@@ -13,5 +14,7 @@ import { validate } from "@assertions/validate";
  * notNan(123); // passes
  * ```
  */
-export const notValue = <$Type>(value: $Type) =>
-	validate<$Type>((v) => v !== value, "notValue", value);
+export const notValue =
+	<$Type>(value: $Type): Assertion<$Type> =>
+	(v) =>
+		v !== value || error("notValue", v, value);

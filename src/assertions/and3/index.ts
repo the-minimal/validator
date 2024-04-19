@@ -23,8 +23,8 @@ export const and3 =
 		assertion2: Assertion<$Value2>,
 		assertion3: Assertion<$Value3>,
 	): Assertion<$Value1 & $Value2 & $Value3> =>
-	(value: unknown) => {
-		assertion1(value);
-		assertion2(value);
-		assertion3(value);
+	(v) => {
+		assertion1(v);
+		assertion2(v);
+		assertion3(v);
 	};

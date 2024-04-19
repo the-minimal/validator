@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that the value is of the provided type.
@@ -13,5 +14,7 @@ import { validate } from "@assertions/validate";
  * string("hello"); // passes
  * ```
  */
-export const type = <$Type>(type: string) =>
-	validate<$Type>((value) => typeof value === type, "type", type);
+export const type =
+	<$Type>(type: string): Assertion<$Type> =>
+	(v) =>
+		typeof v === type || error("type", v, type);

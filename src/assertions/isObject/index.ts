@@ -1,5 +1,5 @@
 import type { ObjectUnknown } from "@assertions/isObject/types";
-import { validate } from "@assertions/validate";
+import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -12,7 +12,5 @@ import type { Assertion } from "@the-minimal/types";
  * isObject({}); // passes
  * ```
  */
-export const isObject: Assertion<ObjectUnknown> = validate<ObjectUnknown>(
-	(v) => v !== null && typeof v === "object",
-	"isObject",
-);
+export const isObject: Assertion<ObjectUnknown> = (v) =>
+	(v !== null && typeof v === "object") || error("isObject", v);

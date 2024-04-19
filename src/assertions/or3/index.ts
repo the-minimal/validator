@@ -18,12 +18,13 @@ import type { Assertion } from "@the-minimal/types";
  * trueish(true); // passes
  * ```
  */
-export const or3 = <$Value1, $Value2, $Value3>(
-	assertion1: Assertion<$Value1>,
-	assertion2: Assertion<$Value2>,
-	assertion3: Assertion<$Value3>,
-) =>
-	((value: unknown) => {
+export const or3 =
+	<$Value1, $Value2, $Value3>(
+		assertion1: Assertion<$Value1>,
+		assertion2: Assertion<$Value2>,
+		assertion3: Assertion<$Value3>,
+	): Assertion<$Value1 | $Value2 | $Value3> =>
+	(value: unknown) => {
 		try {
 			assertion1(value);
 		} catch {
@@ -33,4 +34,4 @@ export const or3 = <$Value1, $Value2, $Value3>(
 				assertion3(value);
 			}
 		}
-	}) as Assertion<$Value1 | $Value2 | $Value3>;
+	};

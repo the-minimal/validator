@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if length of value is not equal to the provided length.
@@ -13,9 +14,7 @@ import { validate } from "@assertions/validate";
  * twoLetters("ab"); // passes
  * ```
  */
-export const notLength = (length: number) =>
-	validate<{ length: number }>(
-		(v) => (v as any).length !== length,
-		"notLength",
-		length,
-	);
+export const notLength =
+	(length: number): Assertion<{ length: number }> =>
+	(v) =>
+		(v as any).length !== length || error("notLength", v, length);

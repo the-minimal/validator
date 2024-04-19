@@ -10,4 +10,4 @@ import type { Assertion } from "@the-minimal/types";
  * string("hello"); // passes
  * ```
  */
-export const string: Assertion<string> = type<string>("string");
+export const string = type<string>("string");

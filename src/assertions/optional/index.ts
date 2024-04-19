@@ -16,6 +16,5 @@ import type { Assertion, Optional } from "@the-minimal/types";
  */
 export const optional =
 	<$Value>(assertion: Assertion<$Value>): Assertion<Optional<$Value>> =>
-	(value) => {
-		value !== undefined && assertion(value);
-	};
+	(v) =>
+		v === undefined || assertion(v);

@@ -15,11 +15,9 @@ yarn add @the-minimal/validator
 - Synchronous JSON validations
 - No compilation or code evaluation
 - Fully type safe with type inference
-- Fully tree-shakeable 1 KB bundle
+- Fully tree-shakeable 0.85 KB bundle
 - Minimal runtime and type overhead
-- Only 2 minimal in-house dependencies
-  - [@the-minimal/types](https://github.com/the-minimal/types)
-  - [@the-minimal/error](https://github.com/the-minimal/error)
+- Zero runtime dependencies
 
 ## Philosophy
 
@@ -38,7 +36,7 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 415 bytes
+// 390 bytes
 import { type Infer, object, string, and, minLength, maxLength, email } from "@the-minimal/validator";
 
 // Creates login schema with email and password
@@ -107,10 +105,11 @@ login({ email: 'jane@example.com', password: '12345678' });
   // definition
   const validate = and([
     string,
-    validate(
-      (fileName) => File.exists(fileName), // Promise<boolean>
-      "fileExists"
-    )
+    async (v) => {
+      if(!(await File.exists(v))) {
+        error("fileExists", v);
+      }
+    }
   ]);
 
   // endpoint
@@ -137,6 +136,5 @@ login({ email: 'jane@example.com', password: '12345678' });
 - Number validations
 - String validations
 - Boolean validations
-- Optimize size
-- Optimize performance
 - Return brands
+- Add info about error types to all assertions

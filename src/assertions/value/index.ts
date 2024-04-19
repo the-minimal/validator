@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is equal to the provided value.
@@ -13,5 +14,7 @@ import { validate } from "@assertions/validate";
  * isNull(null); // passes
  * ```
  */
-export const value = <$Type>(value: $Type) =>
-	validate<$Type>((v) => v === value, "value", value);
+export const value =
+	<$Type>(value: $Type): Assertion<$Type> =>
+	(v) =>
+		v === value || error("value", v, value);

@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if the value is one of the provided options.
@@ -14,5 +15,9 @@ import { validate } from "@assertions/validate";
  * userRole("user"); // passes
  * ```
  */
-export const options = <const $Options extends unknown[]>(options: $Options) =>
-	validate<$Options[number]>((v) => options.includes(v), "options", options);
+export const options =
+	<const $Options extends unknown[]>(
+		options: $Options,
+	): Assertion<$Options[number]> =>
+	(v) =>
+		options.includes(v) || error("options", v, options);

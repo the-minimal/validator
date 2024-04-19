@@ -1,14 +1,19 @@
-import { ERROR_PREFIX } from "@constants";
-import {
-	type Context,
-	type Message,
-	type Value,
-	error as minimal_error,
-} from "@the-minimal/error";
+import type { Optional } from "@the-minimal/types";
+import type { CustomError } from "types";
+
+const type = "validator";
 
 export const error = (
 	reason: string,
-	value?: Value,
-	context?: Context,
-	message?: Message,
-) => minimal_error(`${ERROR_PREFIX}:${reason}`, value, context, message);
+	value: Optional<unknown> = undefined,
+	props: Optional<unknown> = undefined,
+	message: Optional<string> = undefined,
+) => {
+	throw {
+		type,
+		reason,
+		value,
+		props,
+		message,
+	} satisfies CustomError<"validator", string>;
+};

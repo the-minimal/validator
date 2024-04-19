@@ -1,5 +1,4 @@
 import { type } from "@assertions/type";
-import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that the value is a number.
@@ -10,4 +9,4 @@ import type { Assertion } from "@the-minimal/types";
  * number(1); // passes
  * ```
  */
-export const number: Assertion<number> = type<number>("number");
+export const number = type<number>("number");

@@ -20,7 +20,7 @@ export const and2 =
 		assertion1: Assertion<$Value1>,
 		assertion2: Assertion<$Value2>,
 	): Assertion<$Value1 & $Value2> =>
-	(value: unknown) => {
-		assertion1(value);
-		assertion2(value);
+	(v) => {
+		assertion1(v);
+		assertion2(v);
 	};

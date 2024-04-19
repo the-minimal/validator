@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is integer.
@@ -9,4 +10,5 @@ import { validate } from "@assertions/validate";
  * integer(1) // passes
  * ```
  */
-export const integer = validate<number>((v) => Number.isInteger(v), "integer");
+export const integer: Assertion<number> = (v) =>
+	Number.isInteger(v) || error("isInteger", v);

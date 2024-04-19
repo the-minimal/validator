@@ -1,5 +1,4 @@
 import { type } from "@assertions/type";
-import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that the value is a boolean.
@@ -10,4 +9,4 @@ import type { Assertion } from "@the-minimal/types";
  * boolean(true); // passes
  * ```
  */
-export const boolean: Assertion<boolean> = type<boolean>("boolean");
+export const boolean = type<boolean>("boolean");

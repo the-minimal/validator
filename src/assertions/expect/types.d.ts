@@ -1,1 +1,6 @@
-export type Message = (error: any, value: unknown) => string;
+import type { CustomError } from "types";
+
+export type Message = (
+	error: CustomError<"validator">,
+	value: unknown,
+) => string;

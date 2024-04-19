@@ -27,9 +27,9 @@ export const and = <
 ): Assertion<$Infered> => {
 	const length = assertions.length;
 
-	return (value) => {
+	return (v) => {
 		for (let i = 0; i < length; ++i) {
-			(assertions[i] as any)(value);
+			(assertions[i] as any)(v);
 		}
 	};
 };

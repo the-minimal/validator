@@ -29,5 +29,4 @@ export * from "./regex";
 export * from "./string";
 export * from "./tuple";
 export * from "./type";
-export * from "./validate";
 export * from "./value";

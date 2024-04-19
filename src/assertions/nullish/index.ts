@@ -17,6 +17,5 @@ import type { Assertion, Nullish } from "@the-minimal/types";
  */
 export const nullish =
 	<$Value>(assertion: Assertion<$Value>): Assertion<Nullish<$Value>> =>
-	(value) => {
-		value !== null && value !== undefined && assertion(value);
-	};
+	(v) =>
+		v === null || v === undefined || assertion(v);

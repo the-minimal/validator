@@ -16,10 +16,10 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const array =
 	<$Value>(assertion: Assertion<$Value>): Assertion<Array<$Value>> =>
-	(value) => {
-		isArray(value);
+	(v) => {
+		isArray(v);
 
-		for (let i = 0; i < (value as unknown[]).length; ++i) {
-			assertion((value as any)[i]);
+		for (let i = 0; i < v.length; ++i) {
+			assertion((v as any)[i]);
 		}
 	};

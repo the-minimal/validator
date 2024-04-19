@@ -1,4 +1,5 @@
-import { validate } from "@assertions/validate";
+import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is less than or equal to the provided length.
@@ -13,5 +14,7 @@ import { validate } from "@assertions/validate";
  * teenagerAge(15); // passes
  * ```
  */
-export const maxValue = <$Type>(value: $Type) =>
-	validate<$Type>((v) => (v as any) <= value, "maxValue", value);
+export const maxValue =
+	<$Type>(value: $Type): Assertion<$Type> =>
+	(v) =>
+		(v as any) <= value || error("maxValue", v, value);

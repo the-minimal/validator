@@ -1,5 +1,5 @@
 import type { Message } from "@assertions/expect/types";
-import { error, isError } from "@the-minimal/error";
+import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -18,18 +18,10 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const expect =
 	<$Type>(assertion: Assertion<$Type>, message: Message): Assertion<$Type> =>
-	(value: unknown) => {
+	(v) => {
 		try {
-			assertion(value);
-		} catch (e) {
-			const msg = message(e, value);
-
-			if (e instanceof Error) {
-				error(`unknown:${e.name}`, value, e.stack, msg);
-			} else if (isError(e)) {
-				error((e as any).reason, value, (e as any).context, msg);
-			} else {
-				error("unknown:unknown", value, e, msg);
-			}
+			assertion(v);
+		} catch (e: any) {
+			error(e.reason, v, e.props, message(e, v));
 		}
 	};

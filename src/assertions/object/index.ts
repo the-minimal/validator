@@ -26,15 +26,17 @@ import type { Assertion } from "@the-minimal/types";
  * }); // passes
  * ```
  */
-export const object = <$Schema extends ObjectSchema>(schema: $Schema) => {
+export const object = <$Schema extends ObjectSchema>(
+	schema: $Schema,
+): Assertion<InferObjectSchema<$Schema>> => {
 	const keys = Object.keys(schema);
 	const length = keys.length;
 
-	return ((value) => {
-		isObject(value);
+	return (v) => {
+		isObject(v);
 
 		for (let i = 0; i < length; ++i) {
-			(schema[keys[i]] as any)((value as any)[keys[i] as any]);
+			(schema[keys[i]] as any)(v[keys[i] as any]);
 		}
-	}) as Assertion<InferObjectSchema<$Schema>>;
+	};
 };

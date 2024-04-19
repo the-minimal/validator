@@ -16,6 +16,5 @@ import type { Assertion, Nullable } from "@the-minimal/types";
  */
 export const nullable =
 	<$Value>(assertion: Assertion<$Value>): Assertion<Nullable<$Value>> =>
-	(value) => {
-		value !== null && assertion(value);
-	};
+	(v) =>
+		v === null || assertion(v);
