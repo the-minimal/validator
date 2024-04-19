@@ -37,13 +37,13 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 390 bytes
-import { type Infer, object, string, and, minLength, maxLength, email } from "@the-minimal/validator";
+// 400 bytes
+import { type Infer, object, string, and2, and3, rangeLength, email } from "@the-minimal/validator";
 
 // Creates login schema with email and password
 const login = object({
-  email: and([string, minLength(5), maxLength(35), email]),
-  password: and([string, minLength(8), maxLength(16)]),
+  email: and3(string, rangeLength(5, 35), email),
+  password: and2(string, rangeLength(8, 16)),
 });
 
 // Infer TypeScript type of login schema
