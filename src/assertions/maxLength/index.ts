@@ -1,5 +1,6 @@
 import type { MaxLength } from "@assertions/maxLength/types";
-import { Reason, error } from "@error";
+import { Reason } from "@constants";
+import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
