@@ -16,6 +16,7 @@ export * from "./maxLength";
 export * from "./maxValue";
 export * from "./minLength";
 export * from "./minValue";
+export * from "./modulo";
 export * from "./notLength";
 export * from "./notValue";
 export * from "./nullable";

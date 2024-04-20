@@ -6,8 +6,10 @@ export const error = (reason: Reason) => {
 export enum Reason {
 	type = 49711,
 	or = 54701,
-	integer = 58693,
 	options = 14692,
+
+	integer = 58693,
+	modulo = 29375,
 
 	regex = 27324,
 	startsWith = 15577,
