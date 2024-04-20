@@ -22,16 +22,12 @@ import type { Assertion } from "@the-minimal/types";
  * trueish("yes"); // passes
  * ```
  */
-export const or = <
-	const $Validations extends OrSchema,
-	$Infered = InferOrSchema<$Validations>,
->(
-	validations: $Validations,
-): Assertion<$Infered> => {
-	const length = validations.length;
-
-	return (value) => {
-		for (let i = 0; i < length; ++i) {
+export const or =
+	<const $Validations extends OrSchema, $Infered = InferOrSchema<$Validations>>(
+		validations: $Validations,
+	): Assertion<$Infered> =>
+	(value) => {
+		for (let i = 0; i < validations.length; ++i) {
 			try {
 				(validations[i] as any)(value);
 				return;
@@ -40,4 +36,3 @@ export const or = <
 
 		error(or);
 	};
-};

@@ -19,17 +19,12 @@ import type { Assertion } from "@the-minimal/types";
  * userEmail("yamiteru@icloud.com"); // passes
  * ```
  */
-export const and = <
-	const $Schema extends AndSchema,
-	$Infered = InferAndSchema<$Schema>,
->(
-	assertions: $Schema,
-): Assertion<$Infered> => {
-	const length = assertions.length;
-
-	return (v) => {
-		for (let i = 0; i < length; ++i) {
+export const and =
+	<const $Schema extends AndSchema, $Infered = InferAndSchema<$Schema>>(
+		assertions: $Schema,
+	): Assertion<$Infered> =>
+	(v) => {
+		for (let i = 0; i < assertions.length; ++i) {
 			(assertions[i] as any)(v);
 		}
 	};
-};
