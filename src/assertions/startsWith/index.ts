@@ -1,3 +1,4 @@
+import type { StartsWith } from "@assertions/startsWith/types";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -15,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const startsWith =
-	(value: string): Assertion<string> =>
+	<$Value extends string>(value: $Value): Assertion<StartsWith<$Value>> =>
 	(v) =>
 		(v as any).startsWith(value) || error("startsWith", v, value);

@@ -1,3 +1,4 @@
+import type { EndsWith } from "@assertions/endsWith/types";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -15,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const endsWith =
-	(value: string): Assertion<string> =>
+	<$Value extends string>(value: $Value): Assertion<EndsWith<$Value>> =>
 	(v) =>
 		(v as any).endsWith(value) || error("endsWith", v, value);

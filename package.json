@@ -68,6 +68,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@the-minimal/types": "0.2.1"
+    "@the-minimal/types": "0.2.2"
   }
 }

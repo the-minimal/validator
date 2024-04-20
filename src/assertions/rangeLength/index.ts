@@ -1,3 +1,4 @@
+import type { RangeLength } from "@assertions/rangeLength/types";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -17,7 +18,10 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const rangeLength =
-	(min: number, max: number): Assertion<{ length: number }> =>
+	<$Min extends number, $Max extends number>(
+		min: $Min,
+		max: $Max,
+	): Assertion<RangeLength<$Min, $Max>> =>
 	(v) =>
 		((v as any).length >= min && (v as any).length <= max) ||
 		error("rangeLength", v, { min, max });

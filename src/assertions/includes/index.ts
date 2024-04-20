@@ -1,3 +1,4 @@
+import type { Includes } from "@assertions/includes/types";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -15,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const includes =
-	<$Type>(value: $Type): Assertion<$Type> =>
+	<$Type>(value: $Type): Assertion<Includes<$Type>> =>
 	(v) =>
 		(v as any).includes(value) || error("includes", v, value);

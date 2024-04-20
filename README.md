@@ -37,12 +37,12 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 400 bytes
-import { type Infer, object, string, and2, and3, rangeLength, email } from "@the-minimal/validator";
+// 380 bytes
+import { type Infer, object, string, and2, rangeLength, email } from "@the-minimal/validator";
 
 // Creates login schema with email and password
 const login = object({
-  email: and3(string, rangeLength(5, 35), email),
+  email: and2(string, email),
   password: and2(string, rangeLength(8, 16)),
 });
 
@@ -144,8 +144,11 @@ login({ email: 'jane@example.com', password: '12345678' });
 
 ## Roadmap to v1
 
+- Use CRC-8 for error names
+- Benchmark object vs tuple for error use
 - Number validations
-- Boolean validations
-- Return brands for sub-assertions
+  - `multipleOf` - I don't like the `Of` at the end
+  - `positive` => `ValueMin(1)`
+  - `negative` => `ValueMax(-1)`
 - Add info about error types to all assertions
 - Rename `options` and use `includes` for the implementation

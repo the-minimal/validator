@@ -1,3 +1,4 @@
+import type { MaxLength } from "@assertions/maxLength/types";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -15,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const maxLength =
-	(length: number): Assertion<{ length: number }> =>
+	<$Value extends number>(length: $Value): Assertion<MaxLength<$Value>> =>
 	(v) =>
 		(v as any).length <= length || error("maxLength", v, length);

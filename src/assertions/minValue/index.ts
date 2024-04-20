@@ -1,3 +1,4 @@
+import type { MinValue } from "@assertions/minValue/types";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -15,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const minValue =
-	<$Type>(value: $Type): Assertion<$Type> =>
+	<$Type>(value: $Type): Assertion<MinValue<$Type>> =>
 	(v) =>
 		(v as any) >= value || error("minValue", v, value);

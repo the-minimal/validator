@@ -4,9 +4,9 @@ const type = "validator";
 
 export const error = (
 	reason: string,
-	value: Optional<unknown> = undefined,
-	props: Optional<unknown> = undefined,
-	message: Optional<string> = undefined,
+	value?: unknown,
+	props?: unknown,
+	message?: string,
 ) => {
 	throw {
 		type,
