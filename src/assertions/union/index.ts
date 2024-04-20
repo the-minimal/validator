@@ -8,14 +8,14 @@ import type { Assertion } from "@the-minimal/types";
  *
  * @example
  * ```ts
- * const userRole = options(["admin", "user"]);
+ * const userRole = union(["admin", "user"]);
  *
- * userRole("super-admin"); // Error: options
+ * userRole("super-admin"); // Error: union
  * userRole("admin"); // passes
  * userRole("user"); // passes
  * ```
  */
-export const options =
+export const union =
 	<const $Options extends unknown[]>(
 		options: $Options,
 	): Assertion<$Options[number]> =>

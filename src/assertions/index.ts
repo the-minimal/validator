@@ -24,7 +24,7 @@ export * from "./nullish";
 export * from "./number";
 export * from "./object";
 export * from "./optional";
-export * from "./options";
+export * from "./union";
 export * from "./or";
 export * from "./or2";
 export * from "./or3";

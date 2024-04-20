@@ -1,8 +1,8 @@
-import { options } from "@assertions/options";
 import { fc, test } from "@fast-check/vitest";
+import { union } from "assertions/union";
 import { expect } from "vitest";
 
-const assertion = options(["one", "two"]);
+const assertion = union(["one", "two"]);
 
 test.prop([fc.oneof(fc.constant("one"), fc.constant("two"))])(
 	"should not throw if value is one of options",

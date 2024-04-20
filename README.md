@@ -141,12 +141,3 @@ login({ email: 'jane@example.com', password: '12345678' });
   ```
 
 </details>
-
-## Roadmap to v1
-
-- Number validations
-  - `multipleOf` - I don't like the `Of` at the end
-  - `positive` => `ValueMin(1)`
-  - `negative` => `ValueMax(-1)`
-- Add info about error types to all assertions
-- Rename `options` and use `includes` for the implementation
