@@ -17,13 +17,5 @@ test.prop([fc.string()])(
 );
 
 test.prop([fc.integer()])("should throw if value fails assertion", (value) => {
-	try {
-		assertion(value);
-	} catch (e: any) {
-		expect(e.type).toBe("validator");
-		expect(e.reason).toBe("type");
-		expect(e.value).toBe(value);
-		expect(e.props).toBe("string");
-		expect(e.message).toBe("Expected string, got number");
-	}
+	expect(() => assertion(value)).toThrow("Expected string, got number");
 });

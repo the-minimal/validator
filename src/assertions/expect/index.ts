@@ -1,5 +1,4 @@
 import type { Message } from "@assertions/expect/types";
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
