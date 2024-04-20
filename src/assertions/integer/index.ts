@@ -1,5 +1,4 @@
 import type { Integer } from "@assertions/integer/types";
-import { REASON_INTEGER } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -13,4 +12,4 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const integer: Assertion<Integer> = (v) =>
-	Number.isInteger(v) || error(REASON_INTEGER);
+	Number.isInteger(v) || error(integer);

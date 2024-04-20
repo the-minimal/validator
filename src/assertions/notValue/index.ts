@@ -1,5 +1,4 @@
 import type { NotValue } from "@assertions/notValue/types";
-import { REASON_NOT_VALUE } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const notValue =
 	<$Type>(value: $Type): Assertion<NotValue<$Type>> =>
 	(v) =>
-		v !== value || error(REASON_NOT_VALUE);
+		v !== value || error(notValue);

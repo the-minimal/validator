@@ -1,5 +1,4 @@
 import type { MinLength } from "@assertions/minLength/types";
-import { REASON_MIN_LENGTH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const minLength =
 	<$Value extends number>(length: $Value): Assertion<MinLength<$Value>> =>
 	(v: any) =>
-		v.length >= length || error(REASON_MIN_LENGTH);
+		v.length >= length || error(minLength);

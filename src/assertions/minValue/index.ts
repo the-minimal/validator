@@ -1,5 +1,4 @@
 import type { MinValue } from "@assertions/minValue/types";
-import { REASON_MIN_VALUE } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const minValue =
 	<$Type>(value: $Type): Assertion<MinValue<$Type>> =>
 	(v: any) =>
-		v >= value || error(REASON_MIN_VALUE);
+		v >= value || error(minValue);

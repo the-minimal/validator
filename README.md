@@ -15,7 +15,7 @@ yarn add @the-minimal/validator
 - Synchronous JSON-oriented validations
 - No compilation or code evaluation
 - Fully type safe with type inference
-- Fully tree-shakeable < 1 KB bundle
+- Fully tree-shakeable ~0.8 KB bundle
 - Minimal runtime and type-checking overhead
 - Fully tested with 100% coverage
 - Zero runtime dependencies
@@ -37,7 +37,7 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 292 bytes
+// 275 bytes
 import { object, string, and2, rangeLength, email } from "@the-minimal/validator";
 import type { Infer } from "@the-minimal/validator";
 
@@ -46,7 +46,7 @@ const login = object({                          // (v: unknown) => asserts v is 
   password: and2(string, rangeLength(8, 16)),   //   password: string & RangeLength<8, 16>
 });                                             // }
 
-login({ email: '', password: '' });             // Error: 49711
+login({ email: '', password: '' });             // Error: type
 
 login({                                         // {
   email: 'jane@example.com',                    //   email: string & Email

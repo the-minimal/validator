@@ -1,5 +1,4 @@
 import type { MaxLength } from "@assertions/maxLength/types";
-import { REASON_MAX_LENGTH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const maxLength =
 	<$Value extends number>(length: $Value): Assertion<MaxLength<$Value>> =>
 	(v: any) =>
-		v.length <= length || error(REASON_MAX_LENGTH);
+		v.length <= length || error(maxLength);

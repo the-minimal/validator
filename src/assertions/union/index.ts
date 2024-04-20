@@ -1,4 +1,3 @@
-import { REASON_UNION } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -21,4 +20,4 @@ export const union =
 		options: $Options,
 	): Assertion<$Options[number]> =>
 	(v) =>
-		options.includes(v) || error(REASON_UNION);
+		options.includes(v) || error(union);

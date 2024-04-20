@@ -9,9 +9,9 @@ test.prop([fc.constant("yamiteru@icloud.com")])(
 	},
 );
 
-test.prop([fc.string()])(
+test.prop([fc.integer()])(
 	"should throw if value does not matche email RegExp",
 	(value) => {
-		expect(() => email(value)).toThrow();
+		expect(() => email(`${value}`)).toThrow();
 	},
 );

@@ -1,5 +1,4 @@
 import type { StartsWith } from "@assertions/startsWith/types";
-import { REASON_STARTS_WITH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const startsWith =
 	<$Value extends string>(value: $Value): Assertion<StartsWith<$Value>> =>
 	(v: any) =>
-		v.startsWith(value) || error(REASON_STARTS_WITH);
+		v.startsWith(value) || error(startsWith);

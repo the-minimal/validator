@@ -1,11 +1,10 @@
-import { REASON_TYPE } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that the value is of the provided type.
  *
- * @param type - Type to be validated against.
+ * @param value - Type to be validated against.
  *
  * @example
  * ```ts
@@ -16,6 +15,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const type =
-	<$Type>(type: string): Assertion<$Type> =>
+	<$Value>(value: string): Assertion<$Value> =>
 	(v) =>
-		typeof v === type || error(REASON_TYPE);
+		typeof v === value || error(type);

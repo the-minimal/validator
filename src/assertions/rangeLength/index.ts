@@ -1,5 +1,4 @@
 import type { RangeLength } from "@assertions/rangeLength/types";
-import { REASON_RANGE_LENGTH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -24,4 +23,4 @@ export const rangeLength =
 		max: $Max,
 	): Assertion<RangeLength<$Min, $Max>> =>
 	(v: any) =>
-		(v.length >= min && v.length <= max) || error(REASON_RANGE_LENGTH);
+		(v.length >= min && v.length <= max) || error(rangeLength);
