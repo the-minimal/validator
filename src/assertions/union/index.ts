@@ -20,4 +20,4 @@ export const union =
 		options: $Options,
 	): Assertion<$Options[number]> =>
 	(v) =>
-		options.includes(v) || error(Reason.options);
+		options.includes(v) || error(Reason.union);

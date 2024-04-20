@@ -6,7 +6,7 @@ export const error = (reason: Reason) => {
 export enum Reason {
 	type = 49711,
 	or = 54701,
-	options = 14692,
+	union = 9197,
 
 	integer = 58693,
 	modulo = 29375,
