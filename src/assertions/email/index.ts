@@ -11,6 +11,4 @@ import type { Assertion } from "@the-minimal/types";
  * email("yamiteru@icloud.com"); // passes
  * ```
  */
-export const email: Assertion<Email> = regex(
-	/^[\w+-]+(?:\.[\w+-]+)*@[\da-z]+(?:[.-][\da-z]+)*\.[a-z]{2,}$/iu,
-);
+export const email: Assertion<Email> = regex(/^\w+@.+\..+$/);

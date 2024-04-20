@@ -1,4 +1,4 @@
-import { Reason } from "@constants";
+import { REASON_IS_ARRAY } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -12,4 +12,4 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const isArray: Assertion<Array<unknown>> = (v) =>
-	Array.isArray(v) || error(Reason.isArray);
+	Array.isArray(v) || error(REASON_IS_ARRAY);

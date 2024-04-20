@@ -1,5 +1,5 @@
 import type { EndsWith } from "@assertions/endsWith/types";
-import { Reason } from "@constants";
+import { REASON_ENDS_WITH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -18,5 +18,5 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const endsWith =
 	<$Value extends string>(value: $Value): Assertion<EndsWith<$Value>> =>
-	(v) =>
-		(v as any).endsWith(value) || error(Reason.endsWith);
+	(v: any) =>
+		v.endsWith(value) || error(REASON_ENDS_WITH);

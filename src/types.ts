@@ -1,4 +1,1 @@
-import type { InferAssertion, UnknownAssertion } from "@the-minimal/types";
-
-export type Infer<$Assertion extends UnknownAssertion> =
-	InferAssertion<$Assertion>;
+export type { InferAssertion as Infer } from "@the-minimal/types";

@@ -1,5 +1,5 @@
 import type { Modulo } from "@assertions/modulo/types";
-import { Reason } from "@constants";
+import { REASON_MODULO } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -9,4 +9,4 @@ export const modulo =
 		remainder: $Remainder,
 	): Assertion<Modulo<$Divider, $Remainder>> =>
 	(v) =>
-		(v as number) % divider === remainder || error(Reason.modulo);
+		(v as number) % divider === remainder || error(REASON_MODULO);

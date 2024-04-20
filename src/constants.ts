@@ -1,30 +1,21 @@
-// CRC-16/ARC decimal error names
-export enum Reason {
-	type = 49711,
-	or = 54701,
-	union = 9197,
-
-	integer = 58693,
-	modulo = 29375,
-
-	regex = 27324,
-	startsWith = 15577,
-	endsWith = 47266,
-
-	includes = 30945,
-
-	isArray = 7069,
-	isObject = 25174,
-
-	value = 37360,
-	notValue = 16483,
-	minValue = 28487,
-	maxValue = 22988,
-	rangeValue = 45807,
-
-	length = 48590,
-	notLength = 53343,
-	minLength = 52080,
-	maxLength = 44038,
-	rangeLength = 30124,
-}
+export const REASON_TYPE = 49711;
+export const REASON_OR = 54701;
+export const REASON_UNION = 9197;
+export const REASON_INTEGER = 58693;
+export const REASON_MODULO = 29375;
+export const REASON_REGEX = 27324;
+export const REASON_STARTS_WITH = 15577;
+export const REASON_ENDS_WITH = 47266;
+export const REASON_INCLUDES = 30945;
+export const REASON_IS_ARRAY = 7069;
+export const REASON_IS_OBJECT = 25174;
+export const REASON_VALUE = 37360;
+export const REASON_NOT_VALUE = 16483;
+export const REASON_MIN_VALUE = 28487;
+export const REASON_MAX_VALUE = 22988;
+export const REASON_RANGE_VALUE = 45807;
+export const REASON_LENGTH = 48590;
+export const REASON_NOT_LENGTH = 53343;
+export const REASON_MIN_LENGTH = 52080;
+export const REASON_MAX_LENGTH = 44038;
+export const REASON_RANGE_LENGTH = 30124;

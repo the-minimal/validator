@@ -1,5 +1,5 @@
 import type { NotLength } from "@assertions/notLength/types";
-import { Reason } from "@constants";
+import { REASON_NOT_LENGTH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -18,5 +18,5 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const notLength =
 	<$Value extends number>(length: $Value): Assertion<NotLength<$Value>> =>
-	(v) =>
-		(v as any).length !== length || error(Reason.notLength);
+	(v: any) =>
+		v.length !== length || error(REASON_NOT_LENGTH);

@@ -1,5 +1,3 @@
-import type { Reason } from "@constants";
-
-export const error = (reason: Reason) => {
+export const error = (reason: number) => {
 	throw reason;
 };

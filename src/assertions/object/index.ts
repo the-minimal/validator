@@ -30,12 +30,11 @@ export const object = <$Schema extends ObjectSchema>(
 	schema: $Schema,
 ): Assertion<InferObjectSchema<$Schema>> => {
 	const keys = Object.keys(schema);
-	const length = keys.length;
 
 	return (v) => {
 		isObject(v);
 
-		for (let i = 0; i < length; ++i) {
+		for (let i = 0; i < keys.length; ++i) {
 			(schema[keys[i]] as any)(v[keys[i] as any]);
 		}
 	};

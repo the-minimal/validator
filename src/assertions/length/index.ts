@@ -1,5 +1,5 @@
 import type { Length } from "@assertions/length/types";
-import { Reason } from "@constants";
+import { REASON_LENGTH } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -18,5 +18,5 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const length =
 	<$Value extends number>(length: $Value): Assertion<Length<$Value>> =>
-	(v) =>
-		(v as any).length === length || error(Reason.length);
+	(v: any) =>
+		v.length === length || error(REASON_LENGTH);

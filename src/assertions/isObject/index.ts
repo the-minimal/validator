@@ -1,5 +1,5 @@
 import type { ObjectUnknown } from "@assertions/isObject/types";
-import { Reason } from "@constants";
+import { REASON_IS_OBJECT } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -14,4 +14,4 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const isObject: Assertion<ObjectUnknown> = (v) =>
-	(v !== null && typeof v === "object") || error(Reason.isObject);
+	(v !== null && typeof v === "object") || error(REASON_IS_OBJECT);

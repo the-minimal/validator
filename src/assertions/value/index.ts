@@ -1,5 +1,5 @@
 import type { Value } from "@assertions/value/types";
-import { Reason } from "@constants";
+import { REASON_VALUE } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,4 +19,4 @@ import type { Assertion } from "@the-minimal/types";
 export const value =
 	<$Type>(value: $Type): Assertion<Value<$Type>> =>
 	(v) =>
-		v === value || error(Reason.value);
+		v === value || error(REASON_VALUE);

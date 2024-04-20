@@ -1,4 +1,4 @@
-import { Reason } from "@constants";
+import { REASON_TYPE } from "@constants";
 import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
@@ -18,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const type =
 	<$Type>(type: string): Assertion<$Type> =>
 	(v) =>
-		typeof v === type || error(Reason.type);
+		typeof v === type || error(REASON_TYPE);
