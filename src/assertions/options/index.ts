@@ -1,4 +1,4 @@
-import { error } from "@error";
+import { Reason, error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -20,4 +20,4 @@ export const options =
 		options: $Options,
 	): Assertion<$Options[number]> =>
 	(v) =>
-		options.includes(v) || error("options", v, options);
+		options.includes(v) || error(Reason.options);

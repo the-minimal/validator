@@ -22,6 +22,6 @@ export const expect =
 		try {
 			assertion(v);
 		} catch (e: any) {
-			error(e.reason, v, e.props, message(e, v));
+			throw Error(message(e, v));
 		}
 	};

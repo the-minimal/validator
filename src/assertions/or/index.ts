@@ -1,5 +1,5 @@
 import type { InferOrSchema, OrSchema } from "@assertions/or/types";
-import { error } from "@error";
+import { Reason, error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -38,6 +38,6 @@ export const or = <
 			} catch {}
 		}
 
-		error("or", value);
+		error(Reason.or);
 	};
 };

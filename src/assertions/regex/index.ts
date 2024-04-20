@@ -1,5 +1,5 @@
 import type { Regex } from "@assertions/regex/types";
-import { error } from "@error";
+import { Reason, error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -18,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const regex =
 	<$Name extends string>(pattern: RegExp): Assertion<Regex<$Name>> =>
 	(v) =>
-		pattern.test(v as string) || error("regex", v, pattern);
+		pattern.test(v as string) || error(Reason.regex);

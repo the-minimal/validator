@@ -1,5 +1,5 @@
 import type { MaxValue } from "@assertions/maxValue/types";
-import { error } from "@error";
+import { Reason, error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -18,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const maxValue =
 	<$Type>(value: $Type): Assertion<MaxValue<$Type>> =>
 	(v) =>
-		(v as any) <= value || error("maxValue", v, value);
+		(v as any) <= value || error(Reason.maxValue);

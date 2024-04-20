@@ -37,7 +37,7 @@ This allows us to make the library much smaller and faster.
 ## Example
 
 ```ts
-// 380 bytes
+// 325 bytes
 import { type Infer, object, string, and2, rangeLength, email } from "@the-minimal/validator";
 
 // Creates login schema with email and password
@@ -144,8 +144,6 @@ login({ email: 'jane@example.com', password: '12345678' });
 
 ## Roadmap to v1
 
-- Use CRC-8 for error names
-- Benchmark object vs tuple for error use
 - Number validations
   - `multipleOf` - I don't like the `Of` at the end
   - `positive` => `ValueMin(1)`

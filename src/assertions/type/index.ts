@@ -1,4 +1,4 @@
-import { error } from "@error";
+import { Reason, error } from "@error";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -17,4 +17,4 @@ import type { Assertion } from "@the-minimal/types";
 export const type =
 	<$Type>(type: string): Assertion<$Type> =>
 	(v) =>
-		typeof v === type || error("type", v, type);
+		typeof v === type || error(Reason.type);
