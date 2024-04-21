@@ -28,8 +28,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Bun
         uses: oven-sh/setup-bun@v1
+      - run: bun install
 
       - name: TSDoc Action
         uses: erikyo/tsdoc-action@v1
