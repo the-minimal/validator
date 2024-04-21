@@ -39,7 +39,7 @@ jobs:
         uses: erikyo/tsdoc-action@v1
         with:
           basePath: ./
-          entrypoint: src/index.ts
+          entryPoints: src/index.ts
           out_dir: website
 
       - name: Setup Pages
