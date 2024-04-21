@@ -1,6 +1,4 @@
 import { isArray } from "@assertions/isArray";
-import { length } from "@assertions/length";
-import { Length } from "@assertions/length/types";
 import type { InferTupleSchema, TupleSchema } from "@assertions/tuple/types";
 import type { Assertion } from "@the-minimal/types";
 
@@ -19,9 +17,9 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const tuple =
-	<const $Schema extends TupleSchema, $Infered = InferTupleSchema<$Schema>>(
+	<const $Schema extends TupleSchema>(
 		assertions: $Schema,
-	): Assertion<$Infered> =>
+	): Assertion<InferTupleSchema<$Schema>> =>
 	(v) => {
 		isArray(v);
 

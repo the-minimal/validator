@@ -15,7 +15,7 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const array =
-	<$Value>(assertion: Assertion<$Value>): Assertion<Array<$Value>> =>
+	<$Input>(assertion: Assertion<$Input>): Assertion<Array<$Input>> =>
 	(v) => {
 		isArray(v);
 

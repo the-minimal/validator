@@ -5,7 +5,7 @@ import type { Assertion } from "@the-minimal/types";
 /**
  * Checks if value is less than or equal to the provided length.
  *
- * @param value - Value used in the comparison.
+ * @param input - Value used in the comparison.
  *
  * @example
  * ```ts
@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const maxValue =
-	<$Type>(value: $Type): Assertion<MaxValue<$Type>> =>
+	<const $Input>(input: $Input): Assertion<MaxValue<$Input>> =>
 	(v: any) =>
-		v <= value || error(maxValue);
+		v <= input || error(maxValue);

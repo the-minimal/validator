@@ -4,7 +4,7 @@ import type { Assertion } from "@the-minimal/types";
 /**
  * Checks that the value is of the provided type.
  *
- * @param value - Type to be validated against.
+ * @param input - Type to be validated against.
  *
  * @example
  * ```ts
@@ -15,6 +15,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const type =
-	<$Value>(value: string): Assertion<$Value> =>
+	<$Input>(input: string): Assertion<$Input> =>
 	(v) =>
-		typeof v === value || error(type);
+		typeof v === input || error(type);

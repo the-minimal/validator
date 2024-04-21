@@ -21,8 +21,8 @@ import type { UnknownAssertion } from "@the-minimal/types";
  * ```
  */
 export const lazy = <$Validation extends UnknownAssertion>(
-	assertion: (value: unknown) => $Validation,
+	assertion: (input: unknown) => $Validation,
 ) =>
-	((value: unknown) => {
-		(assertion(value) as any)(value);
+	((input: unknown) => {
+		(assertion(input) as any)(input);
 	}) as $Validation;

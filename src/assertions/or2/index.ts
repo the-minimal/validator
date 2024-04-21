@@ -19,14 +19,14 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const or2 =
-	<$Value1, $Value2>(
-		assertion1: Assertion<$Value1>,
-		assertion2: Assertion<$Value2>,
-	): Assertion<$Value1 | $Value2> =>
-	(value: unknown) => {
+	<$Input1, $Input2>(
+		assertion1: Assertion<$Input1>,
+		assertion2: Assertion<$Input2>,
+	): Assertion<$Input1 | $Input2> =>
+	(v) => {
 		try {
-			assertion1(value);
+			assertion1(v);
 		} catch {
-			assertion2(value);
+			assertion2(v);
 		}
 	};

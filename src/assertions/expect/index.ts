@@ -16,7 +16,7 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const expect =
-	<$Type>(assertion: Assertion<$Type>, message: Message): Assertion<$Type> =>
+	<$Input>(assertion: Assertion<$Input>, message: Message): Assertion<$Input> =>
 	(v) => {
 		try {
 			assertion(v);

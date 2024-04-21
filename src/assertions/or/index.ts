@@ -23,13 +23,13 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const or =
-	<const $Validations extends OrSchema, $Infered = InferOrSchema<$Validations>>(
+	<const $Validations extends OrSchema>(
 		validations: $Validations,
-	): Assertion<$Infered> =>
-	(value) => {
+	): Assertion<InferOrSchema<$Validations>> =>
+	(v) => {
 		for (let i = 0; i < validations.length; ++i) {
 			try {
-				(validations[i] as any)(value);
+				(validations[i] as any)(v);
 				return;
 			} catch {}
 		}

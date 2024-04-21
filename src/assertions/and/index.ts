@@ -20,9 +20,9 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const and =
-	<const $Schema extends AndSchema, $Infered = InferAndSchema<$Schema>>(
+	<const $Schema extends AndSchema>(
 		assertions: $Schema,
-	): Assertion<$Infered> =>
+	): Assertion<InferAndSchema<$Schema>> =>
 	(v) => {
 		for (let i = 0; i < assertions.length; ++i) {
 			(assertions[i] as any)(v);

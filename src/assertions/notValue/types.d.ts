@@ -1,3 +1,3 @@
 import type { Brand } from "@the-minimal/types";
 
-export type NotValue<$Value> = Brand<"NotValue", $Value>;
+export type NotValue<$Input> = Brand<"NotValue", $Input>;

@@ -18,6 +18,9 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const rangeValue =
-	<$Min, $Max>(min: $Min, max: $Max): Assertion<RangeValue<$Min, $Max>> =>
+	<const $Min, const $Max>(
+		min: $Min,
+		max: $Max,
+	): Assertion<RangeValue<$Min, $Max>> =>
 	(v: any) =>
 		(v >= min && v <= max) || error(rangeValue);

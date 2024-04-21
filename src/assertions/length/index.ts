@@ -5,7 +5,7 @@ import type { Assertion } from "@the-minimal/types";
 /**
  * Checks if length of value is equal to the provided length.
  *
- * @param value - Length used in the comparison.
+ * @param input - Length used in the comparison.
  *
  * @example
  * ```ts
@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const length =
-	<$Value extends number>(value: $Value): Assertion<Length<$Value>> =>
+	<$Input extends number>(input: $Input): Assertion<Length<$Input>> =>
 	(v: any) =>
-		v.length === value || error(length);
+		v.length === input || error(length);

@@ -5,7 +5,7 @@ import type { Assertion } from "@the-minimal/types";
 /**
  * Checks if value is equal to the provided value.
  *
- * @param val - Value used in the comparison.
+ * @param input - Value used in the comparison.
  *
  * @example
  * ```ts
@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const value =
-	<$Value>(val: $Value): Assertion<Value<$Value>> =>
+	<const $Input>(input: $Input): Assertion<Value<$Input>> =>
 	(v) =>
-		v === val || error(value);
+		v === input || error(value);

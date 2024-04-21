@@ -5,7 +5,7 @@ import type { Assertion } from "@the-minimal/types";
 /**
  * Checks if value is not equal to the provided value.
  *
- * @param value - Value used in the comparison.
+ * @param input - Value used in the comparison.
  *
  * @example
  * ```ts
@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const notValue =
-	<$Type>(value: $Type): Assertion<NotValue<$Type>> =>
+	<const $Input>(input: $Input): Assertion<NotValue<$Input>> =>
 	(v) =>
-		v !== value || error(notValue);
+		v !== input || error(notValue);

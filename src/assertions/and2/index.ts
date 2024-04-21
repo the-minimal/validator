@@ -16,10 +16,10 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const and2 =
-	<$Value1, $Value2>(
-		assertion1: Assertion<$Value1>,
-		assertion2: Assertion<$Value2>,
-	): Assertion<$Value1 & $Value2> =>
+	<$Input1, $Input2>(
+		assertion1: Assertion<$Input1>,
+		assertion2: Assertion<$Input2>,
+	): Assertion<$Input1 & $Input2> =>
 	(v) => {
 		assertion1(v);
 		assertion2(v);

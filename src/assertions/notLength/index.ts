@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const notLength =
-	<$Value extends number>(length: $Value): Assertion<NotLength<$Value>> =>
+	<$Input extends number>(length: $Input): Assertion<NotLength<$Input>> =>
 	(v: any) =>
 		v.length !== length || error(notLength);

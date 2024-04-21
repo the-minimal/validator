@@ -5,7 +5,7 @@ import type { Assertion } from "@the-minimal/types";
 /**
  * Checks if value includes with another value.
  *
- * @param value - Value used in matching.
+ * @param input - Value used in matching.
  *
  * @example
  * ```ts
@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const includes =
-	<$Type>(value: $Type): Assertion<Includes<$Type>> =>
+	<$Input>(input: $Input): Assertion<Includes<$Input>> =>
 	(v: any) =>
-		v.includes(value) || error(includes);
+		v.includes(input) || error(includes);

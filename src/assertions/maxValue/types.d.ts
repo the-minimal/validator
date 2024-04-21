@@ -1,3 +1,3 @@
 import type { Brand } from "@the-minimal/types";
 
-export type MaxValue<$Value> = Brand<"MaxValue", $Value>;
+export type MaxValue<$Input> = Brand<"MaxValue", $Input>;

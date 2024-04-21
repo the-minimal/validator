@@ -20,20 +20,6 @@ yarn add @the-minimal/validator
 - Fully tested with 100% coverage
 - Zero runtime dependencies
 
-## Philosophy
-
-Validator doesn't support data transformations or coercions.
-
-We assume that data is already transformed by the sender.
-
-We assume that you control both the sender and receiver.
-
-We assume that Validator is used only for validating JSON.
-
-This allows us to make the library much smaller and faster.
-
-> If you want to transform data during or right after validation then you should make sure that the sender sends already transformed data instead
-
 ## Example
 
 ```ts

@@ -16,6 +16,6 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const maxLength =
-	<$Value extends number>(length: $Value): Assertion<MaxLength<$Value>> =>
+	<$Input extends number>(length: $Input): Assertion<MaxLength<$Input>> =>
 	(v: any) =>
 		v.length <= length || error(maxLength);

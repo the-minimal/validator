@@ -10,5 +10,5 @@ import type { Assertion } from "@the-minimal/types";
  * isArray([]); // passes
  * ```
  */
-export const isArray: Assertion<Array<unknown>> = (v) =>
-	Array.isArray(v) || error(isArray);
+export const isArray: Assertion<Array<unknown>> = ((v) =>
+	Array.isArray(v) || error(isArray)) as Assertion<Array<unknown>>;

@@ -1,1 +1,1 @@
-export type Message = (error: any, value: unknown) => string;
+export type Message = (error: any, input: unknown) => string;

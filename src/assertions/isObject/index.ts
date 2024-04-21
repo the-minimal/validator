@@ -12,5 +12,6 @@ import type { Assertion } from "@the-minimal/types";
  * isObject({}); // passes
  * ```
  */
-export const isObject: Assertion<ObjectUnknown> = (v) =>
-	(v !== null && typeof v === "object") || error(isObject);
+export const isObject: Assertion<ObjectUnknown> = ((v) =>
+	(v !== null && typeof v === "object") ||
+	error(isObject)) as Assertion<ObjectUnknown>;

@@ -14,14 +14,11 @@
       "@assertions/*": [
         "assertions/*"
       ],
-      "@constants": [
-        "constants.ts"
-      ],
       "@error": [
         "error.ts"
       ]
     }
   },
-  "include": ["src", "examples"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
