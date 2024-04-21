@@ -1,4 +1,8 @@
-import type { AndSchema, InferAndSchema } from "@assertions/and/types";
+import type {
+	AndSchema,
+	InferAndOutput,
+	InferAndSchema,
+} from "@assertions/and/types";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -21,10 +25,10 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const and =
 	<const $Schema extends AndSchema>(
-		assertions: $Schema,
-	): Assertion<InferAndSchema<$Schema>> =>
+		assertions: InferAndSchema<$Schema>,
+	): Assertion<InferAndOutput<$Schema>> =>
 	(v) => {
 		for (let i = 0; i < assertions.length; ++i) {
-			(assertions[i] as any)(v);
+			((assertions as any)[i] as any)(v);
 		}
 	};

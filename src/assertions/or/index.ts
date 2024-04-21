@@ -24,8 +24,8 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const or =
 	<const $Validations extends OrSchema>(
-		validations: $Validations,
-	): Assertion<InferOrSchema<$Validations>> =>
+		validations: InferOrSchema<$Validations>,
+	): Assertion<$Validations[number]> =>
 	(v) => {
 		for (let i = 0; i < validations.length; ++i) {
 			try {

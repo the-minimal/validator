@@ -1,7 +1,11 @@
-import type { InferAssertion, UnknownAssertion } from "@the-minimal/types";
+import type {
+	Assertion,
+	InferAssertion,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
-export type OrSchema = Array<UnknownAssertion>;
+export type OrSchema = Array<unknown>;
 
 export type InferOrSchema<$Schema extends OrSchema> = {
-	[$Key in keyof $Schema]: InferAssertion<$Schema[$Key]>;
-}[number];
+	[$Key in keyof $Schema]: Assertion<$Schema[$Key]>;
+};

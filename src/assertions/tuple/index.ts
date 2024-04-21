@@ -18,8 +18,8 @@ import type { Assertion } from "@the-minimal/types";
  */
 export const tuple =
 	<const $Schema extends TupleSchema>(
-		assertions: $Schema,
-	): Assertion<InferTupleSchema<$Schema>> =>
+		assertions: InferTupleSchema<$Schema>,
+	): Assertion<$Schema> =>
 	(v) => {
 		isArray(v);
 

@@ -1,5 +1,6 @@
 import { isObject } from "@assertions/isObject";
 import type { InferObjectSchema, ObjectSchema } from "@assertions/object/types";
+import { string } from "@assertions/string";
 import type { Assertion } from "@the-minimal/types";
 
 /**
@@ -27,8 +28,8 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const object = <$Schema extends ObjectSchema>(
-	schema: $Schema,
-): Assertion<InferObjectSchema<$Schema>> => {
+	schema: InferObjectSchema<$Schema>,
+): Assertion<$Schema> => {
 	const keys = Object.keys(schema);
 
 	return (v) => {
