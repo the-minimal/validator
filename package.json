@@ -47,6 +47,7 @@
     "build:tsup": "tsup",
     "build:stats": "bun run scripts/stats.ts",
     "build:imports": "bun run scripts/imports.ts",
+    "build:website": "typedoc --basePath ./ --entryPoints src/index.ts --out website",
     "test": "vitest run --typecheck",
     "test:coverage": "vitest run --coverage",
     "check": "bunx @biomejs/biome check --apply ./"
@@ -58,6 +59,7 @@
     "@vitest/coverage-v8": "1.5.0",
     "release-it": "17.2.0",
     "tsup": "8.0.2",
+    "typedoc": "0.25.13",
     "vite-tsconfig-paths": "4.3.2",
     "vitest": "1.5.0"
   },

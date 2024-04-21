@@ -2,7 +2,9 @@
 .idea
 
 dist
+website
 node_modules
 coverage
 
 bun.lockb
+api.json
