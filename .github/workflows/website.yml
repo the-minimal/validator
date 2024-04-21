@@ -2,6 +2,9 @@
 name: TSDoc Actions
 
 on:
+  push:
+    branches:
+    - main
   release:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,6 +39,7 @@ jobs:
         uses: erikyo/tsdoc-action@v1
         with:
           source_dir: ./src/*
+          entryPoints: index.ts
           output_dir: ./website
 
       - name: Setup Pages
