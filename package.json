@@ -4,7 +4,7 @@
   "version": "0.2.1",
   "license": "MIT",
   "author": "Miroslav Vršecký <yamiteru@icloud.com>",
-  "description": "Minimalist TypeScript data validation library with great focus on size and performance",
+  "description": "Minimal validation library for the brave",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
