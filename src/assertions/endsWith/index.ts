@@ -1,6 +1,5 @@
-import type { EndsWith } from "@assertions/endsWith/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks if value ends with `searchString`.
@@ -17,9 +16,9 @@ import type { Assertion } from "@the-minimal/types";
  * question("really?"); // passes
  * ```
  */
-export const endsWith =
-	<$SearchString extends string>(
-		searchString: $SearchString,
-	): Assertion<EndsWith<$SearchString>> =>
-	(v: any) =>
-		v.endsWith(searchString) || error(endsWith);
+export const endsWith = <$SearchString extends string>(
+	searchString: $SearchString,
+) =>
+	((v: any) =>
+		v.endsWith(searchString) ||
+		error(endsWith)) as unknown as Validate.String.EndsWith<$SearchString>;

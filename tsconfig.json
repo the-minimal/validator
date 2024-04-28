@@ -16,6 +16,12 @@
       ],
       "@error": [
         "error.ts"
+      ],
+      "@types": [
+        "types.ts"
+      ],
+      "@utils": [
+        "utils.ts"
       ]
     }
   },

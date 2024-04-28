@@ -1,12 +1,13 @@
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "@assertions/or/types";
+import type { AnyBrand } from "@the-minimal/types";
 
 /**
  * Checks if one of two assertions passes.
  *
  * If none of them passes it throws an error.
  *
- * @param assertion1 - First assertion to be checked.
- * @param assertion2 - Second assertion to be checked.
+ * @param brand1 - First assertion to be checked.
+ * @param brand2 - Second assertion to be checked.
  *
  * @example
  * ```ts
@@ -18,15 +19,14 @@ import type { Assertion } from "@the-minimal/types";
  * trueish("true"); // passes
  * ```
  */
-export const or2 =
-	<$Input1, $Input2>(
-		assertion1: Assertion<$Input1>,
-		assertion2: Assertion<$Input2>,
-	): Assertion<$Input1 | $Input2> =>
-	(v) => {
+export const or2 = <$Brand1 extends AnyBrand, $Brand2 extends AnyBrand>(
+	brand1: $Brand1,
+	brand2: $Brand2,
+) =>
+	((v: unknown) => {
 		try {
-			assertion1(v);
+			(brand1 as any)(v);
 		} catch {
-			assertion2(v);
+			(brand2 as any)(v);
 		}
-	};
+	}) as unknown as Validate.Or<[$Brand1, $Brand2]>;

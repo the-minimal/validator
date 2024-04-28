@@ -1,3 +1,7 @@
 import type { Brand } from "@the-minimal/types";
 
-export type Includes<$Input> = Brand<"Includes", $Input>;
+export namespace Validate {
+	export namespace List {
+		export type Includes<$Input> = Brand<"list-includes", $Input>;
+	}
+}

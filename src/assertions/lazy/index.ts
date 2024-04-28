@@ -1,4 +1,4 @@
-import type { UnknownAssertion } from "@the-minimal/types";
+import type { AnyBrand } from "@the-minimal/types";
 
 /**
  * Wraps assertion in a function that will be evaluated only when the assertion is called.
@@ -20,9 +20,9 @@ import type { UnknownAssertion } from "@the-minimal/types";
  * }); // passes
  * ```
  */
-export const lazy = <$Validation extends UnknownAssertion>(
+export const lazy = <$Validation extends AnyBrand>(
 	assertion: (input: unknown) => $Validation,
 ) =>
 	((input: unknown) => {
 		(assertion(input) as any)(input);
-	}) as $Validation;
+	}) as unknown as $Validation;

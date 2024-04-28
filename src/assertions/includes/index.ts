@@ -1,6 +1,5 @@
-import type { Includes } from "@assertions/includes/types";
+import type { Validate } from "@assertions/includes/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value includes with another value.
@@ -15,7 +14,7 @@ import type { Assertion } from "@the-minimal/types";
  * hello("--hello--"); // passes
  * ```
  */
-export const includes =
-	<$Input>(input: $Input): Assertion<Includes<$Input>> =>
-	(v: any) =>
-		v.includes(input) || error(includes);
+export const includes = <const $Input>(input: $Input) =>
+	((v: any) =>
+		v.includes(input) ||
+		error(includes)) as unknown as Validate.List.Includes<$Input>;

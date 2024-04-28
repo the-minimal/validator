@@ -1,4 +1,5 @@
 import { type } from "@assertions/type";
+import type { Validate } from "./types";
 
 /**
  * Checks that the value is a number.
@@ -9,4 +10,4 @@ import { type } from "@assertions/type";
  * number(1); // passes
  * ```
  */
-export const number = type<number>("number");
+export const number: Validate.Type.Number = type("number");

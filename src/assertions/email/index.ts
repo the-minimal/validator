@@ -1,6 +1,5 @@
-import type { Email } from "@assertions/email/types";
 import { regex } from "@assertions/regex";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks if value matches email RegExp.
@@ -11,4 +10,4 @@ import type { Assertion } from "@the-minimal/types";
  * email("yamiteru@icloud.com"); // passes
  * ```
  */
-export const email: Assertion<Email> = regex(/^\w+@.+\..+$/);
+export const email: Validate.Regex.Email = regex(/^\w+@.+\..+$/);

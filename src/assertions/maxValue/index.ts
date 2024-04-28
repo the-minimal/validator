@@ -1,6 +1,5 @@
-import type { MaxValue } from "@assertions/maxValue/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks if value is less than or equal to the provided length.
@@ -15,7 +14,6 @@ import type { Assertion } from "@the-minimal/types";
  * teenagerAge(15); // passes
  * ```
  */
-export const maxValue =
-	<const $Input>(input: $Input): Assertion<MaxValue<$Input>> =>
-	(v: any) =>
-		v <= input || error(maxValue);
+export const maxValue = <const $Input>(input: $Input) =>
+	((v: any) =>
+		v <= input || error(maxValue)) as unknown as Validate.Value.Max<$Input>;

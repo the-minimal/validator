@@ -1,5 +1,5 @@
 import { type } from "@assertions/type";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks that the value is a string.
@@ -10,4 +10,4 @@ import type { Assertion } from "@the-minimal/types";
  * string("hello"); // passes
  * ```
  */
-export const string = type<string>("string");
+export const string: Validate.Type.String = type("string");

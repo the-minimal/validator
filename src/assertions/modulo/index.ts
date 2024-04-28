@@ -1,11 +1,10 @@
-import type { Modulo } from "@assertions/modulo/types";
+import type { Validate } from "@assertions/modulo/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
 
-export const modulo =
-	<$Divider extends number, $Remainder extends number>(
-		divider: $Divider,
-		remainder: $Remainder,
-	): Assertion<Modulo<$Divider, $Remainder>> =>
-	(v) =>
-		(v as number) % divider === remainder || error(modulo);
+export const modulo = <$Divider extends number, $Remainder extends number>(
+	divider: $Divider,
+	remainder: $Remainder,
+) =>
+	((v: number) =>
+		v % divider === remainder ||
+		error(modulo)) as unknown as Validate.Number.Modulo<$Divider, $Remainder>;

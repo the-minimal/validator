@@ -1,6 +1,5 @@
-import type { Integer } from "@assertions/integer/types";
+import type { Validate } from "@assertions/integer/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is integer.
@@ -11,5 +10,5 @@ import type { Assertion } from "@the-minimal/types";
  * integer(1) // passes
  * ```
  */
-export const integer: Assertion<Integer> = (v) =>
-	Number.isInteger(v) || error(integer);
+export const integer = ((v: unknown) =>
+	Number.isInteger(v) || error(integer)) as unknown as Validate.Number.Integer;

@@ -1,16 +1,47 @@
-import type { Assertion } from "@the-minimal/types";
+import { and } from "@assertions/and/index";
+import type { AnyBrand, Brand, None } from "@the-minimal/types";
 
-export type AndSchema = Array<unknown>;
+export namespace Validate {
+	export type And<$Types extends AndSchema> = Brand<
+		"and",
+		$Schema,
+		{
+			input: InferAndInputs<FilterAndInputs<$Types>>;
+			output: InferAndOutputs<$Types>;
+		}
+	>;
+}
 
-export type InferAndSchema<$Schema extends AndSchema> = {
-	[$Key in keyof $Schema]: Assertion<$Schema[$Key]>;
-};
+export type AndSchema = AnyBrand[];
 
-export type InferAndOutput<$Schema extends AndSchema> = $Schema extends [
+export type InferAndInputs<$Types extends unknown[]> = $Types extends [
 	infer $Head,
 	...infer $Tail,
 ]
-	? $Tail extends [infer $1, ...infer $2]
-		? $Head & InferAndOutput<$Tail>
+	? $Tail extends [infer _1, ...infer _2]
+		? $Head & InferAndOutputs<$Tail>
 		: $Head
 	: never;
+
+type FilterAndInputs<$Schema extends AndSchema> = $Schema extends readonly [
+	infer $Head,
+	...infer $Tail,
+]
+	? $Tail extends readonly [infer _1, ...infer _2]
+		? $Head extends Brand<any, any, { input: infer $Input; output: any }>
+			? [$Input, ...FilterAndInputs<$Tail>]
+			: []
+		: $Head extends Brand<any, any, { input: infer $Input; output: any }>
+			? [$Input]
+			: []
+	: [];
+
+export type InferAndOutputs<$Schema extends AndSchema> =
+	$Schema extends readonly [infer $Head, ...infer $Tail]
+		? $Tail extends readonly [infer _1, ...infer _2]
+			? ($Head extends Brand<any, any, { input: infer $Input; output: any }>
+					? $Input
+					: $Head) &
+					InferAndOutputs<$Tail>
+			: $Head
+		: never;

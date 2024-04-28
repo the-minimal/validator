@@ -1,3 +1,7 @@
-import type { Regex } from "@assertions/regex/types";
+import type { Brand } from "@the-minimal/types";
 
-export type Email = Regex<"email">;
+export namespace Validate {
+	export namespace Regex {
+		export type Email = Brand<"regex", "email">;
+	}
+}

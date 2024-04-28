@@ -1,3 +1,7 @@
 import type { Brand } from "@the-minimal/types";
 
-export type Regex<$Name> = Brand<"Regex", $Name>;
+export namespace Validate {
+	export namespace Regex {
+		export type Any = Brand<"regex", any, any>;
+	}
+}

@@ -48,7 +48,7 @@
     "build:stats": "bun run scripts/stats.ts",
     "build:imports": "bun run scripts/imports.ts",
     "build:website": "typedoc --basePath ./ --entryPoints src/index.ts --out website",
-    "test": "vitest run --typecheck",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "check": "bunx @biomejs/biome check --apply ./"
   },
@@ -70,6 +70,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@the-minimal/types": "0.2.2"
+    "@the-minimal/types": "0.3.6"
   }
 }

@@ -1,6 +1,5 @@
-import type { RangeValue } from "@assertions/rangeValue/types";
+import type { Validate } from "@assertions/rangeValue/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is in the range of min and max.
@@ -17,10 +16,7 @@ import type { Assertion } from "@the-minimal/types";
  * alive(26); // passes
  * ```
  */
-export const rangeValue =
-	<const $Min, const $Max>(
-		min: $Min,
-		max: $Max,
-	): Assertion<RangeValue<$Min, $Max>> =>
-	(v: any) =>
-		(v >= min && v <= max) || error(rangeValue);
+export const rangeValue = <const $Min, const $Max>(min: $Min, max: $Max) =>
+	((v: any) =>
+		(v >= min && v <= max) ||
+		error(rangeValue)) as unknown as Validate.Value.Range<$Min, $Max>;

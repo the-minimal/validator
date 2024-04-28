@@ -1,4 +1,5 @@
 import { type } from "@assertions/type";
+import type { Validate } from "./types";
 
 /**
  * Checks that the value is a boolean.
@@ -9,4 +10,4 @@ import { type } from "@assertions/type";
  * boolean(true); // passes
  * ```
  */
-export const boolean = type<boolean>("boolean");
+export const boolean: Validate.Type.Boolean = type("boolean");

@@ -1,6 +1,5 @@
-import type { Length } from "@assertions/length/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks if length of value is equal to the provided length.
@@ -15,7 +14,7 @@ import type { Assertion } from "@the-minimal/types";
  * nonEmpty("hello"); // passes
  * ```
  */
-export const length =
-	<$Input extends number>(input: $Input): Assertion<Length<$Input>> =>
-	(v: any) =>
-		v.length === input || error(length);
+export const length = <$Input extends number>(input: $Input) =>
+	((v: any) =>
+		v.length === input ||
+		error(length)) as unknown as Validate.Length.Eq<$Input>;

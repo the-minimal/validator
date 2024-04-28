@@ -1,6 +1,5 @@
-import type { Regex } from "@assertions/regex/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { Validation } from "./types";
 
 /**
  * Checks if value matches regex pattern.
@@ -15,7 +14,6 @@ import type { Assertion } from "@the-minimal/types";
  * email("123"); // passes
  * ```
  */
-export const regex =
-	<$Name extends string>(pattern: RegExp): Assertion<Regex<$Name>> =>
-	(v) =>
-		pattern.test(v as string) || error(regex);
+export const regex = (pattern: RegExp) =>
+	((v: string) =>
+		pattern.test(v) || error(regex)) as unknown as Validation.Regex.Any;

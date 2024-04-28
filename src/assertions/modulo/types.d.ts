@@ -1,9 +1,16 @@
 import type { Brand } from "@the-minimal/types";
 
-export type Modulo<$Divider extends number, $Remainder extends number> = Brand<
-	"Modulo",
-	{
-		divider: $Divider;
-		remainder: $Remainder;
+export namespace Validate {
+	export namespace Number {
+		export type Modulo<
+			$Divider extends number,
+			$Remainder extends number,
+		> = Brand<
+			"number-modulo",
+			{
+				divider: $Divider;
+				remainder: $Remainder;
+			}
+		>;
 	}
->;
+}

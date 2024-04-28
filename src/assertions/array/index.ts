@@ -1,10 +1,11 @@
 import { isArray } from "@assertions/isArray";
-import type { Assertion } from "@the-minimal/types";
+import type { AnyBrand } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks that assertion passes for each element of the array.
  *
- * @param assertion - Assertion to be applied to each element of the array.
+ * @param brand - Assertion to be applied to each element of the array.
  *
  * @example
  * ```ts
@@ -14,12 +15,11 @@ import type { Assertion } from "@the-minimal/types";
  * numbers([1, 2, 3]); // passes
  * ```
  */
-export const array =
-	<$Input>(assertion: Assertion<$Input>): Assertion<Array<$Input>> =>
-	(v) => {
+export const array = <$Brand extends AnyBrand>(brand: $Brand) =>
+	((v: unknown) => {
 		isArray(v);
 
 		for (let i = 0; i < v.length; ++i) {
-			assertion((v as any)[i]);
+			(brand as any)((v as any)[i]);
 		}
-	};
+	}) as unknown as Validate.Array<$Brand>;

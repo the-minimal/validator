@@ -1,3 +1,7 @@
 import type { Brand } from "@the-minimal/types";
 
-export type MinLength<$Input extends number> = Brand<"MinLength", $Input>;
+export namespace Validate {
+	export namespace Length {
+		export type Min<$Type extends number> = Brand<"length-min", $Input>;
+	}
+}

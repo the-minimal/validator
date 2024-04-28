@@ -1,6 +1,5 @@
-import type { NotLength } from "@assertions/notLength/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks if length of value is not equal to the provided length.
@@ -15,7 +14,7 @@ import type { Assertion } from "@the-minimal/types";
  * twoLetters("ab"); // passes
  * ```
  */
-export const notLength =
-	<$Input extends number>(length: $Input): Assertion<NotLength<$Input>> =>
-	(v: any) =>
-		v.length !== length || error(notLength);
+export const notLength = <$Input extends number>(length: $Input) =>
+	((v: any) =>
+		v.length !== length ||
+		error(notLength)) as unknown as Validate.Length.Ne<$Input>;

@@ -1,3 +1,14 @@
-import type { Brand } from "@the-minimal/types";
+import type { Brand, None } from "@the-minimal/types";
 
-export type Value<$Input> = Brand<"Value", $Input>;
+export namespace Validate {
+	export namespace Value {
+		export type Eq<$Input> = Brand<
+			"value-eq",
+			$Input,
+			{
+				input: $Input;
+				output: None;
+			}
+		>;
+	}
+}

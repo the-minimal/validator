@@ -1,6 +1,10 @@
 import type { Brand } from "@the-minimal/types";
 
-export type RangeValue<$Min, $Max> = Brand<
-	"RangeValue",
-	{ min: $Min; max: $Max }
->;
+export namespace Validate {
+	export namespace Value {
+		export type Range<$Min, $Max> = Brand<
+			"value-range",
+			{ min: $Min; max: $Max }
+		>;
+	}
+}

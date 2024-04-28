@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { UnionSchema, Validate } from "./types";
 
 /**
  * Checks if the value is one of the provided options.
@@ -15,9 +15,6 @@ import type { Assertion } from "@the-minimal/types";
  * userRole("user"); // passes
  * ```
  */
-export const union =
-	<const $Options extends unknown[]>(
-		options: $Options,
-	): Assertion<$Options[number]> =>
-	(v) =>
-		options.includes(v) || error(union);
+export const union = <const $Schema extends UnionSchema>(options: $Schema) =>
+	((v: unknown) =>
+		options.includes(v) || error(union)) as unknown as Validate.Union<$Schema>;

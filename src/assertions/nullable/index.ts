@@ -1,9 +1,10 @@
-import type { Assertion, Nullable } from "@the-minimal/types";
+import type { AnyBrand } from "@the-minimal/types";
+import type { General } from "./types";
 
 /**
  * Checks if the assertion passes or if the value is null.
  *
- * @param assertion - Assertion to be checked.
+ * @param brand - Assertion to be checked.
  *
  * @example
  * ```ts
@@ -14,7 +15,6 @@ import type { Assertion, Nullable } from "@the-minimal/types";
  * maybeString(null); // passes
  * ```
  */
-export const nullable =
-	<$Input>(assertion: Assertion<$Input>): Assertion<Nullable<$Input>> =>
-	(v) =>
-		v === null || assertion(v);
+export const nullable = <$Brand extends AnyBrand>(brand: $Brand) =>
+	((v: unknown) =>
+		v === null || (brand as any)(v)) as unknown as General.Nullable<$Brand>;
