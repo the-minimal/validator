@@ -143,12 +143,13 @@ As a result it has many opinions that might not sit well with some folks.
 
 `Validator` is an obsessed overachiever who wants to be the smallest and fastest one on the track.
 
-- 39 `Assertion`s
-- 808 bytes bundle
+- 40 `Assertion`s
+- 835 bytes bundle
 - ~ 5x faster data validation than `Zod`
 - ~ 200x less memory consumption than `Zod`
 - ~ 50x faster type-checking than `Zod`
-- 0 runtime dependencies
+- 1 runtime dependency
+  - [@the-minimal/error](https://github.com/the-minimal/error) (135 bytes)
 - 100% test coverage
 
 ## Simple examples
@@ -201,7 +202,7 @@ As a result it has many opinions that might not sit well with some folks.
     friends: array(string)
   });
 
-  register("Oh not this is gonna throw");
+  register("Oh no this is gonna throw");
 
   register({
     email: "yamiteru@icloud.com",

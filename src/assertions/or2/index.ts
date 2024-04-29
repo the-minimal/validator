@@ -5,8 +5,8 @@ import type { Assertion } from "@the-minimal/types";
  *
  * If none of them passes it throws an error.
  *
- * @param brand1 - First assertion to be checked.
- * @param brand2 - Second assertion to be checked.
+ * @param assertion1 - First assertion to be checked.
+ * @param assertion2 - Second assertion to be checked.
  *
  * @example
  * ```ts
