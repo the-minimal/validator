@@ -1,5 +1,5 @@
 import type { AnyBrand } from "@the-minimal/types";
-import type { General } from "./types";
+import type { Validate } from "./types";
 
 /**
  * Checks if the assertion passes or if the value is null.
@@ -17,4 +17,4 @@ import type { General } from "./types";
  */
 export const nullable = <$Brand extends AnyBrand>(brand: $Brand) =>
 	((v: unknown) =>
-		v === null || (brand as any)(v)) as unknown as General.Nullable<$Brand>;
+		v === null || (brand as any)(v)) as unknown as Validate.Nullable<$Brand>;

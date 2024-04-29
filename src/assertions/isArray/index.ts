@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
+import type { Validate } from "./types";
 
 /**
  * Checks that the value is an array.
@@ -10,5 +10,5 @@ import type { Assertion } from "@the-minimal/types";
  * isArray([]); // passes
  * ```
  */
-export const isArray: Assertion<Array<unknown>> = ((v) =>
-	Array.isArray(v) || error(isArray)) as Assertion<Array<unknown>>;
+export const isArray = ((v: unknown) =>
+	Array.isArray(v) || error(isArray)) as unknown as Validate.Type.Array;

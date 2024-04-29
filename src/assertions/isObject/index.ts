@@ -1,6 +1,8 @@
-import type { ObjectUnknown } from "@assertions/isObject/types";
+import type { Validate as AndValidate } from "@assertions/and/types";
+// TODO: this is fucking ugly
+import type { Validate as IsObjectValidate } from "@assertions/isObject/types";
+import type { Validate as NotValueValidate } from "@assertions/notValue/types";
 import { error } from "@error";
-import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that the value is of type object and is not null.
@@ -12,6 +14,8 @@ import type { Assertion } from "@the-minimal/types";
  * isObject({}); // passes
  * ```
  */
-export const isObject: Assertion<ObjectUnknown> = ((v) =>
+export const isObject = ((v: unknown) =>
 	(v !== null && typeof v === "object") ||
-	error(isObject)) as Assertion<ObjectUnknown>;
+	error(isObject)) as unknown as AndValidate.And<
+	[NotValueValidate.Value.Ne<null>, IsObjectValidate.Type.Object]
+>;

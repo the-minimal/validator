@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Validation } from "./types";
+import type { Validate } from "./types";
 
 /**
  * Checks if value matches regex pattern.
@@ -16,4 +16,4 @@ import type { Validation } from "./types";
  */
 export const regex = (pattern: RegExp) =>
 	((v: string) =>
-		pattern.test(v) || error(regex)) as unknown as Validation.Regex.Any;
+		pattern.test(v) || error(regex)) as unknown as Validate.Regex.Any;

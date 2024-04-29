@@ -2,15 +2,13 @@ import type { Brand, None } from "@the-minimal/types";
 
 export namespace Validate {
 	export namespace Type {
-		export type Object = Brand<
-			"object",
+		export type Array = Brand<
+			"array",
 			None,
 			{
-				input: ObjectUnknown;
+				input: unknown[];
 				output: None;
 			}
 		>;
 	}
 }
-
-export type ObjectUnknown = Record<string, unknown>;

@@ -10,4 +10,4 @@ import type { Validate } from "./types";
  * boolean(true); // passes
  * ```
  */
-export const boolean: Validate.Type.Boolean = type("boolean");
+export const boolean = type("boolean") as Validate.Type.Boolean;

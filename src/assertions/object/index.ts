@@ -28,8 +28,8 @@ import type { General, ObjectSchema } from "@assertions/object/types";
 export const object = <$Schema extends ObjectSchema>(schema: $Schema) => {
 	const keys = Object.keys(schema);
 
-	return ((v: unknown) => {
-		isObject(v);
+	return ((v: any) => {
+		(isObject as any)(v);
 
 		for (let i = 0; i < keys.length; ++i) {
 			(schema[keys[i]] as any)(v[keys[i] as any]);

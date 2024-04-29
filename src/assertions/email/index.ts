@@ -10,4 +10,4 @@ import type { Validate } from "./types";
  * email("yamiteru@icloud.com"); // passes
  * ```
  */
-export const email: Validate.Regex.Email = regex(/^\w+@.+\..+$/);
+export const email = regex(/^\w+@.+\..+$/) as Validate.Regex.Email;

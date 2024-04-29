@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Type } from "./types";
+import type { Validate } from "./types";
 
 /**
  * Checks that the value is of the provided type.
@@ -15,4 +15,5 @@ import type { Type } from "./types";
  * ```
  */
 export const type = (input: string) =>
-	((v: unknown) => typeof v === input || error(type)) as unknown as Type.Any;
+	((v: unknown) =>
+		typeof v === input || error(type)) as unknown as Validate.Type.Any;

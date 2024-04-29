@@ -16,8 +16,8 @@ import type { Validate } from "./types";
  * ```
  */
 export const array = <$Brand extends AnyBrand>(brand: $Brand) =>
-	((v: unknown) => {
-		isArray(v);
+	((v: any) => {
+		(isArray as any)(v);
 
 		for (let i = 0; i < v.length; ++i) {
 			(brand as any)((v as any)[i]);

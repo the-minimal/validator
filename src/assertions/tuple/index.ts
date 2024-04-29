@@ -16,8 +16,8 @@ import type { TupleSchema, Validate } from "./types";
  * ```
  */
 export const tuple = <const $Schema extends TupleSchema>(assertions: $Schema) =>
-	((v: unknown) => {
-		isArray(v);
+	((v: any) => {
+		(isArray as any)(v);
 
 		for (let i = 0; i < assertions.length; ++i) {
 			(assertions[i] as any)(v[i]);

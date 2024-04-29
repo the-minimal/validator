@@ -10,4 +10,4 @@ import type { Validate } from "./types";
  * number(1); // passes
  * ```
  */
-export const number: Validate.Type.Number = type("number");
+export const number = type("number") as Validate.Type.Number;
