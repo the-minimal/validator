@@ -1,10 +1,14 @@
-import type { AnyBrand } from "@the-minimal/types";
-import type { Validate } from "./types";
+import type {
+	Assertion,
+	InferAssertion,
+	Nullable,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is null.
  *
- * @param brand - Assertion to be checked.
+ * @param assertion - Assertion to be checked.
  *
  * @example
  * ```ts
@@ -15,6 +19,9 @@ import type { Validate } from "./types";
  * maybeString(null); // passes
  * ```
  */
-export const nullable = <$Brand extends AnyBrand>(brand: $Brand) =>
-	((v: unknown) =>
-		v === null || (brand as any)(v)) as unknown as Validate.Nullable<$Brand>;
+export const nullable =
+	<$Assertion extends UnknownAssertion>(
+		assertion: $Assertion,
+	): Assertion<Nullable<InferAssertion<$Assertion>>> =>
+	(v: unknown) =>
+		v === null || (assertion as any)(v);

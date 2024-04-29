@@ -1,5 +1,5 @@
-import type { Validate } from "@assertions/minValue/types";
 import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is greater than or equal to the provided length.
@@ -14,6 +14,7 @@ import { error } from "@error";
  * adultAge(26); // passes
  * ```
  */
-export const minValue = <const $Input>(input: $Input) =>
-	((v: any) =>
-		v >= input || error(minValue)) as unknown as Validate.Value.Min<$Input>;
+export const minValue =
+	(input: unknown): Assertion<unknown> =>
+	(v: unknown) =>
+		<any>v >= <any>input || error(minValue);

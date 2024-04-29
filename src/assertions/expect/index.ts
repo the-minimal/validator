@@ -1,11 +1,10 @@
-import type { Message } from "@assertions/expect/types";
 import { error } from "@error";
-import type { AnyBrand } from "@the-minimal/types";
+import type { UnknownAssertion } from "@the-minimal/types";
 
 /**
  * Wraps assertion and throws an error with message if assertion fails.
  *
- * @param brand - Assertion to be checked.
+ * @param assertion - Assertion to be checked.
  * @param message - Message to be used in error.
  *
  * @example
@@ -16,14 +15,14 @@ import type { AnyBrand } from "@the-minimal/types";
  * );
  * ```
  */
-export const expect = <$Brand extends AnyBrand>(
-	brand: $Brand,
-	message: Message,
+export const expect = <$Assertion extends UnknownAssertion>(
+	assertion: $Assertion,
+	message: (error: any, value: unknown) => string,
 ) =>
 	((v: unknown) => {
 		try {
-			(brand as any)(v);
-		} catch (e: any) {
-			error(brand, message(e, v));
+			assertion(v);
+		} catch (e) {
+			error(assertion, message(e, v));
 		}
-	}) as unknown as $Brand;
+	}) as $Assertion;

@@ -1,10 +1,10 @@
-import type { Validate } from "@assertions/startsWith/types";
 import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value starts with `searchString`.
  *
- * @param searchString - The characters to be searched for at the start of value.
+ * @param input - The characters to be searched for at the start of value.
  *
  * @throws `startsWith` if value does not start with `searchString`.
  *
@@ -16,9 +16,7 @@ import { error } from "@error";
  * startsWithId("ID: 123"); // passes
  * ```
  */
-export const startsWith = <$SearchString extends string>(
-	searchString: $SearchString,
-) =>
-	((v: any) =>
-		v.startsWith(searchString) ||
-		error(startsWith)) as unknown as Validate.String.StartsWith<$SearchString>;
+export const startsWith =
+	(input: string): Assertion<unknown> =>
+	(v: unknown) =>
+		(v as string).startsWith(input) || error(startsWith);

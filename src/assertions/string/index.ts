@@ -1,5 +1,4 @@
 import { type } from "@assertions/type";
-import type { Validate } from "./types";
 
 /**
  * Checks that the value is a string.
@@ -10,4 +9,4 @@ import type { Validate } from "./types";
  * string("hello"); // passes
  * ```
  */
-export const string = type("string") as Validate.Type.String;
+export const string = type<string>("string");

@@ -1,10 +1,14 @@
-import type { AnyBrand } from "@the-minimal/types";
-import type { Validate } from "./types";
+import type {
+	Assertion,
+	InferAssertion,
+	Optional,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is undefined.
  *
- * @param brand - Assertion to be checked.
+ * @param assertion - Assertion to be checked.
  *
  * @example
  * ```ts
@@ -15,7 +19,9 @@ import type { Validate } from "./types";
  * maybeString(undefined); // passes
  * ```
  */
-export const optional = <$Brand extends AnyBrand>(brand: $Brand) =>
-	((v: unknown) =>
-		v === undefined ||
-		(brand as any)(v)) as unknown as Validate.Optional<$Brand>;
+export const optional =
+	<$Assertion extends UnknownAssertion>(
+		assertion: $Assertion,
+	): Assertion<Optional<InferAssertion<$Assertion>>> =>
+	(v: unknown) =>
+		v === undefined || (assertion as any)(v);

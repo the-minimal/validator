@@ -1,25 +1,28 @@
-import type { AnyBrand } from "@the-minimal/types";
-import type { InferOutput } from "@types";
+import type { UnknownAssertion } from "@the-minimal/types";
+import type { Infer } from "@types";
 
-export function assert<$Brand extends AnyBrand>(
-	brand: $Brand,
+export function assert<$Assertion extends UnknownAssertion>(
+	assertion: $Assertion,
 	value: unknown,
-): asserts value is InferOutput<$Brand> {
-	(brand as any)(value);
+): asserts value is Infer<$Assertion> {
+	(assertion as any)(value);
 }
 
-export function parse<$Brand extends AnyBrand>(brand: $Brand, value: unknown) {
-	(brand as any)(value);
+export function parse<$Assertion extends UnknownAssertion>(
+	assertion: $Assertion,
+	value: unknown,
+) {
+	(assertion as any)(value);
 
-	return value as InferOutput<$Brand>;
+	return value as Infer<$Assertion>;
 }
 
-export function is<$Brand extends AnyBrand>(
-	brand: $Brand,
+export function is<$Assertion extends UnknownAssertion>(
+	assertion: $Assertion,
 	value: unknown,
-): value is InferOutput<$Brand> {
+): value is Infer<$Assertion> {
 	try {
-		(brand as any)(value);
+		(assertion as any)(value);
 
 		return true;
 	} catch {

@@ -1,14 +1,17 @@
-import type { Validate } from "@assertions/or/types";
-import type { AnyBrand } from "@the-minimal/types";
+import type {
+	Assertion,
+	InferAssertion,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks if one of two assertions passes.
  *
  * If none of them passes it throws an error.
  *
- * @param brand1 - First assertion to be checked.
- * @param brand2 - Second assertion to be checked.
- * @param brand3 - Third assertion to be checked.
+ * @param assertion1 - First assertion to be checked.
+ * @param assertion2 - Second assertion to be checked.
+ * @param assertion2 - Third assertion to be checked.
  *
  * @example
  * ```ts
@@ -19,23 +22,28 @@ import type { AnyBrand } from "@the-minimal/types";
  * trueish(true); // passes
  * ```
  */
-export const or3 = <
-	$Brand1 extends AnyBrand,
-	$Brand2 extends AnyBrand,
-	$Brand3 extends AnyBrand,
->(
-	brand1: $Brand1,
-	brand2: $Brand2,
-	brand3: $Brand3,
-) =>
-	((v: unknown) => {
+export const or3 =
+	<
+		$Assertion1 extends UnknownAssertion,
+		$Assertion2 extends UnknownAssertion,
+		$Assertion3 extends UnknownAssertion,
+	>(
+		assertion1: $Assertion1,
+		assertion2: $Assertion2,
+		assertion3: $Assertion3,
+	): Assertion<
+		| InferAssertion<$Assertion1>
+		| InferAssertion<$Assertion2>
+		| InferAssertion<$Assertion3>
+	> =>
+	(v: unknown) => {
 		try {
-			(brand1 as any)(v);
+			assertion1(v);
 		} catch {
 			try {
-				(brand2 as any)(v);
+				assertion2(v);
 			} catch {
-				(brand3 as any)(v);
+				assertion3(v);
 			}
 		}
-	}) as unknown as Validate.Or<[$Brand1, $Brand2, $Brand3]>;
+	};

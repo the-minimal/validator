@@ -1,5 +1,9 @@
-import type { OrSchema, Validate } from "@assertions/or/types";
 import { error } from "@error";
+import type {
+	Assertion,
+	InferAssertion,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks if one of the assertions passes.
@@ -8,7 +12,7 @@ import { error } from "@error";
  *
  * If you have two or three assertions consider using {@link or2} or {@link or3} respectively.
  *
- * @param validations - Array of assertions to be checked
+ * @param assertions - Array of assertions to be checked
  *
  * @example
  * ```ts
@@ -21,16 +25,21 @@ import { error } from "@error";
  * trueish("yes"); // passes
  * ```
  */
-export const or = <const $Validations extends OrSchema>(
-	validations: $Validations,
-) =>
-	((v: unknown) => {
-		for (let i = 0; i < validations.length; ++i) {
+export const or =
+	<const $Assertions extends UnknownAssertion[]>(
+		assertions: $Assertions,
+	): Assertion<
+		{
+			[$Key in keyof $Assertions]: InferAssertion<$Assertions[$Key]>;
+		}[number]
+	> =>
+	(v: unknown) => {
+		for (let i = 0; i < assertions.length; ++i) {
 			try {
-				(validations[i] as any)(v);
+				(assertions[i] as any)(v);
 				return;
 			} catch {}
 		}
 
 		error(or);
-	}) as unknown as Validate.Or<$Validations>;
+	};

@@ -1,5 +1,8 @@
-import type { Validate } from "@assertions/or/types";
-import type { AnyBrand } from "@the-minimal/types";
+import type {
+	Assertion,
+	InferAssertion,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks if one of two assertions passes.
@@ -19,14 +22,15 @@ import type { AnyBrand } from "@the-minimal/types";
  * trueish("true"); // passes
  * ```
  */
-export const or2 = <$Brand1 extends AnyBrand, $Brand2 extends AnyBrand>(
-	brand1: $Brand1,
-	brand2: $Brand2,
-) =>
-	((v: unknown) => {
+export const or2 =
+	<$Assertion1 extends UnknownAssertion, $Assertion2 extends UnknownAssertion>(
+		assertion1: $Assertion1,
+		assertion2: $Assertion2,
+	): Assertion<InferAssertion<$Assertion1> | InferAssertion<$Assertion2>> =>
+	(v: unknown) => {
 		try {
-			(brand1 as any)(v);
+			assertion1(v);
 		} catch {
-			(brand2 as any)(v);
+			assertion2(v);
 		}
-	}) as unknown as Validate.Or<[$Brand1, $Brand2]>;
+	};

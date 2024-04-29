@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Validate } from "./types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that the value is of the provided type.
@@ -14,6 +14,7 @@ import type { Validate } from "./types";
  * string("hello"); // passes
  * ```
  */
-export const type = (input: string) =>
-	((v: unknown) =>
-		typeof v === input || error(type)) as unknown as Validate.Type.Any;
+export const type =
+	<$Type>(input: string): Assertion<$Type> =>
+	(v: unknown) =>
+		typeof v === input || error(type);

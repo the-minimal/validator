@@ -1,5 +1,8 @@
-import type { Validate } from "@assertions/and/types";
-import type { AnyBrand } from "@the-minimal/types";
+import type {
+	Assertion,
+	InferAssertion,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks that all three assertions pass.
@@ -18,17 +21,22 @@ import type { AnyBrand } from "@the-minimal/types";
  * userEmail("yamiteru@icloud.com"); // passes
  * ```
  */
-export const and3 = <
-	$Brand1 extends AnyBrand,
-	$Brand2 extends AnyBrand,
-	$Brand3 extends AnyBrand,
->(
-	brand1: $Brand1,
-	brand2: $Brand2,
-	brand3: $Brand3,
-) =>
-	((v: unknown) => {
-		(brand1 as any)(v);
-		(brand2 as any)(v);
-		(brand3 as any)(v);
-	}) as unknown as Validate.And<[$Brand1, $Brand2, $Brand3]>;
+export const and3 =
+	<
+		$Assertion1 extends UnknownAssertion,
+		$Assertion2 extends UnknownAssertion,
+		$Assertion3 extends UnknownAssertion,
+	>(
+		assertion1: $Assertion1,
+		assertion2: $Assertion2,
+		assertion3: $Assertion3,
+	): Assertion<
+		InferAssertion<$Assertion1> &
+			InferAssertion<$Assertion2> &
+			InferAssertion<$Assertion3>
+	> =>
+	(v: unknown) => {
+		assertion1(v);
+		assertion2(v);
+		assertion3(v);
+	};

@@ -1,5 +1,4 @@
 import { error } from "@error";
-import type { Validate } from "./types";
 
 /**
  * Checks if value is less than or equal to the provided length.
@@ -14,6 +13,5 @@ import type { Validate } from "./types";
  * teenagerAge(15); // passes
  * ```
  */
-export const maxValue = <const $Input>(input: $Input) =>
-	((v: any) =>
-		v <= input || error(maxValue)) as unknown as Validate.Value.Max<$Input>;
+export const maxValue = (input: unknown) => (v: unknown) =>
+	<any>v <= <any>input || error(maxValue);

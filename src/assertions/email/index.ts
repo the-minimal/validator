@@ -1,5 +1,4 @@
 import { regex } from "@assertions/regex";
-import type { Validate } from "./types";
 
 /**
  * Checks if value matches email RegExp.
@@ -10,4 +9,4 @@ import type { Validate } from "./types";
  * email("yamiteru@icloud.com"); // passes
  * ```
  */
-export const email = regex(/^\w+@.+\..+$/) as Validate.Regex.Email;
+export const email = regex(/^\w+@.+\..+$/);

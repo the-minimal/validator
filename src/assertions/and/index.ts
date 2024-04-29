@@ -1,4 +1,5 @@
-import type { AndSchema, Validate } from "@assertions/and/types";
+import type { Assertion } from "@the-minimal/types";
+import type { Intersection } from "./types";
 
 /**
  * Checks if all the assertions pass.
@@ -18,9 +19,14 @@ import type { AndSchema, Validate } from "@assertions/and/types";
  * userEmail("yamiteru@icloud.com"); // passes
  * ```
  */
-export const and = <const $Schema extends AndSchema>(assertions: $Schema) =>
-	((v: unknown) => {
+export const and =
+	<const $Values extends unknown[]>(
+		assertions: {
+			[$Key in keyof $Values]: Assertion<$Values[$Key]>;
+		},
+	): Assertion<Intersection<$Values>> =>
+	(v: unknown) => {
 		for (let i = 0; i < assertions.length; ++i) {
-			((assertions as any)[i] as any)(v);
+			(assertions[i] as any)(v);
 		}
-	}) as unknown as Validate.And<$Schema>;
+	};

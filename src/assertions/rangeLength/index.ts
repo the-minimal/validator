@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Validate } from "./types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if length of value is in the range of min and max.
@@ -16,10 +16,8 @@ import type { Validate } from "./types";
  * passwordLength("Test123456"); // passes
  * ```
  */
-export const rangeLength = <$Min extends number, $Max extends number>(
-	min: $Min,
-	max: $Max,
-) =>
-	((v: any) =>
-		(v.length >= min && v.length <= max) ||
-		error(rangeLength)) as unknown as Validate.Length.Range<$Min, $Max>;
+export const rangeLength =
+	(min: number, max: number): Assertion<unknown> =>
+	(v: unknown) =>
+		((v as any).length >= min && (v as any).length <= max) ||
+		error(rangeLength);

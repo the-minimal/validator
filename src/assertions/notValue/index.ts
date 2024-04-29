@@ -1,5 +1,5 @@
-import type { Validate } from "@assertions/notValue/types";
 import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is not equal to the provided value.
@@ -14,6 +14,7 @@ import { error } from "@error";
  * notNan(123); // passes
  * ```
  */
-export const notValue = <const $Input>(input: $Input) =>
-	((v: unknown) =>
-		v !== input || error(notValue)) as unknown as Validate.Value.Ne<$Input>;
+export const notValue =
+	(input: unknown): Assertion<unknown> =>
+	(v: unknown) =>
+		v !== input || error(notValue);

@@ -1,5 +1,5 @@
-import type { Validate } from "@assertions/value/types";
 import { error } from "@error";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if value is equal to the provided value.
@@ -14,6 +14,7 @@ import { error } from "@error";
  * isNull(null); // passes
  * ```
  */
-export const value = <const $Input>(input: $Input) =>
-	((v: unknown) =>
-		v === input || error(value)) as unknown as Validate.Value.Eq<$Input>;
+export const value =
+	<const $Input>(input: $Input): Assertion<$Input> =>
+	(v: unknown) =>
+		v === input || error(value);

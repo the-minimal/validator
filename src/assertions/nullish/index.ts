@@ -1,5 +1,9 @@
-import type { AnyBrand } from "@the-minimal/types";
-import type { Validate } from "./types";
+import type {
+	Assertion,
+	InferAssertion,
+	Nullish,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is null or undefined.
@@ -16,8 +20,9 @@ import type { Validate } from "./types";
  * maybeString(undefined); // passes
  * ```
  */
-export const nullish = <$Brand extends AnyBrand>(brand: $Brand) =>
-	((v: unknown) =>
-		v === null ||
-		v === undefined ||
-		(brand as any)(v)) as unknown as Validate.Nullish<$Brand>;
+export const nullish =
+	<$Assertion extends UnknownAssertion>(
+		assertion: $Assertion,
+	): Assertion<Nullish<InferAssertion<$Assertion>>> =>
+	(v: unknown) =>
+		v === null || v === undefined || (assertion as any)(v);

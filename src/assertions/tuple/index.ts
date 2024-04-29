@@ -1,5 +1,9 @@
 import { isArray } from "@assertions/isArray";
-import type { TupleSchema, Validate } from "./types";
+import type {
+	Assertion,
+	InferAssertion,
+	UnknownAssertion,
+} from "@the-minimal/types";
 
 /**
  * Checks that assertion passes for each element of the tuple.
@@ -15,11 +19,16 @@ import type { TupleSchema, Validate } from "./types";
  * position([1, 2]) // passes
  * ```
  */
-export const tuple = <const $Schema extends TupleSchema>(assertions: $Schema) =>
-	((v: any) => {
-		(isArray as any)(v);
+export const tuple =
+	<const $Assertions extends UnknownAssertion[]>(
+		assertions: $Assertions,
+	): Assertion<{
+		[$Key in keyof $Assertions]: InferAssertion<$Assertions[$Key]>;
+	}> =>
+	(v: unknown) => {
+		isArray(v);
 
 		for (let i = 0; i < assertions.length; ++i) {
 			(assertions[i] as any)(v[i]);
 		}
-	}) as unknown as Validate.Tuple<$Schema>;
+	};

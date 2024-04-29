@@ -1,5 +1,5 @@
 import { error } from "@error";
-import type { Validate } from "./types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if length of value is less than or equal to the provided length.
@@ -14,7 +14,7 @@ import type { Validate } from "./types";
  * passwordMaxLength("Test123456"); // passes
  * ```
  */
-export const maxLength = <$Input extends number>(length: $Input) =>
-	((v: any) =>
-		v.length <= length ||
-		error(maxLength)) as unknown as Validate.Length.Max<$Input>;
+export const maxLength =
+	(length: number): Assertion<unknown> =>
+	(v: unknown) =>
+		(v as any).length <= length || error(maxLength);
