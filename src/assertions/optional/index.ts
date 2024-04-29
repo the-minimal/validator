@@ -1,9 +1,4 @@
-import type {
-	Assertion,
-	InferAssertion,
-	Optional,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion, Optional } from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is undefined.
@@ -20,8 +15,6 @@ import type {
  * ```
  */
 export const optional =
-	<$Assertion extends UnknownAssertion>(
-		assertion: $Assertion,
-	): Assertion<Optional<InferAssertion<$Assertion>>> =>
+	<$Value>(assertion: Assertion<$Value>): Assertion<Optional<$Value>> =>
 	(v: unknown) =>
 		v === undefined || (assertion as any)(v);

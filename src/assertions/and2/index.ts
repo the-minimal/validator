@@ -1,8 +1,4 @@
-import type {
-	Assertion,
-	InferAssertion,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that both assertions pass.
@@ -20,10 +16,10 @@ import type {
  * ```
  */
 export const and2 =
-	<$Assertion1 extends UnknownAssertion, $Assertion2 extends UnknownAssertion>(
-		assertion1: $Assertion1,
-		assertion2: $Assertion2,
-	): Assertion<InferAssertion<$Assertion1> & InferAssertion<$Assertion2>> =>
+	<$Value1, $Value2>(
+		assertion1: Assertion<$Value1>,
+		assertion2: Assertion<$Value2>,
+	): Assertion<$Value1 & $Value2> =>
 	(v: unknown) => {
 		assertion1(v);
 		assertion2(v);

@@ -3,7 +3,7 @@ export type Intersection<$Values extends unknown[]> = $Values extends [
 	infer $Head,
 	...infer $Tail,
 ]
-	? $Tail extends [infer _1, ...infer _2]
+	? $Tail extends [infer _1]
 		? $Head & Intersection<$Tail>
 		: $Head
 	: never;

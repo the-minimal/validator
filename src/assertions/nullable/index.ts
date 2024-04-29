@@ -1,9 +1,4 @@
-import type {
-	Assertion,
-	InferAssertion,
-	Nullable,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion, Nullable } from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is null.
@@ -20,8 +15,6 @@ import type {
  * ```
  */
 export const nullable =
-	<$Assertion extends UnknownAssertion>(
-		assertion: $Assertion,
-	): Assertion<Nullable<InferAssertion<$Assertion>>> =>
+	<$Value>(assertion: Assertion<$Value>): Assertion<Nullable<$Value>> =>
 	(v: unknown) =>
 		v === null || (assertion as any)(v);

@@ -1,8 +1,4 @@
-import type {
-	Assertion,
-	InferAssertion,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if one of two assertions passes.
@@ -23,19 +19,11 @@ import type {
  * ```
  */
 export const or3 =
-	<
-		$Assertion1 extends UnknownAssertion,
-		$Assertion2 extends UnknownAssertion,
-		$Assertion3 extends UnknownAssertion,
-	>(
-		assertion1: $Assertion1,
-		assertion2: $Assertion2,
-		assertion3: $Assertion3,
-	): Assertion<
-		| InferAssertion<$Assertion1>
-		| InferAssertion<$Assertion2>
-		| InferAssertion<$Assertion3>
-	> =>
+	<$Value1, $Value2, $Value3>(
+		assertion1: Assertion<$Value1>,
+		assertion2: Assertion<$Value2>,
+		assertion3: Assertion<$Value3>,
+	): Assertion<$Value1 | $Value2 | $Value3> =>
 	(v: unknown) => {
 		try {
 			assertion1(v);

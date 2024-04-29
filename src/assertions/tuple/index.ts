@@ -1,9 +1,5 @@
 import { isArray } from "@assertions/isArray";
-import type {
-	Assertion,
-	InferAssertion,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that assertion passes for each element of the tuple.
@@ -20,11 +16,11 @@ import type {
  * ```
  */
 export const tuple =
-	<const $Assertions extends UnknownAssertion[]>(
-		assertions: $Assertions,
-	): Assertion<{
-		[$Key in keyof $Assertions]: InferAssertion<$Assertions[$Key]>;
-	}> =>
+	<const $Values extends unknown[]>(
+		assertions: {
+			[$Key in keyof $Values]: Assertion<$Values[$Key]>;
+		},
+	): Assertion<$Values> =>
 	(v: unknown) => {
 		isArray(v);
 

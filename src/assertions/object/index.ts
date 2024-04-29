@@ -1,9 +1,5 @@
 import { isObject } from "@assertions/isObject";
-import type {
-	Assertion,
-	InferAssertion,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that assertion passes for each key/value of the object.
@@ -29,11 +25,11 @@ import type {
  * }); // passes
  * ```
  */
-export const object = <$Schema extends Record<string, UnknownAssertion>>(
-	schema: $Schema,
-): Assertion<{
-	[$Key in keyof $Schema]: InferAssertion<$Schema[$Key]>;
-}> => {
+export const object = <$Schema extends Record<string, unknown>>(
+	schema: {
+		[$Key in keyof $Schema]: Assertion<$Schema[$Key]>;
+	},
+): Assertion<$Schema> => {
 	const keys = Object.keys(schema);
 
 	return (v: unknown) => {

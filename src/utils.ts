@@ -1,26 +1,19 @@
-import type { UnknownAssertion } from "@the-minimal/types";
-import type { Infer } from "@types";
+import type { Assertion } from "@the-minimal/types";
 
-export function assert<$Assertion extends UnknownAssertion>(
-	assertion: $Assertion,
+export function assert<$Value>(
+	assertion: Assertion<$Value>,
 	value: unknown,
-): asserts value is Infer<$Assertion> {
+): asserts value is $Value {
 	(assertion as any)(value);
 }
 
-export function parse<$Assertion extends UnknownAssertion>(
-	assertion: $Assertion,
-	value: unknown,
-) {
+export function parse<$Value>(assertion: Assertion<$Value>, value: unknown) {
 	(assertion as any)(value);
 
-	return value as Infer<$Assertion>;
+	return value as $Value;
 }
 
-export function is<$Assertion extends UnknownAssertion>(
-	assertion: $Assertion,
-	value: unknown,
-): value is Infer<$Assertion> {
+export function is<$Value>(assertion: $Value, value: unknown): value is $Value {
 	try {
 		(assertion as any)(value);
 

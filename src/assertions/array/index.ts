@@ -1,5 +1,5 @@
 import { isArray } from "@assertions/isArray";
-import type { UnknownAssertion } from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks that assertion passes for each element of the array.
@@ -15,7 +15,7 @@ import type { UnknownAssertion } from "@the-minimal/types";
  * ```
  */
 export const array =
-	<$Assertion extends UnknownAssertion>(assertion: $Assertion) =>
+	<$Value>(assertion: Assertion<$Value>): Assertion<$Value[]> =>
 	(v: unknown) => {
 		isArray(v);
 

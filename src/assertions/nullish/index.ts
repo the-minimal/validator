@@ -1,9 +1,4 @@
-import type {
-	Assertion,
-	InferAssertion,
-	Nullish,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion, Nullish } from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is null or undefined.
@@ -21,8 +16,6 @@ import type {
  * ```
  */
 export const nullish =
-	<$Assertion extends UnknownAssertion>(
-		assertion: $Assertion,
-	): Assertion<Nullish<InferAssertion<$Assertion>>> =>
+	<$Value>(assertion: Assertion<$Value>): Assertion<Nullish<$Value>> =>
 	(v: unknown) =>
 		v === null || v === undefined || (assertion as any)(v);

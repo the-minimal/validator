@@ -1,9 +1,5 @@
 import { error } from "@error";
-import type {
-	Assertion,
-	InferAssertion,
-	UnknownAssertion,
-} from "@the-minimal/types";
+import type { Assertion } from "@the-minimal/types";
 
 /**
  * Checks if one of the assertions passes.
@@ -26,13 +22,11 @@ import type {
  * ```
  */
 export const or =
-	<const $Assertions extends UnknownAssertion[]>(
-		assertions: $Assertions,
-	): Assertion<
-		{
-			[$Key in keyof $Assertions]: InferAssertion<$Assertions[$Key]>;
-		}[number]
-	> =>
+	<const $Values extends unknown[]>(
+		assertions: {
+			[$Key in keyof $Values]: Assertion<$Values[$Key]>;
+		},
+	): Assertion<$Values[number]> =>
 	(v: unknown) => {
 		for (let i = 0; i < assertions.length; ++i) {
 			try {
