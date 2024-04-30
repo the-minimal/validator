@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if length of value is greater than or equal to the provided length.
@@ -17,4 +17,4 @@ import type { Assertion } from "@the-minimal/types";
 export const minLength =
 	(length: number): Assertion<unknown> =>
 	(v: unknown) =>
-		(v as any).length >= length || error(minLength);
+		(v as any).length >= length || ValidationError(minLength);

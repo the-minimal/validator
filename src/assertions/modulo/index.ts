@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if the remainer is equal to the specified value when the input is divided by the divider.
@@ -18,4 +18,4 @@ import type { Assertion } from "@the-minimal/types";
 export const modulo =
 	(divider: number, remainder: number): Assertion<unknown> =>
 	(v: unknown) =>
-		<number>v % divider === remainder || error(modulo);
+		<number>v % divider === remainder || ValidationError(modulo);

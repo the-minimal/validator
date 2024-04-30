@@ -49,7 +49,7 @@ As a result it has many opinions that might not sit well with some folks.
   ]);
 
   // endpoint
-  await validate(filename);
+  await assert(validate, filename);
   ```
 
   Do this instead:
@@ -62,7 +62,7 @@ As a result it has many opinions that might not sit well with some folks.
   ]);
 
   // endpoint
-  validate(filename);
+  assert(validate, filename);
 
   if(!(await File.exists(filename))) {
     throw Error("File does not exist");
@@ -158,9 +158,9 @@ As a result it has many opinions that might not sit well with some folks.
   <summary><b>How do I validate types?</b></summary>
 
   ```ts
-  string("Hello, World!");
-  number(420);
-  boolean(true);
+  assert(string, "Hello, World!");
+  assert(number, 420);
+  assert(boolean, true);
   ```
 
 </details>
@@ -202,14 +202,20 @@ As a result it has many opinions that might not sit well with some folks.
     friends: array(string)
   });
 
-  register("Oh no this is gonna throw");
+  assert(
+    register,
+    "Oh no this is gonna throw"
+  );
 
-  register({
-    email: "yamiteru@icloud.com",
-    password: "Test123456",
-    role: "ADMIN",
-    friends: ["Joe"]
-  });
+  assert(
+    register
+    {
+      email: "yamiteru@icloud.com",
+      password: "Test123456",
+      role: "ADMIN",
+      friends: ["Joe"]
+    }
+  );
   ```
 
 </details>

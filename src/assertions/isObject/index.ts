@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks that the value is of type object and is not null.
@@ -12,4 +12,4 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const isObject: Assertion<Record<string, unknown>> = (v: unknown) =>
-	(v !== null && typeof v === "object") || error(isObject);
+	(v !== null && typeof v === "object") || ValidationError(isObject);

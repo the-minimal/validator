@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if one of the assertions passes.
@@ -35,5 +35,5 @@ export const or =
 			} catch {}
 		}
 
-		error(or);
+		ValidationError(or);
 	};

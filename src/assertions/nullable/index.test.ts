@@ -1,6 +1,6 @@
 import { string } from "@assertions/string";
 import { fc, test } from "@fast-check/vitest";
-import { assert } from "@utils";
+import { assert } from "@utils/assert";
 import { expect } from "vitest";
 import { nullable } from "./index";
 

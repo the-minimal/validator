@@ -1,5 +1,4 @@
-import type { Assertion } from "@the-minimal/types";
-import type { Intersection } from "./types";
+import type { Assertion, Intersection } from "@the-minimal/types";
 
 /**
  * Checks if all the assertions pass.

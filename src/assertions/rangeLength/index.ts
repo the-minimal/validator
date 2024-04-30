@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if length of value is in the range of min and max.
@@ -20,4 +20,4 @@ export const rangeLength =
 	(min: number, max: number): Assertion<unknown> =>
 	(v: unknown) =>
 		((v as any).length >= min && (v as any).length <= max) ||
-		error(rangeLength);
+		ValidationError(rangeLength);

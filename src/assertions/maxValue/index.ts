@@ -1,4 +1,4 @@
-import { error } from "@error";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value is less than or equal to the provided length.
@@ -14,4 +14,4 @@ import { error } from "@error";
  * ```
  */
 export const maxValue = (input: unknown) => (v: unknown) =>
-	<any>v <= <any>input || error(maxValue);
+	<any>v <= <any>input || ValidationError(maxValue);

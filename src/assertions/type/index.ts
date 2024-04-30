@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks that the value is of the provided type.
@@ -17,4 +17,4 @@ import type { Assertion } from "@the-minimal/types";
 export const type =
 	<$Type>(input: string): Assertion<$Type> =>
 	(v: unknown) =>
-		typeof v === input || error(type);
+		typeof v === input || ValidationError(type);

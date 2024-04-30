@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks that the value is an array.
@@ -11,4 +11,4 @@ import type { Assertion } from "@the-minimal/types";
  * ```
  */
 export const isArray: Assertion<unknown[]> = (v: unknown) =>
-	Array.isArray(v) || error(isArray);
+	Array.isArray(v) || ValidationError(isArray);

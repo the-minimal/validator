@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value is in the range of min and max.
@@ -19,4 +19,4 @@ import type { Assertion } from "@the-minimal/types";
 export const rangeValue =
 	<$Min, $Max extends $Min>(min: $Min, max: $Max): Assertion<unknown> =>
 	(v: unknown) =>
-		(<any>v >= <any>min && <any>v <= <any>max) || error(rangeValue);
+		(<any>v >= <any>min && <any>v <= <any>max) || ValidationError(rangeValue);

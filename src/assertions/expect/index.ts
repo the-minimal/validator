@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { UnknownAssertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Wraps assertion and throws an error with message if assertion fails.
@@ -23,6 +23,6 @@ export const expect = <$Assertion extends UnknownAssertion>(
 		try {
 			assertion(v);
 		} catch (e) {
-			error(assertion, message(e, v));
+			ValidationError(assertion, message(e, v));
 		}
 	}) as $Assertion;

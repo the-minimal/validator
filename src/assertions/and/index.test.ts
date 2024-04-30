@@ -2,7 +2,7 @@ import { maxValue } from "@assertions/maxValue";
 import { minValue } from "@assertions/minValue";
 import { number } from "@assertions/number";
 import { fc, test } from "@fast-check/vitest";
-import { assert } from "@utils";
+import { assert } from "@utils/assert";
 import { expect } from "vitest";
 import { and } from "./index";
 

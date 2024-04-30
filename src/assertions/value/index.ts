@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value is equal to the provided value.
@@ -17,4 +17,4 @@ import type { Assertion } from "@the-minimal/types";
 export const value =
 	<const $Input>(input: $Input): Assertion<$Input> =>
 	(v: unknown) =>
-		v === input || error(value);
+		v === input || ValidationError(value);

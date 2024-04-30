@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value includes with another value.
@@ -17,4 +17,4 @@ import type { Assertion } from "@the-minimal/types";
 export const includes =
 	(input: unknown): Assertion<unknown> =>
 	(v: unknown) =>
-		(v as any).includes(input) || error(includes);
+		(v as any).includes(input) || ValidationError(includes);

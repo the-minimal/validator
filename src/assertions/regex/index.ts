@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value matches regex pattern.
@@ -17,4 +17,4 @@ import type { Assertion } from "@the-minimal/types";
 export const regex =
 	(pattern: RegExp): Assertion<unknown> =>
 	(v: unknown) =>
-		pattern.test(v as string) || error(regex);
+		pattern.test(v as string) || ValidationError(regex);

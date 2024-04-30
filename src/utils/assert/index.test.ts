@@ -4,15 +4,12 @@ import { assert } from "@utils/assert";
 import { expect } from "vitest";
 
 test.prop([fc.integer()])(
-	"should not throw if value is of type number",
+	"should not throw if assertion does not throw",
 	(value) => {
 		expect(() => assert(number, value)).not.toThrow();
 	},
 );
 
-test.prop([fc.string()])(
-	"should throw if value is not of type number",
-	(value) => {
-		expect(() => assert(number, value)).toThrow();
-	},
-);
+test.prop([fc.string()])("should throw if assertion throws", (value) => {
+	expect(() => assert(number, value)).toThrow();
+});

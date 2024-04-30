@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value starts with `searchString`.
@@ -19,4 +19,4 @@ import type { Assertion } from "@the-minimal/types";
 export const startsWith =
 	(input: string): Assertion<unknown> =>
 	(v: unknown) =>
-		(v as string).startsWith(input) || error(startsWith);
+		(v as string).startsWith(input) || ValidationError(startsWith);

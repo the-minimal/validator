@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if the value is one of the provided options.
@@ -20,4 +20,4 @@ export const union =
 		options: $Options,
 	): Assertion<$Options[number]> =>
 	(v: unknown) =>
-		options.includes(v) || error(union);
+		options.includes(v) || ValidationError(union);

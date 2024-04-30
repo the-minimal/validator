@@ -14,14 +14,11 @@
       "@assertions/*": [
         "assertions/*"
       ],
-      "@error": [
-        "error.ts"
+      "@utils/*": [
+        "utils/*"
       ],
       "@types": [
         "types.ts"
-      ],
-      "@utils": [
-        "utils.ts"
       ]
     }
   },

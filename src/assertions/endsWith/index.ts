@@ -1,5 +1,5 @@
-import { error } from "@error";
 import type { Assertion } from "@the-minimal/types";
+import { ValidationError } from "@utils/error";
 
 /**
  * Checks if value ends with `searchString`.
@@ -19,4 +19,4 @@ import type { Assertion } from "@the-minimal/types";
 export const endsWith =
 	<$Input extends string>(input: $Input): Assertion<unknown> =>
 	(v: unknown) =>
-		(v as any).endsWith(input) || error(endsWith);
+		(v as any).endsWith(input) || ValidationError(endsWith);
