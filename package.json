@@ -1,7 +1,7 @@
 {
   "name": "@the-minimal/validator",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "author": "Miroslav Vršecký <yamiteru@icloud.com>",
   "description": "Minimal validation library for the brave",
