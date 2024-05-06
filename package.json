@@ -71,6 +71,6 @@
   },
   "dependencies": {
     "@the-minimal/types": "0.4.0",
-    "@the-minimal/error": "0.1.0"
+    "@the-minimal/error": "0.1.1"
   }
 }
