@@ -1,4 +1,4 @@
-import { integer } from "@assertions/integer";
+import { integer } from "@assertions/integer/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

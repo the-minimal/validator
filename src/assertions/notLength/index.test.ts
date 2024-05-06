@@ -1,4 +1,4 @@
-import { notLength } from "@assertions/notLength";
+import { notLength } from "@assertions/notLength/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

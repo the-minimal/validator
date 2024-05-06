@@ -1,4 +1,4 @@
-import { length } from "@assertions/length";
+import { length } from "@assertions/length/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

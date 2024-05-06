@@ -1,8 +1,8 @@
 import { test } from "@fast-check/vitest";
-import { ValidationError } from "@utils/error";
+import { ValidationError } from "@utils/error/index.js";
 import { expect } from "vitest";
 
-test("should have name equal to ValidationError", (value) => {
+test("should have name equal to ValidationError", () => {
 	const cause = {};
 	const message = "Error";
 

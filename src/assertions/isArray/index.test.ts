@@ -1,4 +1,4 @@
-import { isArray } from "@assertions/isArray";
+import { isArray } from "@assertions/isArray/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

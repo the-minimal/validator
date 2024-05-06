@@ -1,4 +1,4 @@
-import { isObject } from "@assertions/isObject";
+import { isObject } from "@assertions/isObject/index.js";
 import type { Assertion } from "@the-minimal/types";
 
 /**

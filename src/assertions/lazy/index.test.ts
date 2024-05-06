@@ -1,7 +1,7 @@
-import { lazy } from "@assertions/lazy";
-import { object } from "@assertions/object";
-import { optional } from "@assertions/optional";
-import { string } from "@assertions/string";
+import { lazy } from "@assertions/lazy/index.js";
+import { object } from "@assertions/object/index.js";
+import { optional } from "@assertions/optional/index.js";
+import { string } from "@assertions/string/index.js";
 import { fc, test } from "@fast-check/vitest";
 import type { Assertion } from "@the-minimal/types";
 import { expect } from "vitest";

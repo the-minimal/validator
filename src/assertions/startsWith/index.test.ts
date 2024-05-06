@@ -1,4 +1,4 @@
-import { startsWith } from "@assertions/startsWith";
+import { startsWith } from "@assertions/startsWith/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

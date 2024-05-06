@@ -1,6 +1,6 @@
-import { number } from "@assertions/number";
+import { number } from "@assertions/number/index.js";
 import { fc, test } from "@fast-check/vitest";
-import { is } from "@utils/is";
+import { is } from "@utils/is/index.js";
 import { expect } from "vitest";
 
 test.prop([fc.integer()])(

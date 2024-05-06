@@ -1,4 +1,4 @@
-import { isArray } from "@assertions/isArray";
+import { isArray } from "@assertions/isArray/index.js";
 import type { Assertion } from "@the-minimal/types";
 
 /**

@@ -1,8 +1,8 @@
-import { string } from "@assertions/string";
+import { optional } from "@assertions/optional/index.js";
+import { string } from "@assertions/string/index.js";
 import { fc, test } from "@fast-check/vitest";
-import { assert } from "@utils/assert";
+import { assert } from "@utils/assert/index.js";
 import { expect } from "vitest";
-import { optional } from "./index";
 
 const assertion = optional(string);
 

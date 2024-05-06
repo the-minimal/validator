@@ -1,8 +1,8 @@
-import { maxValue } from "@assertions/maxValue";
-import { number } from "@assertions/number";
+import { and2 } from "@assertions/and2/index.js";
+import { maxValue } from "@assertions/maxValue/index.js";
+import { number } from "@assertions/number/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
-import { and2 } from "./index";
 
 const assertion = and2(number, maxValue(2));
 

@@ -1,4 +1,4 @@
-import { regex } from "@assertions/regex";
+import { regex } from "@assertions/regex/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

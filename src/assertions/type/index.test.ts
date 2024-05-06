@@ -1,4 +1,4 @@
-import { type } from "@assertions/type";
+import { type } from "@assertions/type/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

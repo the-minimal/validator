@@ -1,4 +1,4 @@
-import { rangeLength } from "@assertions/rangeLength";
+import { rangeLength } from "@assertions/rangeLength/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

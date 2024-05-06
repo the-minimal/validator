@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "NodeNext",
     "lib": ["ESNext", "WebWorker"],
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,

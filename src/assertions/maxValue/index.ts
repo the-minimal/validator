@@ -1,4 +1,4 @@
-import { ValidationError } from "@utils/error";
+import { ValidationError } from "@utils/error/index.js";
 
 /**
  * Checks if value is less than or equal to the provided length.

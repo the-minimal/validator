@@ -1,4 +1,4 @@
-import { modulo } from "@assertions/modulo/index";
+import { modulo } from "@assertions/modulo/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

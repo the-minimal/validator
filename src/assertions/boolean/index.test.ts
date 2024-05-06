@@ -1,6 +1,6 @@
-import { boolean } from "@assertions/boolean";
+import { boolean } from "@assertions/boolean/index.js";
 import { fc, test } from "@fast-check/vitest";
-import { assert } from "@utils/assert";
+import { assert } from "@utils/assert/index.js";
 import { expect } from "vitest";
 
 test.prop([fc.boolean()])(

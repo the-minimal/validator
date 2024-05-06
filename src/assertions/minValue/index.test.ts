@@ -1,4 +1,4 @@
-import { minValue } from "@assertions/minValue";
+import { minValue } from "@assertions/minValue/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

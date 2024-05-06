@@ -1,10 +1,10 @@
-import { maxValue } from "@assertions/maxValue";
-import { minValue } from "@assertions/minValue";
-import { number } from "@assertions/number";
+import { and } from "@assertions/and/index.js";
+import { maxValue } from "@assertions/maxValue/index.js";
+import { minValue } from "@assertions/minValue/index.js";
+import { number } from "@assertions/number/index.js";
 import { fc, test } from "@fast-check/vitest";
-import { assert } from "@utils/assert";
+import { assert } from "@utils/assert/index.js";
 import { expect } from "vitest";
-import { and } from "./index";
 
 const assertion = and([number, minValue(0), maxValue(2)]);
 

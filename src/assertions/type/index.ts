@@ -1,5 +1,5 @@
 import type { Assertion } from "@the-minimal/types";
-import { ValidationError } from "@utils/error";
+import { ValidationError } from "@utils/error/index.js";
 
 /**
  * Checks that the value is of the provided type.

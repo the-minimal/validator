@@ -1,8 +1,8 @@
-import { string } from "@assertions/string";
+import { expect as _expect } from "@assertions/expect/index.js";
+import { string } from "@assertions/string/index.js";
 import { fc, test } from "@fast-check/vitest";
 import type { Assertion } from "@the-minimal/types";
 import { expect } from "vitest";
-import { expect as _expect } from "./index";
 
 const assertion: Assertion<string> = _expect(
 	string,

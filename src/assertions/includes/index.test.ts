@@ -1,4 +1,4 @@
-import { includes } from "@assertions/includes";
+import { includes } from "@assertions/includes/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

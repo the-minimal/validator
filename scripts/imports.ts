@@ -13,7 +13,7 @@ import { write } from "bun";
       let content = "";
       for (const file of list) {
           if (file.isDirectory()) {
-              content += `export * from "./${file.name}";\n`;
+              content += `export * from "./${file.name}/index.js";\n`;
           }
       }
 

@@ -1,5 +1,5 @@
 import type { Assertion } from "@the-minimal/types";
-import { ValidationError } from "@utils/error";
+import { ValidationError } from "@utils/error/index.js";
 
 /**
  * Checks if the remainer is equal to the specified value when the input is divided by the divider.

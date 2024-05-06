@@ -1,9 +1,9 @@
-import { boolean } from "@assertions/boolean";
-import { number } from "@assertions/number";
-import { string } from "@assertions/string";
+import { boolean } from "@assertions/boolean/index.js";
+import { number } from "@assertions/number/index.js";
+import { string } from "@assertions/string/index.js";
+import { tuple } from "@assertions/tuple/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
-import { tuple } from "./index";
 
 const assertion = tuple([string, number, boolean]);
 

@@ -1,4 +1,4 @@
-import { email } from "@assertions/email";
+import { email } from "@assertions/email/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

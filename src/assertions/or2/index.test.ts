@@ -1,8 +1,8 @@
-import { number } from "@assertions/number";
-import { string } from "@assertions/string";
+import { number } from "@assertions/number/index.js";
+import { or2 } from "@assertions/or2/index.js";
+import { string } from "@assertions/string/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
-import { or2 } from "./index";
 
 const assertion = or2(number, string);
 

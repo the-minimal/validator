@@ -1,4 +1,4 @@
-import { isObject } from "@assertions/isObject";
+import { isObject } from "@assertions/isObject/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

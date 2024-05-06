@@ -1,4 +1,4 @@
-import { notValue } from "@assertions/notValue";
+import { notValue } from "@assertions/notValue/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

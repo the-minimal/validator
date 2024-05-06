@@ -1,4 +1,4 @@
-import { regex } from "@assertions/regex";
+import { regex } from "@assertions/regex/index.js";
 
 /**
  * Checks if value matches email RegExp.

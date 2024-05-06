@@ -1,5 +1,5 @@
 import type { UnknownAssertion } from "@the-minimal/types";
-import { ValidationError } from "@utils/error";
+import { ValidationError } from "@utils/error/index.js";
 
 /**
  * Wraps assertion and throws an error with message if assertion fails.

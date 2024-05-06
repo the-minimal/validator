@@ -1,9 +1,9 @@
-import { maxValue } from "@assertions/maxValue";
-import { minValue } from "@assertions/minValue";
-import { number } from "@assertions/number";
+import { and3 } from "@assertions/and3/index.js";
+import { maxValue } from "@assertions/maxValue/index.js";
+import { minValue } from "@assertions/minValue/index.js";
+import { number } from "@assertions/number/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
-import { and3 } from "./index";
 
 const assertion = and3(number, minValue(0), maxValue(2));
 

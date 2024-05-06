@@ -1,5 +1,5 @@
+import { union } from "@assertions/union/index.js";
 import { fc, test } from "@fast-check/vitest";
-import { union } from "assertions/union";
 import { expect } from "vitest";
 
 const assertion = union(["one", "two"]);

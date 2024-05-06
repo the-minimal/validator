@@ -1,7 +1,7 @@
-import { number } from "@assertions/number";
+import { array } from "@assertions/array/index.js";
+import { number } from "@assertions/number/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
-import { array } from "./index";
 
 const assertion = array(number);
 

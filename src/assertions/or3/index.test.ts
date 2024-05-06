@@ -1,9 +1,9 @@
-import { boolean } from "@assertions/boolean";
-import { number } from "@assertions/number";
-import { string } from "@assertions/string";
+import { boolean } from "@assertions/boolean/index.js";
+import { number } from "@assertions/number/index.js";
+import { or3 } from "@assertions/or3/index.js";
+import { string } from "@assertions/string/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
-import { or3 } from "./index";
 
 const assertion = or3(number, string, boolean);
 

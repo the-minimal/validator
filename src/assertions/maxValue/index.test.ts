@@ -1,4 +1,4 @@
-import { maxValue } from "@assertions/maxValue";
+import { maxValue } from "@assertions/maxValue/index.js";
 import { fc, test } from "@fast-check/vitest";
 import { expect } from "vitest";
 

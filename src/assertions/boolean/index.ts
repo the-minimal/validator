@@ -1,4 +1,4 @@
-import { type } from "@assertions/type";
+import { type } from "@assertions/type/index.js";
 
 /**
  * Checks that the value is a boolean.
