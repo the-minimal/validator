@@ -1,4 +1,4 @@
-import type { Assertion, Optional } from "@the-minimal/types";
+import type { Assertion, Maybe } from "@the-minimal/types";
 
 /**
  * Checks if the assertion passes or if the value is undefined.
@@ -15,6 +15,6 @@ import type { Assertion, Optional } from "@the-minimal/types";
  * ```
  */
 export const optional =
-	<$Value>(assertion: Assertion<$Value>): Assertion<Optional<$Value>> =>
+	<$Value>(assertion: Assertion<$Value>): Assertion<Maybe<$Value>> =>
 	(v: unknown) =>
 		v === undefined || (assertion as any)(v);
