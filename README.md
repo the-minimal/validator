@@ -1,18 +1,19 @@
-![Validator image](https://github.com/the-minimal/validator/blob/main/docs/the-minimal-validator.jpg?raw=true)
+# Validator: A Minimal Data Validation Library
 
-Joe was in search of a simple data validation library that he could learn in 15 minutes.
+Validator is a highly optimized data validation library designed for simplicity, performance, and ease of use. It aims to meet the needs of developers who require minimal blocking time and low CPU/memory overhead.
 
-He envisioned a tool with minimal blocking time and low CPU/memory overhead.
+## Features
 
-He hoped for something he could easily extend to meet his specific requirements.
+- Data validation only
+-	Small learning curve
+-	Minimal runtime overhead
+-	Tiny bundle size
+-	Tree-shakeable
+-	Static type inference
+-	Composable and modular
+-	100% Test Coverage
 
-> Are you like Joe? If so, then `Validator` might just be what you're looking for!
-
-## Stubborn opinions
-
-`Validator` is pretty stubborn and doesn't want to be a Jack of all trades.
-
-As a result it has many opinions that might not sit well with some folks.
+## Opinionated
 
 <details open>
   <summary><b>No data transformation</b></summary>
@@ -129,111 +130,70 @@ As a result it has many opinions that might not sit well with some folks.
 
 </details>
 
-## Focused features
+## Performance Metrics
 
-`Validator` is a watchful eye that plagues your editor with errors if you feed it data you haven't agreed upon, but otherwise, it stays quiet as a mouse.
+Validator is engineered to deliver exceptional performance:
 
-- Everything is an `Assertion`
-- `Assertion`s are simple functions
-- `Assertion`s are composed together
-- `Assertion`s are type-safe
-- `Assertion`s are tree-shakeable
+- **Bundle Size**: 835 bytes (minified and gzipped)
+-	**Speed**: Approximately 5x faster than Zod for data validation
+-	**Memory Usage**: Approximately 200x less memory consumption than Zod
+-	**Type-checking**: Approximately 50x faster than Zod
+-	**Dependencies**: Only one in-house dependency
+-	**Test Coverage**: 100%
 
-## Incredible numbers
+## Usage Examples
 
-`Validator` is an obsessed overachiever who wants to be the smallest and fastest one on the track.
+### Validating Types
 
-- 40 `Assertion`s
-- 835 bytes bundle
-- ~ 5x faster data validation than `Zod`
-- ~ 200x less memory consumption than `Zod`
-- ~ 50x faster type-checking than `Zod`
-- 1 runtime dependency
-  - [@the-minimal/error](https://github.com/the-minimal/error) (135 bytes)
-- 100% test coverage
+```ts
+assert(string, "Hello, World!");
+assert(number, 420);
+assert(boolean, true);
+```
 
-## Simple examples
+### Validating Values
 
-<details>
-  <summary><b>How do I validate types?</b></summary>
+```ts
+value(26);
+notValue(0);
+minValue(18);
+maxValue(100);
+rangeValue(18, 100);
+```
 
-  ```ts
-  assert(string, "Hello, World!");
-  assert(number, 420);
-  assert(boolean, true);
-  ```
+### Validating Lengths
 
-</details>
+```ts
+length(5);
+notLength(0);
+minLength(8);
+maxLength(16);
+rangeLength(8, 16);
+```
 
-<details>
-  <summary><b>How do I validate values?</b></summary>
+### Combining Validations
 
-  ```ts
-  value(26);
-  notValue(0);
-  minValue(18);
-  maxValue(100);
-  rangeValue(18, 100);
-  ```
+```ts
+const register = object({
+  email: and([string, rangeLength(5, 35), email]),
+  password: and([string, rangeLength(8, 16)]),
+  role: union(["ADMIN", "USER"]),
+  friends: array(string)
+});
 
-</details>
+assert(
+  register,
+  {
+    email: "yamiteru@icloud.com",
+    password: "Test123456",
+    role: "ADMIN",
+    friends: ["Joe"]
+  }
+);
+```
 
-<details>
-  <summary><b>How do I validate lenghts?</b></summary>
-
-  ```ts
-  length(5);
-  notLength(0);
-  minLength(8);
-  maxLength(16);
-  rangeLength(8, 16);
-  ```
-
-</details>
-
-<details open>
-  <summary><b>How do I combine validations?</b></summary>
-
-  ```ts
-  const register = object({
-    email: and([string, rangeLength(5, 35), email]),
-    password: and([string, rangeLength(8, 16)]),
-    role: union(["ADMIN", "USER"]),
-    friends: array(string)
-  });
-
-  assert(
-    register,
-    "Oh no this is gonna throw"
-  );
-
-  assert(
-    register
-    {
-      email: "yamiteru@icloud.com",
-      password: "Test123456",
-      role: "ADMIN",
-      friends: ["Joe"]
-    }
-  );
-  ```
-
-</details>
-
-## Great journey
-
-Are you really Joe?
-
-Do you dare to let this demon command you?
-
-If so, repeat the spell below and good luck on your journey!
+## Installation
 
 ```bash
 yarn add @the-minimal/validator
 ```
-
-## Notes
-
-- All reported sizes are for minified and gzipped code
-- Reproducible and highly detailed benchmarks are on the way
-- `Validation` and `Assertion` are the same things
